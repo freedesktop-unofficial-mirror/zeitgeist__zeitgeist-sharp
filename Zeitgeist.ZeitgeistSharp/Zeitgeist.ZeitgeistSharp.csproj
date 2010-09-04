@@ -40,7 +40,6 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Datamodel\Event.cs" />
-    <Compile Include="Datamodel\EventMetaData.cs" />
     <Compile Include="Datamodel\Subject.cs" />
     <Compile Include="Datamodel\ResultType.cs" />
     <Compile Include="Datamodel\TimeRange.cs" />

@@ -8,6 +8,9 @@ namespace Zeitgeist.ZeitgeistSharp.Datamodel
 		public string MimeType { get; set; }
 		public string Text { get; set; }
 		public string Storage { get; set; }
+		public string Interpretation { get; set; }
+		public string Manifestation { get; set; }
+		
 	}
 }
 
