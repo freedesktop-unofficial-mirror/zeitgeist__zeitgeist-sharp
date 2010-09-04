@@ -46,6 +46,7 @@
     <Compile Include="Datamodel\TimeRange.cs" />
     <Compile Include="Datamodel\StorageState.cs" />
     <Compile Include="Datamodel\DataSource.cs" />
+    <Compile Include="Delegates.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />

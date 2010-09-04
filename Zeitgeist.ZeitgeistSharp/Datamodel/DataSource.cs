@@ -1,6 +1,7 @@
 using System;
 using org.freedesktop;
 using org.freedesktop.DBus;
+using Zeitgeist.ZeitgeistSharp;
 
 namespace Zeitgeist.ZeitgeistSharp.Datamodel
 {
@@ -16,9 +17,17 @@ namespace Zeitgeist.ZeitgeistSharp.Datamodel
 	}
 	
 	[NDesk.DBus.Interface ("org.gnome.zeitgeist.DataSourceRegistry")]
-	public class DataSources : MarshalByRefObject
+	public interface DataSources
 	{
-		public DataSource[] Sources { get;set; }
+		DataSource[] GetDataSources();
+		bool RegisterDataSources(string unique_id, string name, string description, Event[] events);
+		void SetDataSourceEnabled(string unique_id, bool enabled);
+		
+		event DataSourceDisconnectedHandler DataSourceDisconnected;
+		
+		event DataSourceEnabledHandler DataSourceEnabled;
+		
+		event DataSourceRegisteredHandler DataSourceRegistered;
 	}
 }
 

@@ -9,12 +9,21 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 		public static void Main (string[] args)
 		{
 			BusG.Init();
+			
 			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/data_source_registry");
 			try
 			{
 				DataSources zeitgeist = Bus.Session.GetObject<DataSources>("org.gnome.zeitgeist.DataSourceRegistry", objPath);
 				
-				DataSource src = zeitgeist.Sources[0];
+				try
+				{
+					DataSource[] sources = zeitgeist.GetDataSources();
+				}
+				catch(Exception exp)
+				{
+					
+				}
+				
 				if(zeitgeist == null)
 				{
 					
