@@ -1,5 +1,5 @@
 using System;
-using  Zeitgeist.Datamodel;
+using Zeitgeist.Datamodel;
 using Zeitgeist;
 
 namespace Zeitgeist.Client

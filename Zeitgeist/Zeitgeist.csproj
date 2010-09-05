@@ -47,15 +47,11 @@
     <Compile Include="Datamodel\DataSource.cs" />
     <Compile Include="Delegates.cs" />
     <Compile Include="Client\IDataSource.cs" />
+    <Compile Include="Client\IBlacklist.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />
     <Folder Include="Client\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ProjectExtensions>
-    <MonoDevelop>
-      <Properties InternalTargetFrameworkVersion="3.5" />
-    </MonoDevelop>
-  </ProjectExtensions>
 </Project>

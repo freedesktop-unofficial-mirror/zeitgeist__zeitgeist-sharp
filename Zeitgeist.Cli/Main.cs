@@ -11,10 +11,13 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 		{
 			BusG.Init();
 			
-			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/data_source_registry");
-			IDataSource zeitgeist = Bus.Session.GetObject<IDataSource>("org.gnome.zeitgeist.Engine", objPath);
-			DataSource[] sources = zeitgeist.GetDataSources();
-			Console.WriteLine(sources.Length);
+			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/blacklist");
+			IBlacklist zeitgeist = Bus.Session.GetObject<IBlacklist>("org.gnome.zeitgeist.Engine", objPath);
+			RawEvent[] sources = zeitgeist.GetBlacklist();
+			
+			RawEvent evnt = sources[0];
+			Event ev = Event.FromRaw(evnt);
+			RawEvent rw = ev.GetRawEvent();
 		}
 	}
 }
