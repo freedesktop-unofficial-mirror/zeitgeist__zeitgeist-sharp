@@ -46,9 +46,11 @@
     <Compile Include="Datamodel\StorageState.cs" />
     <Compile Include="Datamodel\DataSource.cs" />
     <Compile Include="Delegates.cs" />
+    <Compile Include="Client\IDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />
+    <Folder Include="Client\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

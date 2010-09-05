@@ -1,5 +1,6 @@
 using System;
-namespace Zeitgeist.ZeitgeistSharp.Datamodel
+
+namespace Zeitgeist.Datamodel
 {
 	public class Event
 	{ 

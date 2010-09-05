@@ -1,7 +1,7 @@
 using System;
-using Zeitgeist.ZeitgeistSharp.Datamodel;
+using Zeitgeist.Datamodel;
 
-namespace Zeitgeist.ZeitgeistSharp
+namespace Zeitgeist
 {
 	public delegate void DataSourceDisconnectedHandler(DataSource datasource);
 		

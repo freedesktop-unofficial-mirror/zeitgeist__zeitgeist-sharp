@@ -50,9 +50,9 @@
     </MonoDevelop>
   </ProjectExtensions>
   <ItemGroup>
-    <ProjectReference Include="..\Zeitgeist.ZeitgeistSharp\Zeitgeist.ZeitgeistSharp.csproj">
+    <ProjectReference Include="..\Zeitgeist\Zeitgeist.csproj">
       <Project>{A8352F1A-F10C-41E6-B6B0-655703358EF4}</Project>
-      <Name>Zeitgeist.ZeitgeistSharp</Name>
+      <Name>Zeitgeist</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

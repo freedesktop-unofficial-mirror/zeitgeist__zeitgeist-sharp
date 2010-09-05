@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeitgeist.ZeitgeistSharp.Cli", "Zeitgeist.ZeitgeistSharp.Cli\Zeitgeist.ZeitgeistSharp.Cli.csproj", "{314FBB69-2D33-460C-8BC4-3C0A50305EA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeitgeist.Cli", "Zeitgeist.Cli\Zeitgeist.Cli.csproj", "{314FBB69-2D33-460C-8BC4-3C0A50305EA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeitgeist.ZeitgeistSharp", "Zeitgeist.ZeitgeistSharp\Zeitgeist.ZeitgeistSharp.csproj", "{A8352F1A-F10C-41E6-B6B0-655703358EF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zeitgeist", "Zeitgeist\Zeitgeist.csproj", "{A8352F1A-F10C-41E6-B6B0-655703358EF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

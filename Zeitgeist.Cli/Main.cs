@@ -1,6 +1,7 @@
 using System;
 using NDesk.DBus;
-using Zeitgeist.ZeitgeistSharp.Datamodel;
+using Zeitgeist.Datamodel;
+using Zeitgeist.Client;
 
 namespace Zeitgeist.ZeitgeistSharp.Cli
 {
@@ -11,7 +12,7 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 			BusG.Init();
 			
 			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/data_source_registry");
-			DataSources zeitgeist = Bus.Session.GetObject<DataSources>("org.gnome.zeitgeist.Engine", objPath);
+			IDataSource zeitgeist = Bus.Session.GetObject<IDataSource>("org.gnome.zeitgeist.Engine", objPath);
 			DataSource[] sources = zeitgeist.GetDataSources();
 			Console.WriteLine(sources.Length);
 		}

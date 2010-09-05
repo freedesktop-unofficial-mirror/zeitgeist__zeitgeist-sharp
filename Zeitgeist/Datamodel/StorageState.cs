@@ -1,5 +1,6 @@
 using System;
-namespace Zeitgeist.ZeitgeistSharp
+
+namespace Zeitgeist.Datamodel
 {
 	public enum StorageState
 	{
