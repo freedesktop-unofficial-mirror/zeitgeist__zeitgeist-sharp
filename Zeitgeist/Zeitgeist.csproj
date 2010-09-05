@@ -7,18 +7,19 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{A8352F1A-F10C-41E6-B6B0-655703358EF4}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Zeitgeist.ZeitgeistSharp</RootNamespace>
+    <RootNamespace>Zeitgeist</RootNamespace>
     <AssemblyName>Zeitgeist.ZeitgeistSharp</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
+    <GenerateDocumentation>true</GenerateDocumentation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -48,6 +49,7 @@
     <Compile Include="Delegates.cs" />
     <Compile Include="Client\IDataSource.cs" />
     <Compile Include="Client\IBlacklist.cs" />
+    <Compile Include="Client\ILog.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />

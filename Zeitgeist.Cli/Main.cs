@@ -2,6 +2,7 @@ using System;
 using NDesk.DBus;
 using Zeitgeist.Datamodel;
 using Zeitgeist.Client;
+using System.Collections.Generic;
 
 namespace Zeitgeist.ZeitgeistSharp.Cli
 {
@@ -11,13 +12,35 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 		{
 			BusG.Init();
 			
-			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/blacklist");
-			IBlacklist zeitgeist = Bus.Session.GetObject<IBlacklist>("org.gnome.zeitgeist.Engine", objPath);
-			RawEvent[] sources = zeitgeist.GetBlacklist();
+			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/log/activity");
+			ILog zeitgeist = Bus.Session.GetObject<ILog>("org.gnome.zeitgeist.Engine", objPath);
 			
-			RawEvent evnt = sources[0];
-			Event ev = Event.FromRaw(evnt);
-			RawEvent rw = ev.GetRawEvent();
+			Event ev = new Event();
+			ev.Interpretation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent";
+			ev.Manifestation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity";
+			ev.Actor = "application://gvim.desktop";
+			
+			ev.Subjects = new List<Subject>();
+			Subject sub = new Subject();
+			
+			sub.Uri="file:///home/manish/Dropbox/braintree/users/models.py";
+			sub.Interpretation = "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SourceCode";
+			sub.Manifestation = "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject";
+			sub.Origin = "file:///home/manish/Dropbox/braintree/users";
+			sub.MimeType = "text/x-python";
+			sub.Text = "models.py";
+			sub.Storage = "";
+			
+			ev.Subjects.Add(sub);
+			
+			ev.Payload = new byte[]{};
+			
+			RawEvent evn = RawEvent.FromEvent(ev);
+			RawEvent[] evnList = new RawEvent[]{evn};
+			
+			UInt32[] eventIds = zeitgeist.InsertEvents(evnList);
+			
+			//Event ev = Event.FromRaw(events[0]);
 		}
 	}
 }

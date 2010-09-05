@@ -41,7 +41,7 @@ namespace Zeitgeist.Datamodel
 				
 				sub.Uri = subjArr[(int)EventSubjectPosition.Uri];
 				sub.Origin = subjArr[(int)EventSubjectPosition.Origin];
-				sub.MimeType = subjArr[(int)EventSubjectPosition.MimeType];
+				sub.MimeType = subjArr[(int)EventSubjectPosition.Mimetype];
 				sub.Text = subjArr[(int)EventSubjectPosition.Text];
 				sub.Storage = subjArr[(int)EventSubjectPosition.Storage];
 				sub.Interpretation = subjArr[(int)EventSubjectPosition.Interpretation];
@@ -116,7 +116,7 @@ namespace Zeitgeist.Datamodel
 				
 				subCont[(int)EventSubjectPosition.Uri] = sub.Uri;
 				subCont[(int)EventSubjectPosition.Origin] = sub.Origin;
-				subCont[(int)EventSubjectPosition.MimeType] = sub.MimeType;
+				subCont[(int)EventSubjectPosition.Mimetype] = sub.MimeType;
 				subCont[(int)EventSubjectPosition.Text] = sub.Text;
 				subCont[(int)EventSubjectPosition.Storage] = sub.Storage;
 				subCont[(int)EventSubjectPosition.Interpretation] = sub.Interpretation;
@@ -153,12 +153,12 @@ namespace Zeitgeist.Datamodel
 	enum EventSubjectPosition
 	{
 		Uri = 0,
-		Origin = 1,
-		MimeType = 2,
-		Text = 3,
-		Storage = 4,
-		Interpretation = 5,
-		Manifestation = 6
+		Interpretation = 1, 
+		Manifestation = 2, 
+		Origin = 3, 
+		Mimetype = 4,
+		Text = 5,
+		Storage = 6
 	}
 		                            
 }
