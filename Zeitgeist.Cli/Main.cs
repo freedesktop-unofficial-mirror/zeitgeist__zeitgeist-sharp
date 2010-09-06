@@ -12,10 +12,14 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 		{
 			BusG.Init();
 			
-			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/log/activity");
-			ILog zeitgeist = Bus.Session.GetObject<ILog>("org.gnome.zeitgeist.Engine", objPath);
+			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/data_source_registry");
+			IDataSource zeitgeist = Bus.Session.GetObject<IDataSource>("org.gnome.zeitgeist.Engine", objPath);
 			
-			Event ev = new Event();
+			RawDataSource[] src= zeitgeist.GetDataSources();
+			
+			List<DataSource> srcs = DataSourceClient.GetDataSources();
+			
+			/*Event ev = new Event();
 			ev.Interpretation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent";
 			ev.Manifestation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity";
 			ev.Actor = "application://gvim.desktop";
@@ -38,7 +42,7 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 			RawEvent evn = RawEvent.FromEvent(ev);
 			RawEvent[] evnList = new RawEvent[]{evn};
 			
-			UInt32[] eventIds = zeitgeist.InsertEvents(evnList);
+			UInt32[] eventIds = zeitgeist.InsertEvents(evnList);*/
 			
 			//Event ev = Event.FromRaw(events[0]);
 		}

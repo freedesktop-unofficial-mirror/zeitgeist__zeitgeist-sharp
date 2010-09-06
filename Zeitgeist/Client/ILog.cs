@@ -11,11 +11,12 @@ namespace Zeitgeist.Client
 		// Works
 		RawEvent[] GetEvents(UInt32[] eventIds);
 		
-		UInt32[] FindEventIds(TimeRange range, RawEvent[] eventTemplates, StorageState state, UInt32 maxEvents, ResultType resType);
 		
-		UInt32[] FindEvents(TimeRange range, RawEvent[] eventTemplates, StorageState state, UInt32 maxEvents, ResultType resType);
+		UInt32[] FindEventIds(TimeRange range, RawEvent[] eventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
 		
-		string[] FindRelatedUris(TimeRange range, RawEvent[] eventTemplates, RawEvent[] resultEventTemplates, StorageState state, UInt32 maxEvents, ResultType resType);
+		UInt32[] FindEvents(TimeRange range, RawEvent[] eventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
+		
+		string[] FindRelatedUris(TimeRange range, RawEvent[] eventTemplates, RawEvent[] resultEventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
 		
 		// Works
 		UInt32[] InsertEvents(RawEvent[] events);
