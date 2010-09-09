@@ -19,6 +19,8 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 			
 			List<DataSource> srcs = DataSourceClient.GetDataSources();
 			
+			List<Event> blacklistEvents = BlacklistClient.GetBlacklist();
+			
 			/*Event ev = new Event();
 			ev.Interpretation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent";
 			ev.Manifestation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity";

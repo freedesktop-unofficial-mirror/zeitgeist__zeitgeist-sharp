@@ -8,6 +8,7 @@ namespace Zeitgeist.Client
 	public interface IBlacklist
 	{
 		RawEvent[] GetBlacklist();
+		
 		void SetBlacklist(RawEvent[] event_templates);
 	}
 }

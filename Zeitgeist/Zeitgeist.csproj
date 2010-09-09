@@ -50,7 +50,8 @@
     <Compile Include="Client\IDataSource.cs" />
     <Compile Include="Client\IBlacklist.cs" />
     <Compile Include="Client\ILog.cs" />
-    <Compile Include="ZeitgeistClient.cs" />
+    <Compile Include="DataSourceClient.cs" />
+    <Compile Include="BlacklistClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />
