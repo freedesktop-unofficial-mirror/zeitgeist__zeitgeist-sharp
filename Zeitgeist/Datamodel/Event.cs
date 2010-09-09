@@ -20,6 +20,9 @@ namespace Zeitgeist.Datamodel
 		{
 			Event e = new Event();
 			
+			if(raw.metadata.Length != Enum.GetNames(typeof(EventMetadataPosition)).Length)
+				return null;
+			
 			#region Metadata
 			
 			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Id], out e.Id);			

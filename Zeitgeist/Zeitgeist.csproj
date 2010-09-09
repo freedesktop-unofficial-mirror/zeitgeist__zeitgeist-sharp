@@ -52,6 +52,8 @@
     <Compile Include="Client\ILog.cs" />
     <Compile Include="DataSourceClient.cs" />
     <Compile Include="BlacklistClient.cs" />
+    <Compile Include="LogClient.cs" />
+    <Compile Include="ZsUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />

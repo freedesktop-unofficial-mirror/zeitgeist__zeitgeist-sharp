@@ -13,26 +13,12 @@ namespace Zeitgeist
 			IBlacklist srcInterface = GetDBusObject();
 			RawEvent[] rawBlackLists = srcInterface.GetBlacklist();
 			
-			List<Event> events = new List<Event>();
-			
-			foreach(RawEvent rawEvent in rawBlackLists)
-			{
-				Event evnt = Event.FromRaw(rawEvent);
-				events.Add(evnt);
-			}
-			
-			return events;
+			return ZsUtils.FromRawEventList(rawBlackLists);
 		}
 		
 		public static void SetBlacklist(List<Event> eventTemplates)
 		{
-			List<RawEvent> events = new List<RawEvent>();
-			
-			foreach(Event eventInst in eventTemplates)
-			{
-				RawEvent rawEvnt = eventInst.GetRawEvent();
-				events.Add(rawEvnt);
-			}
+			List<RawEvent> events = ZsUtils.ToRawEventList(eventTemplates);
 			
 			IBlacklist srcInterface = GetDBusObject();
 			srcInterface.SetBlacklist(events.ToArray());
@@ -41,9 +27,9 @@ namespace Zeitgeist
 		private static IBlacklist GetDBusObject()
 		{
 			ObjectPath objPath = new ObjectPath("/org/gnome/zeitgeist/blacklist");
-			IBlacklist log = Bus.Session.GetObject<IBlacklist>("org.gnome.zeitgeist.Engine", objPath);
+			IBlacklist blacklist = Bus.Session.GetObject<IBlacklist>("org.gnome.zeitgeist.Engine", objPath);
 			
-			return log;
+			return blacklist;
 		}
 	}
 }
