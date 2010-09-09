@@ -9,6 +9,8 @@ namespace Zeitgeist
 {
 	public class LogClient
 	{
+		#region Fetch, Insert and Delete Events
+		
 		public static List<Event> GetEvents(List<uint> eventIds)
 		{
 			ILog srcInterface = GetDBusObject();
@@ -35,6 +37,46 @@ namespace Zeitgeist
 			
 			return srcInterface.DeleteEvents(eventIds.ToArray());
 		}
+		
+		#endregion
+		
+		#region Search
+		
+		public static List<uint> FindEventIds(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
+		{
+			ILog srcInterface = GetDBusObject();
+			
+			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(eventTemplates).ToArray();
+			
+			UInt32[] eventIds = srcInterface.FindEventIds(range, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
+			
+			return new List<uint>(eventIds);
+		}
+		
+		public static List<Event> FindEvents(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
+		{
+			ILog srcInterface = GetDBusObject();
+			
+			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(eventTemplates).ToArray();
+			
+			RawEvent[] events = srcInterface.FindEvents(range, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
+			
+			return ZsUtils.FromRawEventList(events);
+		}
+		
+		public static List<string> FindRelatedUris(TimeRange range, List<Event> eventTemplates, List<Event> resultEventTemplates, StorageState state, uint maxEvents, ResultType resType)
+		{
+			ILog srcInterface = GetDBusObject();
+			
+			RawEvent[] rawEvents = ZsUtils.ToRawEventList(eventTemplates).ToArray();
+			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(resultEventTemplates).ToArray();
+			
+			string[] uris = srcInterface.FindRelatedUris(range, rawEvents, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
+			
+			return new List<string>(uris);
+		}
+		
+		#endregion
 		
 		#region Monitors
 		
