@@ -16,16 +16,24 @@ namespace Zeitgeist
 	public class BlacklistClient
 	{
 		/// <summary>
+		/// The constructor for BlacklistClient
+		/// </summary>
+		/// <remarks>
+		/// This constructor gets the DBus object for BlacklistClient which the object's methods use
+		/// </remarks>
+		public BlacklistClient()
+		{
+			srcInterface = ZsUtils.GetDBusObject<IBlacklist>(objectPath);
+		}
+		
+		/// <summary>
 		/// Get the current blacklist templates.
 		/// </summary>
 		/// <returns>
 		/// A list of <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event>"/> Blacklist Event templates 
 		/// </returns>
-		public static List<Event> GetBlacklist()
+		public List<Event> GetBlacklist()
 		{
-			// Get the DBus interface for Blacklist
-			IBlacklist srcInterface = ZsUtils.GetDBusObject<IBlacklist>(objectPath);
-			
 			RawEvent[] rawBlackLists = srcInterface.GetBlacklist();
 			return ZsUtils.FromRawEventList(rawBlackLists);
 		}
@@ -40,14 +48,13 @@ namespace Zeitgeist
 		/// <param name="eventTemplates">
 		/// A List of <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event>"/> Event templates 
 		/// </param>
-		public static void SetBlacklist(List<Event> eventTemplates)
+		public void SetBlacklist(List<Event> eventTemplates)
 		{
-			// Get the DBus interface for Blacklist
-			IBlacklist srcInterface = ZsUtils.GetDBusObject<IBlacklist>(objectPath);
-			
 			List<RawEvent> events = ZsUtils.ToRawEventList(eventTemplates);
 			srcInterface.SetBlacklist(events.ToArray());
 		}
+		
+		private IBlacklist srcInterface;
 		
 		private static string objectPath = "/org/gnome/zeitgeist/blacklist";
 	}

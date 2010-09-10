@@ -13,16 +13,51 @@ namespace Zeitgeist
 	public class DataSourceClient
 	{
 		/// <summary>
+		/// The constructor for DataSourceClient
+		/// </summary>
+		/// <remarks>
+		/// This constructor gets the DBus object for DataSource which the object's methods use.
+	    /// Additionally it chains the events from IDataSource to DataSourceClient
+		/// </remarks>
+		public DataSourceClient()
+		{
+			srcInterface = ZsUtils.GetDBusObject<IDataSource>(objectPath);
+			
+			// Data Source Registered
+			srcInterface.DataSourceRegistered += delegate(DataSource datasource) {
+				if(this.DataSourceRegistered != null)
+				{
+					this.DataSourceRegistered(datasource);
+				}
+			};
+			
+			// Data Source Enabled
+			srcInterface.DataSourceEnabled += delegate(string dataSourceValue, bool enabled) {
+				if(this.DataSourceEnabled != null)
+				{
+					this.DataSourceEnabled(dataSourceValue, enabled);
+				}
+			};
+			
+			// Data Source Disconnected
+			srcInterface.DataSourceDisconnected += delegate(DataSource datasource) {
+				if(this.DataSourceDisconnected != null)
+				{
+					this.DataSourceDisconnected(datasource);
+				}
+			}; 
+			
+		}
+
+		
+		/// <summary>
 		/// Get the list of known data-sources.
 		/// </summary>
 		/// <returns>
 		/// A list of DataSource of type <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </returns>
-		public static List<DataSource> GetDataSources()
+		public List<DataSource> GetDataSources()
 		{
-			// Get the DBus interface for DataSource
-			IDataSource srcInterface = ZsUtils.GetDBusObject<IDataSource>(objectPath);
-			
 			RawDataSource[] srcs = srcInterface.GetDataSources();
 			
 			List<DataSource> srcList = new List<DataSource>();
@@ -55,12 +90,8 @@ namespace Zeitgeist
 		/// <returns>
 		/// true is successful, false otherwise <see cref="System.Boolean"/>
 		/// </returns>
-		public static bool RegisterDataSources(string uniqueId, string name, string description, List<Event> events)
+		public bool RegisterDataSources(string uniqueId, string name, string description, List<Event> events)
 		{
-			// Get the DBus interface for DataSource
-			IDataSource srcInterface = ZsUtils.GetDBusObject<IDataSource>(objectPath);
-			
-			
 			List<RawEvent> rawEventList = new List<RawEvent>();
 			foreach(Event src in events)
 			{
@@ -82,11 +113,25 @@ namespace Zeitgeist
 		/// </param>
 		void SetDataSourceEnabled(string uniqueId, bool enabled)
 		{
-			// Get the DBus interface for DataSource
-			IDataSource srcInterface = ZsUtils.GetDBusObject<IDataSource>(objectPath);
-			
 			srcInterface.SetDataSourceEnabled(uniqueId, enabled);
 		}
+		
+		/// <summary>
+		/// This signal is emitted whenever the last running instance of a data-source disconnects.
+		/// </summary>
+		event DataSourceDisconnectedHandler DataSourceDisconnected;
+		
+		/// <summary>
+		/// This signal is emitted whenever a data-source is enabled or disabled.
+		/// </summary>
+		event DataSourceEnabledHandler DataSourceEnabled;
+		
+		/// <summary>
+		/// This signal is emitted whenever a data-source registers itself.
+		/// </summary>
+		event DataSourceRegisteredHandler DataSourceRegistered;
+		
+		private IDataSource srcInterface;
 		
 		private static string objectPath = "/org/gnome/zeitgeist/log/activity";
 	}

@@ -17,6 +17,17 @@ namespace Zeitgeist
 	/// </remarks>
 	public class LogClient
 	{
+		/// <summary>
+		/// The constructor for LogClient
+		/// </summary>
+		/// <remarks>
+		/// This constructor gets the DBus object for LogClient which the object's methods use
+		/// </remarks>
+		public LogClient()
+		{
+			srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
+		}
+		
 		#region Fetch, Insert and Delete Events
 		
 		/// <summary>
@@ -29,11 +40,8 @@ namespace Zeitgeist
 		/// <returns>
 		/// Full event data for all the requested IDs of type <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </returns>
-		public static List<Event> GetEvents(List<uint> eventIds)
+		public List<Event> GetEvents(List<uint> eventIds)
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			RawEvent[] rawEvents = srcInterface.GetEvents(eventIds.ToArray());
 			
 			return ZsUtils.FromRawEventList(rawEvents);
@@ -54,11 +62,8 @@ namespace Zeitgeist
 		/// <returns>
 		/// An array containing the event IDs (type <see cref="T:System.Collection.Generic.List{System.UInt32}"/> ) of the inserted events. 0 as ID means failed to insert 
 		/// </returns>
-		public static List<uint> InsertEvents(List<Event> events)
+		public List<uint> InsertEvents(List<Event> events)
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			List<RawEvent> rawEvents = ZsUtils.ToRawEventList(events);
 			
 			UInt32[] eventIds = srcInterface.InsertEvents(rawEvents.ToArray());
@@ -75,11 +80,8 @@ namespace Zeitgeist
 		/// <returns>
 		/// The TimeRange <see cref="T:Zeitgeist.Datamodel.TimeRange"/>
 		/// </returns>
-		public static TimeRange DeleteEvents(List<uint> eventIds)
+		public TimeRange DeleteEvents(List<uint> eventIds)
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			return srcInterface.DeleteEvents(eventIds.ToArray());
 		}
 		
@@ -121,11 +123,8 @@ namespace Zeitgeist
 		/// An array of type <see cref="T:System.Collection.Generic.List{System.UInt32}"/> containing the IDs of all matching events, up to a maximum of num_events events. 
 		/// Sorted and grouped as defined by the result_type parameter. 
 		/// </returns>
-		public static List<uint> FindEventIds(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
+		public List<uint> FindEventIds(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			
 			UInt32[] eventIds = srcInterface.FindEventIds(range, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
@@ -161,11 +160,8 @@ namespace Zeitgeist
 		/// <returns>
 		/// Full event data of type <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/> for all the requested IDs, up to a maximum of num_events events, sorted and grouped as defined by the result_type parameter. 
 		/// </returns>
-		public static List<Event> FindEvents(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
+		public List<Event> FindEvents(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			
 			RawEvent[] events = srcInterface.FindEvents(range, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
@@ -201,11 +197,8 @@ namespace Zeitgeist
 		/// <returns>
 		/// A list of URIs <see cref="T:System.Collection.Generic.List{System.String}"/> matching the described criteria 
 		/// </returns>
-		public static List<string> FindRelatedUris(TimeRange range, List<Event> eventTemplates, List<Event> resultEventTemplates, StorageState state, uint maxEvents, ResultType resType)
+		public List<string> FindRelatedUris(TimeRange range, List<Event> eventTemplates, List<Event> resultEventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			RawEvent[] rawEvents = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(resultEventTemplates).ToArray();
 			
@@ -230,10 +223,8 @@ namespace Zeitgeist
 		/// <param name="eventTemplates">
 		/// Event templates <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/> that events must match in order to trigger the monitor 
 		/// </param>
-		public static void InstallMonitor(string monitorPath, TimeRange range, List<Event> eventTemplates)
-		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
+		public void InstallMonitor(string monitorPath, TimeRange range, List<Event> eventTemplates)
+		{ srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 			
 			ObjectPath path = new ObjectPath(monitorPath);
 			List<RawEvent> rawEvents = ZsUtils.ToRawEventList(eventTemplates);
@@ -246,11 +237,8 @@ namespace Zeitgeist
 		/// <param name="monitorPath">
 		/// The path of the monitor to be removed <see cref="System.String"/>
 		/// </param>
-		public static void RemoveMonitor(string monitorPath)
+		public void RemoveMonitor(string monitorPath)
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			ObjectPath path = new ObjectPath(monitorPath);
 			srcInterface.RemoveMonitor(path);
 		}
@@ -264,11 +252,8 @@ namespace Zeitgeist
 		/// This method is used to delete the entire log file and all its content in one go. 
 		/// To delete specific subsets use FindEventIds() combined with DeleteEvents().
 		/// </remarks>
-		public static void DeleteLog()
+		public void DeleteLog()
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			srcInterface.DeleteLog();
 		}
 		
@@ -279,13 +264,12 @@ namespace Zeitgeist
 		/// Use with caution, this action must only be triggered with the user’s explicit consent, 
 		/// as it will affect all applications using Zeitgeist
 		/// </remarks>
-		public static void Quit()
+		public void Quit()
 		{
-			// Get the DBus interface for Log
-			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			srcInterface.Quit();
 		}
+		
+		private ILog srcInterface;
 		
 		private static string objectPath = "/org/gnome/zeitgeist/log/activity";
 	}

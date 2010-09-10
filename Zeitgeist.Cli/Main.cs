@@ -17,14 +17,14 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 			
 			RawDataSource[] src= zeitgeist.GetDataSources();
 			
-			List<DataSource> srcs = DataSourceClient.GetDataSources();
+			//List<DataSource> srcs = DataSourceClient.GetDataSources();
 			
-			List<Event> blacklistEvents = BlacklistClient.GetBlacklist();
+			//List<Event> blacklistEvents = BlacklistClient.GetBlacklist();
 			
 			List<uint> listOfEvents = new List<uint>();
 			listOfEvents.Add(23);listOfEvents.Add(24);listOfEvents.Add(25);
 			
-			List<Event> eventInst = LogClient.GetEvents(listOfEvents);
+			//List<Event> eventInst = LogClient.GetEvents(listOfEvents);
 			
 			/*Event ev = new Event();
 			ev.Interpretation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent";
