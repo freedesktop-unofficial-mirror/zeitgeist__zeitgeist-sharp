@@ -10,7 +10,8 @@ namespace Zeitgeist
 	{
 		public static List<DataSource> GetDataSources()
 		{
-			IDataSource srcInterface = GetDBusObject();
+			IDataSource srcInterface = ZsUtils.GetDBusObject<IDataSource>(objectPath);
+			
 			RawDataSource[] srcs = srcInterface.GetDataSources();
 			
 			List<DataSource> srcList = new List<DataSource>();
@@ -26,7 +27,7 @@ namespace Zeitgeist
 		
 		public static bool RegisterDataSources(string uniqueId, string name, string description, List<Event> events)
 		{
-			IDataSource srcInterface = GetDBusObject();
+			IDataSource srcInterface = ZsUtils.GetDBusObject<IDataSource>(objectPath);
 			
 			
 			List<RawEvent> rawEventList = new List<RawEvent>();
@@ -41,18 +42,12 @@ namespace Zeitgeist
 		
 		void SetDataSourceEnabled(string uniqueId, bool enabled)
 		{
-			IDataSource srcInterface = GetDBusObject();
+			IDataSource srcInterface = ZsUtils.GetDBusObject<IDataSource>(objectPath);
 			
 			srcInterface.SetDataSourceEnabled(uniqueId, enabled);
 		}
 		
-		private static IDataSource GetDBusObject()
-		{
-			ObjectPath objPath = new ObjectPath("/org/gnome/zeitgeist/data_source_registry");
-			IDataSource log = Bus.Session.GetObject<IDataSource>("org.gnome.zeitgeist.Engine", objPath);
-			
-			return log;
-		}
+		private static string objectPath = "/org/gnome/zeitgeist/log/activity";
 	}
 }
 

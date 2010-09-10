@@ -8,7 +8,7 @@
     <ProjectGuid>{A8352F1A-F10C-41E6-B6B0-655703358EF4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Zeitgeist</RootNamespace>
-    <AssemblyName>Zeitgeist.ZeitgeistSharp</AssemblyName>
+    <AssemblyName>Zeitgeist</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

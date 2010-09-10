@@ -13,7 +13,7 @@ namespace Zeitgeist
 		
 		public static List<Event> GetEvents(List<uint> eventIds)
 		{
-			ILog srcInterface = GetDBusObject();
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 			
 			RawEvent[] rawEvents = srcInterface.GetEvents(eventIds.ToArray());
 			
@@ -22,7 +22,7 @@ namespace Zeitgeist
 		
 		public static List<uint> InsertEvents(List<Event> events)
 		{
-			ILog srcInterface = GetDBusObject();
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 			
 			List<RawEvent> rawEvents = ZsUtils.ToRawEventList(events);
 			
@@ -33,7 +33,7 @@ namespace Zeitgeist
 		
 		public static TimeRange DeleteEvents(List<uint> eventIds)
 		{
-			ILog srcInterface = GetDBusObject();
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 			
 			return srcInterface.DeleteEvents(eventIds.ToArray());
 		}
@@ -44,7 +44,7 @@ namespace Zeitgeist
 		
 		public static List<uint> FindEventIds(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
-			ILog srcInterface = GetDBusObject();
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 			
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			
@@ -55,7 +55,7 @@ namespace Zeitgeist
 		
 		public static List<Event> FindEvents(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
-			ILog srcInterface = GetDBusObject();
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 			
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			
@@ -66,7 +66,7 @@ namespace Zeitgeist
 		
 		public static List<string> FindRelatedUris(TimeRange range, List<Event> eventTemplates, List<Event> resultEventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
-			ILog srcInterface = GetDBusObject();
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 			
 			RawEvent[] rawEvents = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(resultEventTemplates).ToArray();
@@ -82,19 +82,18 @@ namespace Zeitgeist
 		
 		public static void InstallMonitor(string monitorPath, TimeRange range, List<Event> eventTemplates)
 		{
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
+			
 			ObjectPath path = new ObjectPath(monitorPath);
-			
 			List<RawEvent> rawEvents = ZsUtils.ToRawEventList(eventTemplates);
-			
-			ILog srcInterface = GetDBusObject();
 			srcInterface.InstallMonitor(path, range, rawEvents.ToArray());
 		}
 		
 		public static void RemoveMonitor(string monitorPath)
 		{
-			ObjectPath path = new ObjectPath(monitorPath);
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 			
-			ILog srcInterface = GetDBusObject();
+			ObjectPath path = new ObjectPath(monitorPath);
 			srcInterface.RemoveMonitor(path);
 		}
 		
@@ -102,23 +101,19 @@ namespace Zeitgeist
 		
 		public static void DeleteLog()
 		{
-			ILog srcInterface = GetDBusObject();
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
+			
 			srcInterface.DeleteLog();
 		}
 		
 		public static void Quit()
 		{
-			ILog srcInterface = GetDBusObject();
+			ILog srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
+			
 			srcInterface.Quit();
 		}
 		
-		private static ILog GetDBusObject()
-		{
-			ObjectPath objPath = new ObjectPath("/org/gnome/zeitgeist/log/activity");
-			ILog log = Bus.Session.GetObject<ILog>("org.gnome.zeitgeist.Engine", objPath);
-			
-			return log;
-		}
+		private static string objectPath = "/org/gnome/zeitgeist/log/activity";
 	}
 }
 
