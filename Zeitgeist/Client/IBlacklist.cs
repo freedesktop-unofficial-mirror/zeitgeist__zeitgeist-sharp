@@ -16,17 +16,19 @@ namespace Zeitgeist.Client
 		/// Get the current blacklist templates.
 		/// </summary>
 		/// <returns>
-		/// A list of Blacklist RawEvent templates <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.RawEvent>"/>
+		/// A list of Blacklist RawEvent <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.RawEvent>"/> templates 
 		/// </returns>
 		RawEvent[] GetBlacklist();
 		
 		/// <summary>
 		/// Set the blacklist to event_templates. 
+		/// </summary>
+		/// <remarks>
 		/// Events matching any these templates will be blocked from insertion into the log. 
 		/// It is still possible to find and look up events matching the blacklist which was inserted before the blacklist banned them.
-		/// </summary>
+		/// </remarks>
 		/// <param name="event_templates">
-		/// A List of RawEvent templates <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.RawEvent>"/>
+		/// A List of RawEvent <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.RawEvent>"/> templates 
 		/// </param>
 		void SetBlacklist(RawEvent[] event_templates);
 	}

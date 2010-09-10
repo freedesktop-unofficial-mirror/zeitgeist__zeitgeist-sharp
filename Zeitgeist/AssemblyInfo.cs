@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes. 
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle("Zeitgeist.ZeitgeistSharp")]
+[assembly: AssemblyTitle("Zeitgeist")]
 [assembly: AssemblyDescription("Mono bindings for Zeitgeist DBus API")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zeitgeist-Sharp Developers")]

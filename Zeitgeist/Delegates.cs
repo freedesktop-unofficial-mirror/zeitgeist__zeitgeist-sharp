@@ -7,7 +7,7 @@ namespace Zeitgeist
 	/// This signal is emitted whenever the last running instance of a data-source disconnects.
 	/// </summary>
 	/// <param name="datasource">
-	/// The disconnected data-source <see cref="Zeitgeist.Datamodel.DataSource"/>
+	/// The disconnected data-source of type <see cref="Zeitgeist.Datamodel.DataSource"/>
 	/// </param>
 	public delegate void DataSourceDisconnectedHandler(DataSource datasource);
 		
@@ -26,7 +26,7 @@ namespace Zeitgeist
 	/// This signal is emitted whenever a data-source registers itself.
 	/// </summary>
 	/// <param name="datasource">
-	/// The registered data-source <see cref="Zeitgeist.Datamodel.DataSource"/>
+	/// The registered data-source of type <see cref="Zeitgeist.Datamodel.DataSource"/>
 	/// </param>
 	public delegate void DataSourceRegisteredHandler(DataSource datasource);
 }

@@ -16,7 +16,7 @@ namespace Zeitgeist
 		/// Get the list of known data-sources.
 		/// </summary>
 		/// <returns>
-		/// A list of DataSource <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
+		/// A list of DataSource of type <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </returns>
 		public static List<DataSource> GetDataSources()
 		{
@@ -41,16 +41,16 @@ namespace Zeitgeist
 		/// If the data-source was already in the database, its metadata (name, description and event_templates) are updated.
 		/// </summary>
 		/// <param name="uniqueId">
-		/// The uniqueId DataSource <see cref="System.String"/>
+		/// The uniqueId DataSource of type <see cref="System.String"/>
 		/// </param>
 		/// <param name="name">
-		/// The name of the DataSource <see cref="System.String"/>
+		/// The name of the DataSource of type <see cref="System.String"/>
 		/// </param>
 		/// <param name="description">
-		/// Description of DataSource <see cref="System.String"/>
+		/// Description of DataSource of type <see cref="System.String"/>
 		/// </param>
 		/// <param name="events">
-		/// A list of Event templates <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
+		/// A list of Event templates of type <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </param>
 		/// <returns>
 		/// true is successful, false otherwise <see cref="System.Boolean"/>
@@ -75,7 +75,7 @@ namespace Zeitgeist
 		/// Enables/Disables the DataSource identified by a uniqueId
 		/// </summary>
 		/// <param name="uniqueId">
-		/// The uniqueId of the DataSource <see cref="System.String"/>
+		/// The uniqueId of the DataSource of type <see cref="System.String"/>
 		/// </param>
 		/// <param name="enabled">
 		/// Is the DataSource to be enabled(true) or disabled(false) <see cref="System.Boolean"/>
