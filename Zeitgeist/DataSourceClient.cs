@@ -119,17 +119,17 @@ namespace Zeitgeist
 		/// <summary>
 		/// This signal is emitted whenever the last running instance of a data-source disconnects.
 		/// </summary>
-		event DataSourceDisconnectedHandler DataSourceDisconnected;
+		public event DataSourceDisconnectedHandler DataSourceDisconnected;
 		
 		/// <summary>
 		/// This signal is emitted whenever a data-source is enabled or disabled.
 		/// </summary>
-		event DataSourceEnabledHandler DataSourceEnabled;
+		public event DataSourceEnabledHandler DataSourceEnabled;
 		
 		/// <summary>
 		/// This signal is emitted whenever a data-source registers itself.
 		/// </summary>
-		event DataSourceRegisteredHandler DataSourceRegistered;
+		public event DataSourceRegisteredHandler DataSourceRegistered;
 		
 		private IDataSource srcInterface;
 		
