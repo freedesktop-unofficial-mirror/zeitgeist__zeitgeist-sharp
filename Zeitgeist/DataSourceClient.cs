@@ -16,7 +16,7 @@ namespace Zeitgeist
 		/// Get the list of known data-sources.
 		/// </summary>
 		/// <returns>
-		/// A list of DataSource <see cref="List<DataSource>"/>
+		/// A list of DataSource <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </returns>
 		public static List<DataSource> GetDataSources()
 		{
@@ -50,7 +50,7 @@ namespace Zeitgeist
 		/// Description of DataSource <see cref="System.String"/>
 		/// </param>
 		/// <param name="events">
-		/// A list of Event templates <see cref="List<Event>"/>
+		/// A list of Event templates <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </param>
 		/// <returns>
 		/// true is successful, false otherwise <see cref="System.Boolean"/>

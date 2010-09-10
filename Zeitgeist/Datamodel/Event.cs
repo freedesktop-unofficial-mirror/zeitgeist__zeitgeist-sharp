@@ -209,13 +209,13 @@ namespace Zeitgeist.Datamodel
 		/// Create an Event and then use Event.GetRawEvent()
 		/// </summary>
 		/// <param name="metadata">
-		/// The metadata string array <see cref="System.String[]"/>
+		/// The metadata string array <see cref="T:System.String[]"/>
 		/// </param>
 		/// <param name="subjects">
-		/// The subject of this RawEvent <see cref="System.String[][]"/>
+		/// The subject of this RawEvent <see cref="T:System.String[][]"/>
 		/// </param>
 		/// <param name="payload">
-		/// The payload associated with the RawEvent <see cref="System.Byte[]"/>
+		/// The payload associated with the RawEvent <see cref="T:System.Byte[]"/>
 		/// </param>
 		public RawEvent(string[] metadata, string[][] subjects, byte[] payload)
 		{

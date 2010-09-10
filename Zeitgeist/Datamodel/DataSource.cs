@@ -102,13 +102,13 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// Convert an object of type DataSource to RawDataSource
 		/// </summary>
-		/// <param name="raw">
-		/// An instance of DataSource <see cref="DataSource"/>
+		/// <param name="src">
+		/// An instance of DataSource <see cref="Zeitgeist.Datamodel.DataSource"/>
 		/// </param>
 		/// <returns>
-		/// An instance of RawDataSource <see cref="RawDataSource"/>
+		/// An instance of RawDataSource <see cref="Zeitgeist.Datamodel.RawDataSource"/>
 		/// </returns>
-		public static RawDataSource ToRaw(DataSource  src)
+		public static RawDataSource ToRaw(DataSource src)
 		{
 			RawDataSource raw = new RawDataSource();
 			

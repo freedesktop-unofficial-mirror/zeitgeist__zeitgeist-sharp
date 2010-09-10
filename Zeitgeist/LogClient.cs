@@ -7,6 +7,12 @@ using System.Linq;
 
 namespace Zeitgeist
 {
+	/// <summary>
+	/// Primary interface to the Zeitgeist engine. 
+	/// Used to update and query the log. 
+	/// It also provides means to listen for events matching certain criteria. 
+	/// All querying is heavily based around an “event template”-concept.
+	/// </summary>
 	public class LogClient
 	{
 		#region Fetch, Insert and Delete Events
@@ -16,10 +22,10 @@ namespace Zeitgeist
 		/// Each event which is not found in the event log is represented by the null in the resulting List.
 		/// </summary>
 		/// <param name="eventIds">
-		/// An array of event IDs. <see cref="List<System.UInt32>"/>
+		/// An array of event IDs. <see cref="T:System.Collection.Generic.List{System.UInt32}"/>
 		/// </param>
 		/// <returns>
-		/// Full event data for all the requested IDs <see cref="List<Event>"/>
+		/// Full event data for all the requested IDs <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </returns>
 		public static List<Event> GetEvents(List<uint> eventIds)
 		{
@@ -39,10 +45,10 @@ namespace Zeitgeist
 		/// Note that the monitors are notified after the events have been inserted.
 		/// </summary>
 		/// <param name="events">
-		/// List of events to be inserted in the log <see cref="List<Event>"/>
+		/// List of events to be inserted in the log <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </param>
 		/// <returns>
-		/// An array containing the event IDs of the inserted events. 0 as ID means failed to insert <see cref="List<System.UInt32>"/>
+		/// An array containing the event IDs of the inserted events. 0 as ID means failed to insert <see cref="T:System.Collection.Generic.List{System.UInt32}"/>
 		/// </returns>
 		public static List<uint> InsertEvents(List<Event> events)
 		{
@@ -60,10 +66,10 @@ namespace Zeitgeist
 		/// Delete a set of events from the log given their IDs
 		/// </summary>
 		/// <param name="eventIds">
-		/// The eventId of the Events to be deleted <see cref="List<System.UInt32>"/>
+		/// The eventId of the Events to be deleted <see cref="T:System.Collection.Generic.List{System.UInt32}"/>
 		/// </param>
 		/// <returns>
-		/// The TimeRange <see cref="TimeRange"/>
+		/// The TimeRange <see cref="T:Zeitgeist.Datamodel.TimeRange"/>
 		/// </returns>
 		public static TimeRange DeleteEvents(List<uint> eventIds)
 		{
@@ -92,23 +98,23 @@ namespace Zeitgeist
 		/// For queries yielding a small amount of results, or where you need the information about all results at once no matter how many of them there are, see FindEvents().
 		/// </summary>
 		/// <param name="range">
-		/// The TimeRange for the query <see cref="TimeRange"/>
+		/// The TimeRange for the query <see cref="T:Zeitgeist.Datamodel.TimeRange"/>
 		/// </param>
 		/// <param name="eventTemplates">
-		/// An array of event templates which the returned events should match at least one of. <see cref="List<Event>"/>
+		/// An array of event templates which the returned events should match at least one of. <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </param>
 		/// <param name="state">
-		/// Whether the item is currently known to be available <see cref="StorageState"/>
+		/// Whether the item is currently known to be available <see cref="T:Zeitgeist.Datamodel.StorageState"/>
 		/// </param>
 		/// <param name="maxEvents">
-		/// Maximal amount of returned events <see cref="System.UInt32"/>
+		/// Maximal amount of returned events <see cref="T:Zeitgeist.Datamodel.System.UInt32"/>
 		/// </param>
 		/// <param name="resType">
-		/// The Order in which the result should be made available <see cref="ResultType"/>
+		/// The Order in which the result should be made available <see cref="T:Zeitgeist.Datamodel.ResultType"/>
 		/// </param>
 		/// <returns>
 		/// An array containing the IDs of all matching events, up to a maximum of num_events events. 
-		/// Sorted and grouped as defined by the result_type parameter. <see cref="List<System.UInt32>"/>
+		/// Sorted and grouped as defined by the result_type parameter. <see cref="T:System.Collection.Generic.List{System.UInt32}"/>
 		/// </returns>
 		public static List<uint> FindEventIds(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
@@ -131,22 +137,22 @@ namespace Zeitgeist
 		/// In case you need to do a query yielding a large (or unpredictable) result set and you only want to show some of the results at the same time (eg., by paging them), use FindEventIds().
 		/// </summary>
 		/// <param name="range">
-		/// The TimeRange for the query <see cref="TimeRange"/>
+		/// The TimeRange for the query <see cref="T:Zeitgeist.Datamodel.TimeRange"/>
 		/// </param>
 		/// <param name="eventTemplates">
-		/// An array of event templates which the returned events should match at least one of <see cref="List<Event>"/>
+		/// An array of event templates which the returned events should match at least one of <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </param>
 		/// <param name="state">
-		/// Whether the item is currently known to be available <see cref="StorageState"/>
+		/// Whether the item is currently known to be available <see cref="T:Zeitgeist.Datamodel.StorageState"/>
 		/// </param>
 		/// <param name="maxEvents">
 		/// Maximal amount of returned events <see cref="System.UInt32"/>
 		/// </param>
 		/// <param name="resType">
-		/// The Order in which the result should be made available  <see cref="ResultType"/>
+		/// The Order in which the result should be made available  <see cref="T:Zeitgeist.Datamodel.ResultType"/>
 		/// </param>
 		/// <returns>
-		/// Full event data for all the requested IDs, up to a maximum of num_events events, sorted and grouped as defined by the result_type parameter. <see cref="List<Event>"/>
+		/// Full event data for all the requested IDs, up to a maximum of num_events events, sorted and grouped as defined by the result_type parameter. <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </returns>
 		public static List<Event> FindEvents(TimeRange range, List<Event> eventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
@@ -166,25 +172,25 @@ namespace Zeitgeist
 		/// The resulting URIs must occur as subjects of events matching result_event_templates and have storage state storage_state.
 		/// </summary>
 		/// <param name="range">
-		/// The TimeRange for the query  <see cref="TimeRange"/>
+		/// The TimeRange for the query  <see cref="T:Zeitgeist.Datamodel.TimeRange"/>
 		/// </param>
 		/// <param name="eventTemplates">
-		/// An array of event templates which you want URIs that relate to. <see cref="List<Event>"/>
+		/// An array of event templates which you want URIs that relate to. <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </param>
 		/// <param name="resultEventTemplates">
-		/// An array of event templates which the returned URIs must occur as subjects of. <see cref="List<Event>"/>
+		/// An array of event templates which the returned URIs must occur as subjects of. <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </param>
 		/// <param name="state">
-		/// Whether the item is currently known to be available <see cref="StorageState"/>
+		/// Whether the item is currently known to be available <see cref="T:Zeitgeist.Datamodel.StorageState"/>
 		/// </param>
 		/// <param name="maxEvents">
 		/// Maximal amount of returned events <see cref="System.UInt32"/>
 		/// </param>
 		/// <param name="resType">
-		/// The Order in which the result should be made available <see cref="ResultType"/>
+		/// The Order in which the result should be made available <see cref="T:Zeitgeist.Datamodel.ResultType"/>
 		/// </param>
 		/// <returns>
-		/// A list of URIs matching the described criteria <see cref="List<System.String>"/>
+		/// A list of URIs matching the described criteria <see cref="T:System.Collection.Generic.List{System.String}"/>
 		/// </returns>
 		public static List<string> FindRelatedUris(TimeRange range, List<Event> eventTemplates, List<Event> resultEventTemplates, StorageState state, uint maxEvents, ResultType resType)
 		{
@@ -210,10 +216,10 @@ namespace Zeitgeist
 		/// The path to be monitored <see cref="System.String"/>
 		/// </param>
 		/// <param name="range">
-		/// The time range under which Monitored events must fall within <see cref="TimeRange"/>
+		/// The time range under which Monitored events must fall within <see cref="T:Zeitgeist.Datamodel.TimeRange"/>
 		/// </param>
 		/// <param name="eventTemplates">
-		/// Event templates that events must match in order to trigger the monitor <see cref="List<Event>"/>
+		/// Event templates that events must match in order to trigger the monitor <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/>
 		/// </param>
 		public static void InstallMonitor(string monitorPath, TimeRange range, List<Event> eventTemplates)
 		{
