@@ -5,17 +5,88 @@ using System.Linq;
 
 namespace Zeitgeist.Datamodel
 {
+	/// <summary>
+	/// Core data structure in the Zeitgeist framework. It is an optimized and convenient representation of an event.
+	/// This class is designed so that you can pass it directly over DBus using the Python DBus bindings. 
+	/// It will automagically be marshalled with the signature a(asaasay). 
+	/// This class does integer based lookups everywhere and can wrap any conformant data structure without the need for marshalling back and forth between DBus wire format. 
+	/// These two properties makes it highly efficient and is recommended for use everywhere.
+	/// </summary>
 	public class Event
 	{ 
-		public UInt64 Id;
-		public UInt64 Timestamp;
-		public string Actor;
-		public string Interpretation;
-		public string Manifestation;
-		public List<Subject> Subjects;
-		public byte[] Payload;
+		/// <summary>
+		/// Event id if the event has one
+		/// </summary>
+		public UInt64 Id
+		{
+			get;set;
+		}
 		
+		/// <summary>
+		/// Event timestamp defined as milliseconds since the Epoch.
+		/// By default it is set to the moment of instance creation
+		/// </summary>
+		public UInt64 Timestamp
+		{
+			get;set;
+		}
+		
+		/// <summary>
+		/// The application or entity responsible for emitting the event. 
+		/// For applications the format of this field is base filename of the corresponding .desktop file with an app:// URI scheme. 
+		/// For example /usr/share/applications/firefox.desktop is encoded as app://firefox.desktop
+		/// </summary>
+		public string Actor
+		{
+			get;set;
+		}
+		
+		/// <summary>
+		/// The Interpretation of the event
+		/// </summary>
+		public string Interpretation
+		{
+			get;set;
+		}
+		
+		/// <summary>
+		/// The Manifestation of the event
+		/// </summary>
+		public string Manifestation
+		{
+			get;set;
+		}
+		
+		/// <summary>
+		/// All the Subjects attached with the Event
+		/// </summary>
+		public List<Subject> Subjects
+		{
+			get;set;
+		}
+		
+		/// <summary>
+		/// Free form attachment for the event
+		/// </summary>
+		public byte[] Payload
+		{
+			get;set;
+		}
+		
+		/// <summary>
+		/// A parameterless constructor
+		/// </summary>
 		public Event(){}
+		
+		/// <summary>
+		/// Create a Event from a RawEvent
+		/// </summary>
+		/// <param name="raw">
+		/// The instance of the RawEvent <see cref="RawEvent"/>
+		/// </param>
+		/// <returns>
+		/// The instance of an Event <see cref="Event"/>
+		/// </returns>
 		public static Event FromRaw(RawEvent raw)
 		{
 			Event e = new Event();
@@ -25,8 +96,14 @@ namespace Zeitgeist.Datamodel
 			
 			#region Metadata
 			
-			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Id], out e.Id);			
-			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Timestamp], out e.Timestamp);			
+			ulong id;
+			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Id], out id);
+			e.Id = id;
+			
+			ulong timestamp;
+			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Timestamp], out timestamp);
+			e.Timestamp = timestamp;
+			
 			e.Actor = raw.metadata[(int)EventMetadataPosition.Actor];
 			e.Interpretation = raw.metadata[(int)EventMetadataPosition.Interpretation];
 			e.Manifestation = raw.metadata[(int)EventMetadataPosition.Manifestation];
@@ -63,18 +140,83 @@ namespace Zeitgeist.Datamodel
 			
 			return e;
 		}
+		
+		/// <summary>
+		/// Get the RawEvent for this Event
+		/// </summary>
+		/// <returns>
+		/// The RawEvent instance generated from the current Event <see cref="RawEvent"/>
+		/// </returns>
 		public RawEvent GetRawEvent()
 		{
 			return RawEvent.FromEvent(this);
 		}
 	}
 	
+	/// <summary>
+	/// The Raw form of Event. Get Event.FromRaw to create an Event from a RawEvent
+	/// </summary>
 	public struct RawEvent 
 	{
-		public string[] metadata;
-		public string[][] subjects;
-		public byte[] payload;
+		/// <summary>
+		/// The event Metadata
+		/// </summary>
+		public string[] metadata
+		{
+			get
+			{
+				return _metadata;
+			}
+			set
+			{
+				_metadata = value;
+			}
+		}
 		
+		/// <summary>
+		/// The Subjects related to the Event
+		/// </summary>
+		public string[][] subjects
+		{
+			get
+			{
+				return _subjects;
+			}
+			set
+			{
+				_subjects = value;
+			}
+		}
+		
+		/// <summary>
+		/// Free form attachment for the event
+		/// </summary>
+		public byte[] payload
+		{
+			get
+			{
+				return _payload;
+			}
+			set
+			{
+				_payload = value;
+			}
+		}
+		
+		/// <summary>
+		/// A parameterized constructor for creating a RawEvent
+		/// Even though it allows to create a RawEvent, please avoid it.
+		/// Create an Event and then use Event.GetRawEvent()
+		/// </summary>
+		/// <param name="metadata">
+		/// The metadata string array <see cref="System.String[]"/>
+		/// </param>
+		/// <param name="subjects">
+		/// The subject of this RawEvent <see cref="System.String[][]"/>
+		/// </param>
+		/// <param name="payload">
+		/// The payload associated with the RawEvent <see cref="System.Byte[]"/>
+		/// </param>
 		public RawEvent(string[] metadata, string[][] subjects, byte[] payload)
 		{
 			this.metadata = metadata;
@@ -82,6 +224,15 @@ namespace Zeitgeist.Datamodel
 			this.payload = payload;
 		}
 		
+		/// <summary>
+		/// A static method which takes in a Event and converts it to a RawEvent
+		/// </summary>
+		/// <param name="ev">
+		/// The instance of an Event <see cref="Event"/>
+		/// </param>
+		/// <returns>
+		/// The instance of an RawEvent created <see cref="RawEvent"/>
+		/// </returns>
 		public static RawEvent FromEvent(Event ev)
 		{
 			RawEvent raw = new RawEvent();
@@ -142,6 +293,14 @@ namespace Zeitgeist.Datamodel
 			
 			return raw;
 		}
+		
+		#region RawEvent Private Fields
+		
+		private string[] _metadata;
+		private string[][] _subjects;
+		private byte[] _payload;
+		
+		#endregion
 	}
 	
 	enum EventMetadataPosition
