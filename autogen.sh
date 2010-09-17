@@ -1,6 +1,6 @@
 #! /bin/sh
 
-PROJECT=Zeitgeist.ZeitgeistSharp.Cli
+PROJECT=Zeitgeist
 FILE=
 CONFIGURE=configure.ac
 
