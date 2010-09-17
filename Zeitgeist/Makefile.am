@@ -59,7 +59,8 @@ FILES = \
 	DataSourceClient.cs \
 	BlacklistClient.cs \
 	LogClient.cs \
-	ZsUtils.cs 
+	ZsUtils.cs \
+	Datamodel/Interpretation.cs 
 
 DATA_FILES = 
 
