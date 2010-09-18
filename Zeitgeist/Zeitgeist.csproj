@@ -55,6 +55,7 @@
     <Compile Include="LogClient.cs" />
     <Compile Include="ZsUtils.cs" />
     <Compile Include="Datamodel\Interpretation.cs" />
+    <Compile Include="Datamodel\Manifestation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />

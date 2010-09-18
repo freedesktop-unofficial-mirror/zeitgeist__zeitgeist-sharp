@@ -60,7 +60,8 @@ FILES = \
 	BlacklistClient.cs \
 	LogClient.cs \
 	ZsUtils.cs \
-	Datamodel/Interpretation.cs 
+	Datamodel/Interpretation.cs \
+	Datamodel/Manifestation.cs 
 
 DATA_FILES = 
 
