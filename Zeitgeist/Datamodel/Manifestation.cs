@@ -14,6 +14,17 @@ namespace Zeitgeist.Datamodel
 	/// </remarks>
 	public class Manifestation
 	{
+		public static Manifestation Instance
+		{
+			get
+			{
+				if(_singleton_obj == null)
+					_singleton_obj = new Manifestation();
+				
+				return _singleton_obj;
+			}
+		}
+		
 		/// <summary>
 		/// A DataObject found in a calendar. It is usually interpreted as one of the calendar entity types (e.g. Event, Journal, Todo etc.). (Display name: 'CalendarDataObject')
 		/// </summary>
@@ -24,7 +35,7 @@ namespace Zeitgeist.Datamodel
 		{
 			get
 			{
-				return _timezone;
+				return _cal_data_obj;
 			}
 		}
 		
@@ -55,7 +66,6 @@ namespace Zeitgeist.Datamodel
 				return _file_data_obj;
 			}
 		}
-		
 		
 		/// <summary>
 		/// A partition on a hard disk. (Display name: 'HardDiskPartition')
@@ -139,6 +149,40 @@ namespace Zeitgeist.Datamodel
 			{
 				return _sw_service;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string manifestation)
+		{
+			if(string.Equals(_cal_data_obj.Value, manifestation))
+			   return _cal_data_obj;
+			
+			KeyValuePair<string, string> event_manifestation = _event_manifestation.Search(manifestation);
+			if(event_manifestation.Key != null)
+				return event_manifestation;
+			
+			KeyValuePair<string, string> file_data_obj = _file_data_obj.Search(manifestation);
+			if(file_data_obj.Key != null)
+				return file_data_obj;
+			
+			if(string.Equals(_hd_partition.Value, manifestation))
+			   return _hd_partition;
+			
+			if(string.Equals(_mailbox_data_obj.Value, manifestation))
+			   return _mailbox_data_obj;
+			
+			if(string.Equals(_media_stream.Value, manifestation))
+			   return _media_stream;
+			
+			if(string.Equals(_remote_port_addr.Value, manifestation))
+			   return _remote_port_addr;
+			
+			if(string.Equals(_sw_item.Value, manifestation))
+			   return _sw_item;
+			
+			if(string.Equals(_sw_service.Value, manifestation))
+			   return _sw_service;
+			
+			return new KeyValuePair<string, string>();
 		}
 		
 		#region Private Fields
@@ -252,6 +296,29 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string manifestation)
+		{
+			if(string.Equals(_evnt_manifest.Value, manifestation))
+			   return _evnt_manifest;
+			
+			if(string.Equals(_heur_activity.Value, manifestation))
+			   return _heur_activity;
+			
+			if(string.Equals(_schld_activity.Value, manifestation))
+			   return _schld_activity;
+			
+			if(string.Equals(_sys_notification.Value, manifestation))
+			   return _sys_notification;
+			
+			if(string.Equals(_user_activity.Value, manifestation))
+			   return _user_activity;
+			
+			if(string.Equals(_world_activity.Value, manifestation))
+			   return _world_activity;
+			
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
 		
 		private KeyValuePair<string, string> _evnt_manifest = new KeyValuePair<string, string>("EventManifestation", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventManifestation");
@@ -319,12 +386,30 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject
 		/// </remarks>
-		public KeyValuePair<string, string> FileDataObject
+		public KeyValuePair<string, string> RemoteDataObject
 		{
 			get
 			{
 				return _remote_data_obj;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string manifestation)
+		{
+			if(string.Equals(_file_data_obj.Value, manifestation))
+			   return _file_data_obj;
+			
+			if(string.Equals(_deleted_resc.Value, manifestation))
+			   return _deleted_resc;
+			
+			KeyValuePair<string, string> embedded_file_data_obj = _embedded_file_data_obj.Search(manifestation);
+			if(embedded_file_data_obj.Key != null)
+				return embedded_file_data_obj;
+			
+			if(string.Equals(_remote_data_obj.Value, manifestation))
+			   return _remote_data_obj;
+			
+			return new KeyValuePair<string, string>();
 		}
 		
 		#region Private Fields
@@ -382,6 +467,20 @@ namespace Zeitgeist.Datamodel
 			{
 				return _attachment;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string manifestation)
+		{
+			if(string.Equals(_embedded_file_data_obj.Value, manifestation))
+			   return _embedded_file_data_obj;
+			
+			if(string.Equals(_archive_item.Value, manifestation))
+			   return _archive_item;
+			
+			if(string.Equals(_attachment.Value, manifestation))
+			   return _attachment;
+			
+			return new KeyValuePair<string, string>();
 		}
 		
 		#region Private Fields

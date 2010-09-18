@@ -16,6 +16,7 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 			IDataSource zeitgeist = Bus.Session.GetObject<IDataSource>("org.gnome.zeitgeist.Engine", objPath);
 			
 			KeyValuePair<string,string> res= Interpretation.Instance.Search("http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Software");
+			KeyValuePair<string, string> res2 = Manifestation.Instance.Search("http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity");
 			
 			RawDataSource[] src= zeitgeist.GetDataSources();
 			
