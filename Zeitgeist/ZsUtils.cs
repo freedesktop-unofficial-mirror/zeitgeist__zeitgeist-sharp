@@ -6,10 +6,19 @@ using NDesk.DBus;
 
 namespace Zeitgeist
 {
-	internal class ZsUtils
+	public  class ZsUtils
 	{
 		#region Event <--> RawEvent Conversions
 		
+		/// <summary>
+		/// Converts a List of Events to a List of RawEvent
+		/// </summary>
+		/// <param name="events">
+		/// A List of Events <see cref="T:System.Collection.Generic.List{Event}"/>
+		/// </param>
+		/// <returns>
+		/// A List of RawEvents <see cref="T:System.Collection.Generic.List{RawEvent}"/>
+		/// </returns>
 		public static List<RawEvent> ToRawEventList(List<Event> events)
 		{
 			List<RawEvent> rawEvents = new List<RawEvent>();
@@ -23,6 +32,15 @@ namespace Zeitgeist
 			return rawEvents;
 		}
 		
+		/// <summary>
+		/// Converts an Array of RawEvent to a List of Event
+		/// </summary>
+		/// <param name="rawEvents">
+		/// An array of RawEvent <see cref="RawEvent[]"/>
+		/// </param>
+		/// <returns>
+		/// A list of Event <see cref="T:System.Collection.Generic.List{Event}"/>
+		/// </returns>
 		public static List<Event> FromRawEventList(RawEvent[] rawEvents)
 		{
 			List<Event> events = new List<Event>();
@@ -95,6 +113,9 @@ namespace Zeitgeist
 		
 		#region DBus Path
 		
+		/// <summary>
+		/// The actual DBus path for Zeitgeist Engine
+		/// </summary>
 		public static string DBusPath
 		{
 			get
@@ -107,6 +128,15 @@ namespace Zeitgeist
 		
 		#endregion
 		
+		/// <summary>
+		/// Get an instance of DBus object for the provided objectPath
+		/// </summary>
+		/// <param name="objectPath">
+		/// The object path of the DBus <see cref="System.String"/>
+		/// </param>
+		/// <returns>
+		/// The Generic Interface Type representing the DBus interface for the object path <see cref="T"/>
+		/// </returns>
 		public static T GetDBusObject<T>(string objectPath)
 		{
 			BusG.Init();
