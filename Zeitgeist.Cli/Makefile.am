@@ -6,7 +6,7 @@ EXTRA_DIST =
 if ENABLE_DEBUG_X86
 ASSEMBLY_COMPILER_COMMAND = gmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize- -debug "-define:DEBUG"
-ASSEMBLY = bin/Debug/Zeitgeist.ZeitgeistSharp.Cli.exe
+ASSEMBLY = bin/Debug/Zeitgeist.Cli.exe
 ASSEMBLY_MDB = $(ASSEMBLY).mdb
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
@@ -15,15 +15,15 @@ BUILD_DIR = bin/Debug
 
 ZEITGEIST_DLL_SOURCE=../Zeitgeist/bin/Debug/Zeitgeist.dll
 ZEITGEIST_DLL_MDB_SOURCE=../Zeitgeist/bin/Debug/Zeitgeist.dll.mdb
-ZEITGEIST_ZEITGEISTSHARP_CLI_EXE_MDB_SOURCE=bin/Debug/Zeitgeist.ZeitgeistSharp.Cli.exe.mdb
-ZEITGEIST_ZEITGEISTSHARP_CLI_EXE_MDB=$(BUILD_DIR)/Zeitgeist.ZeitgeistSharp.Cli.exe.mdb
+ZEITGEIST_CLI_EXE_MDB_SOURCE=bin/Debug/Zeitgeist.Cli.exe.mdb
+ZEITGEIST_CLI_EXE_MDB=$(BUILD_DIR)/Zeitgeist.Cli.exe.mdb
 
 endif
 
 if ENABLE_RELEASE_X86
 ASSEMBLY_COMPILER_COMMAND = gmcs
 ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize-
-ASSEMBLY = bin/Release/Zeitgeist.ZeitgeistSharp.Cli.exe
+ASSEMBLY = bin/Release/Zeitgeist.Cli.exe
 ASSEMBLY_MDB = 
 COMPILE_TARGET = exe
 PROJECT_REFERENCES =  \
@@ -32,7 +32,7 @@ BUILD_DIR = bin/Release
 
 ZEITGEIST_DLL_SOURCE=../Zeitgeist/bin/Debug/Zeitgeist.dll
 ZEITGEIST_DLL_MDB_SOURCE=../Zeitgeist/bin/Debug/Zeitgeist.dll.mdb
-ZEITGEIST_ZEITGEISTSHARP_CLI_EXE_MDB=
+ZEITGEIST_CLI_EXE_MDB=
 
 endif
 
@@ -42,7 +42,7 @@ SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
 PROGRAMFILES = \
 	$(ZEITGEIST_DLL) \
 	$(ZEITGEIST_DLL_MDB) \
-	$(ZEITGEIST_ZEITGEISTSHARP_CLI_EXE_MDB)  
+	$(ZEITGEIST_CLI_EXE_MDB)  
 
 BINARIES = \
 	$(ZEITGEIST_CLI)  

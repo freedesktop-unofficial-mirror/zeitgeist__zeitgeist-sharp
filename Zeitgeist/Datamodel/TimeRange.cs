@@ -7,6 +7,11 @@ namespace Zeitgeist.Datamodel
 	/// </summary>
 	public struct TimeRange
 	{
+		public TimeRange(DateTime startTime, DateTime endTime)
+		{
+			_begin = (Int64)ZsUtils.ToTimestamp(startTime);
+			_end = (Int64)ZsUtils.ToTimestamp(endTime);
+		}
 		/// <summary>
 		/// The begin Timestamp of the event. Seconds elapsed since Epoch
 		/// </summary>
