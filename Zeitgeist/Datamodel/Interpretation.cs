@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Zeitgeist
+namespace Zeitgeist.Datamodel
 {
 	/// <summary>
 	/// In general terms the interpretation of an event or subject is an abstract description of “what happened” or “what is this”.
@@ -14,6 +14,17 @@ namespace Zeitgeist
 	/// </remarks>
 	public class Interpretation
 	{
+		public static Interpretation Instance
+		{
+			get
+			{
+				if(_singleton_obj == null)
+					_singleton_obj = new Interpretation();
+				
+				return _singleton_obj;
+			}
+		}
+		
 		/// <summary>
 		/// Provide a grouping of component properties that define an alarm. (Display name: 'Alarm')
 		/// </summary>
@@ -322,7 +333,87 @@ namespace Zeitgeist
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_alarm.Value, interpretation))
+			   return _alarm;
+			
+			if(string.Equals(_bookmark.Value, interpretation))
+			   return _bookmark;
+			
+			if(string.Equals(_bookmark_folder.Value, interpretation))
+			   return _bookmark_folder;
+			
+			if(string.Equals(_calendar.Value, interpretation))
+			   return _calendar;
+			
+			if(string.Equals(_event.Value, interpretation))
+			   return _event;
+			
+			if(string.Equals(_executable.Value, interpretation))
+			   return _executable;
+			
+			if(string.Equals(_font.Value, interpretation))
+			   return _font;
+			
+			if(string.Equals(_free_busy.Value, interpretation))
+			   return _free_busy;
+			
+			if(string.Equals(_journal.Value, interpretation))
+			   return _journal;
+			
+			if(string.Equals(_mail_box.Value, interpretation))
+			   return _mail_box;
+			
+			if(string.Equals(_mime_entity.Value, interpretation))
+			   return _mime_entity;
+			
+			if(string.Equals(_timezone.Value, interpretation))
+			   return _timezone;
+			
+			if(string.Equals(_todo.Value, interpretation))
+			   return _todo;
+			
+			if(string.Equals(_tvseries.Value, interpretation))
+			   return _tvseries;
+			
+			if(string.Equals(_website.Value, interpretation))
+			   return _website;
+			   
+			KeyValuePair<string, string> datacont = _data_container.Search(interpretation);
+			if(datacont.Key != null)
+				return datacont;
+			
+			KeyValuePair<string, string> doc = _document.Search(interpretation);
+			if(doc.Key != null)
+				return doc;
+			
+			KeyValuePair<string, string> evnt_int = _event_interpretation.Search(interpretation);
+			if(evnt_int.Key != null)
+				return evnt_int;
+			
+			KeyValuePair<string, string> media = _media.Search(interpretation);
+			if(media.Key != null)
+				return media;
+			
+			KeyValuePair<string, string> media_lst = _media_list.Search(interpretation);
+			if(media_lst.Key != null)
+				return media_lst;
+			
+			KeyValuePair<string, string> msg = _message.Search(interpretation);
+			if(msg.Key != null)
+				return msg;
+			
+			KeyValuePair<string, string> sw = _software.Search(interpretation);
+			if(sw.Key != null)
+				return sw;
+			   
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
+		
+		private static Interpretation _singleton_obj = new Interpretation();
 		
 		private KeyValuePair<string, string> _alarm = new KeyValuePair<string, string>("Alarm", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Alarm");
 		
@@ -445,6 +536,27 @@ namespace Zeitgeist
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_datacontainer.Value, interpretation))
+			   return _datacontainer;
+			
+			if(string.Equals(_archive.Value, interpretation))
+			   return _archive;
+			
+			if(string.Equals(_folder.Value, interpretation))
+			   return _folder;
+			
+			if(string.Equals(_trash.Value, interpretation))
+			   return _trash;
+			
+			KeyValuePair<string, string> fs = _filesystem.Search(interpretation);
+			if(fs.Key != null)
+				return fs;
+			
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
 		
 		private KeyValuePair<string, string> _datacontainer = new KeyValuePair<string, string>("DataContainer", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer");
@@ -468,7 +580,7 @@ namespace Zeitgeist
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem
 		/// </remarks>
-		public string Filesystem
+		public KeyValuePair<string, string> Filesystem
 		{
 			get
 			{
@@ -482,7 +594,7 @@ namespace Zeitgeist
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Trash
 		/// </remarks>
-		public string FilesystemImage
+		public KeyValuePair<string, string> FilesystemImage
 		{
 			get
 			{
@@ -490,11 +602,22 @@ namespace Zeitgeist
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_file_system_image.Value, interpretation))
+			   return _file_system_image;
+			
+			if(string.Equals(_file_system.Value, interpretation))
+			   return _file_system;
+			
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
 		
-		private static string _file_system_image = "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FilesystemImage";
+		private static KeyValuePair<string, string> _file_system_image = new KeyValuePair<string, string>("FilesystemImage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FilesystemImage");
 		
-		private static string _file_system = "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem";
+		private static KeyValuePair<string, string> _file_system = new KeyValuePair<string, string>("Filesystem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem");
 		
 		#endregion
 	}
@@ -575,6 +698,27 @@ namespace Zeitgeist
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_document.Value, interpretation))
+			   return _document;
+			
+			if(string.Equals(_mind_map.Value, interpretation))
+			   return _mind_map;
+			
+			if(string.Equals(_presentation.Value, interpretation))
+			   return _presentation;
+			
+			if(string.Equals(_spreadsheet.Value, interpretation))
+			   return _spreadsheet;
+			
+			KeyValuePair<string, string> textdoc = _text_document.Search(interpretation);
+			if(textdoc.Key != null)
+				return textdoc;
+			
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
 	
 		private KeyValuePair<string, string> _document = new KeyValuePair<string, string>("Document", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Document");
@@ -619,6 +763,18 @@ namespace Zeitgeist
 			{
 				return _plain_text_document;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_paginated_text_document.Value, interpretation))
+			   return _paginated_text_document;
+			
+			KeyValuePair<string, string> plaintext = _plain_text_document.Search(interpretation);
+			if(plaintext.Key != null)
+				return plaintext;
+			
+			return new KeyValuePair<string, string>();
 		}
 		
 		#region Private Fields
@@ -672,6 +828,20 @@ namespace Zeitgeist
 			{
 				return _source_code;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_plain_text_document.Value, interpretation))
+			   return _plain_text_document;
+			
+			if(string.Equals(_html_document.Value, interpretation))
+			   return _html_document;
+			
+			if(string.Equals(_source_code.Value, interpretation))
+			   return _source_code;
+			
+			return new KeyValuePair<string, string>();
 		}
 		
 		#region Private Fields
@@ -803,6 +973,36 @@ namespace Zeitgeist
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_event_interpretation.Value, interpretation))
+			   return _event_interpretation;
+			
+			if(string.Equals(_access_event.Value, interpretation))
+			   return _access_event;
+			
+			if(string.Equals(_create_event.Value, interpretation))
+			   return _create_event;
+			
+			if(string.Equals(_delete_event.Value, interpretation))
+			   return _delete_event;
+			
+			if(string.Equals(_leave_event.Value, interpretation))
+			   return _leave_event;
+			
+			if(string.Equals(_modify_event.Value, interpretation))
+			   return _modify_event;
+			
+			if(string.Equals(_receive_event.Value, interpretation))
+			   return _receive_event;
+			
+			if(string.Equals(_send_event.Value, interpretation))
+			   return _send_event;
+			
+			
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
 		
 		private KeyValuePair<string, string> _event_interpretation = new KeyValuePair<string, string>("EventInterpretation", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventInterpretation");
@@ -886,6 +1086,24 @@ namespace Zeitgeist
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_media.Value, interpretation))
+			   return _media;
+			
+			if(string.Equals(_audio.Value, interpretation))
+			   return _audio;
+			
+			if(string.Equals(_music_piece.Value, interpretation))
+			   return _music_piece;
+			
+			KeyValuePair<string, string> visual = _visual_type.Search(interpretation);
+			if(visual.Key != null)
+				return visual;
+			
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
 		
 		private KeyValuePair<string, string> _media = new KeyValuePair<string, string>("Media", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Media");
@@ -941,6 +1159,22 @@ namespace Zeitgeist
 			{
 				return _video;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_visual.Value, interpretation))
+			   return _visual;
+			
+			KeyValuePair<string, string> image = _image.Search(interpretation);
+			if(image.Key != null)
+				return image;
+			
+			KeyValuePair<string, string> video = _video.Search(interpretation);
+			if(video.Key != null)
+				return video;
+			
+			return new KeyValuePair<string, string>();
 		}
 		
 		#region Private Fields
@@ -1012,6 +1246,24 @@ namespace Zeitgeist
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_image.Value, interpretation))
+			   return _image;
+			
+			if(string.Equals(_icon.Value, interpretation))
+			   return _icon;
+			
+			KeyValuePair<string, string> rast = _raster_image.Search(interpretation);
+			if(rast.Key != null)
+				return rast;
+			
+			if(string.Equals(_vector_image.Value, interpretation))
+			   return _vector_image;
+			
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
 		
 		private KeyValuePair<string, string> _image = new KeyValuePair<string, string>("Image", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Image");
@@ -1054,6 +1306,17 @@ namespace Zeitgeist
 			{
 				return _cursor;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_raster_image.Value, interpretation))
+			   return _raster_image;
+			
+			if(string.Equals(_cursor.Value, interpretation))
+			   return _cursor;
+			
+			return new KeyValuePair<string, string>();
 		}
 		
 		#region Private Fields
@@ -1109,6 +1372,20 @@ namespace Zeitgeist
 			}
 		}
 		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_video.Value, interpretation))
+			   return _video;
+			
+			if(string.Equals(_movie.Value, interpretation))
+			   return _movie;
+			
+			if(string.Equals(_tv_show.Value, interpretation))
+			   return _tv_show;
+			
+			return new KeyValuePair<string, string>();
+		}
+		
 		#region Private Fields
 		
 		private KeyValuePair<string, string> _video = new KeyValuePair<string, string>("Video", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Video");
@@ -1152,6 +1429,17 @@ namespace Zeitgeist
 			{
 				return _music_album;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_media_list.Value, interpretation))
+			   return _media_list;
+			
+			if(string.Equals(_music_album.Value, interpretation))
+			   return _music_album;
+			
+			return new KeyValuePair<string, string>();
 		}
 				
 		#region Private Fields
@@ -1209,6 +1497,20 @@ namespace Zeitgeist
 			{
 				return _im_message;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_message.Value, interpretation))
+			   return _message;
+			
+			if(string.Equals(_email.Value, interpretation))
+			   return _email;
+			
+			if(string.Equals(_im_message.Value, interpretation))
+			   return _im_message;
+			
+			return new KeyValuePair<string, string>();
 		}
 				
 		#region Private Fields
@@ -1268,6 +1570,20 @@ namespace Zeitgeist
 			{
 				return _os;
 			}
+		}
+		
+		public KeyValuePair<string, string> Search(string interpretation)
+		{
+			if(string.Equals(_software.Value, interpretation))
+			   return _software;
+			
+			if(string.Equals(_application.Value, interpretation))
+			   return _application;
+			
+			if(string.Equals(_os.Value, interpretation))
+			   return _os;
+			
+			return new KeyValuePair<string, string>();
 		}
 				
 		#region Private Fields

@@ -15,6 +15,8 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/data_source_registry");
 			IDataSource zeitgeist = Bus.Session.GetObject<IDataSource>("org.gnome.zeitgeist.Engine", objPath);
 			
+			KeyValuePair<string,string> res= Interpretation.Instance.Search("http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Software");
+			
 			RawDataSource[] src= zeitgeist.GetDataSources();
 			
 			//List<DataSource> srcs = DataSourceClient.GetDataSources();
