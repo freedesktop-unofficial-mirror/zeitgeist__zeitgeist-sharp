@@ -44,7 +44,7 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// The Interpretation of the event
 		/// </summary>
-		public string Interpretation
+		public KeyValuePair<string, string> Interpretation
 		{
 			get;set;
 		}
@@ -52,7 +52,7 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// The Manifestation of the event
 		/// </summary>
-		public string Manifestation
+		public KeyValuePair<string, string> Manifestation
 		{
 			get;set;
 		}
@@ -105,8 +105,11 @@ namespace Zeitgeist.Datamodel
 			e.Timestamp = timestamp;
 			
 			e.Actor = raw.metadata[(int)EventMetadataPosition.Actor];
-			e.Interpretation = raw.metadata[(int)EventMetadataPosition.Interpretation];
-			e.Manifestation = raw.metadata[(int)EventMetadataPosition.Manifestation];
+			
+			string _interpretation = raw.metadata[(int)EventMetadataPosition.Interpretation];
+			string _manifestation = raw.metadata[(int)EventMetadataPosition.Manifestation];
+			e.Interpretation = Zeitgeist.Datamodel.Interpretation.Instance.Search(_interpretation);
+			e.Manifestation = Zeitgeist.Datamodel.Manifestation.Instance.Search(_manifestation);
 			
 			#endregion
 			
@@ -124,8 +127,11 @@ namespace Zeitgeist.Datamodel
 				sub.MimeType = subjArr[(int)EventSubjectPosition.Mimetype];
 				sub.Text = subjArr[(int)EventSubjectPosition.Text];
 				sub.Storage = subjArr[(int)EventSubjectPosition.Storage];
-				sub.Interpretation = subjArr[(int)EventSubjectPosition.Interpretation];
-				sub.Manifestation = subjArr[(int)EventSubjectPosition.Manifestation];
+				
+				string sub_interpretation = subjArr[(int)EventSubjectPosition.Interpretation];
+				string sub_manifestation = subjArr[(int)EventSubjectPosition.Manifestation];
+				sub.Interpretation = Zeitgeist.Datamodel.Interpretation.Instance.Search(sub_interpretation);
+				sub.Manifestation = Zeitgeist.Datamodel.Manifestation.Instance.Search(sub_manifestation);
 				
 				e.Subjects.Add(sub);
 			}
@@ -248,8 +254,8 @@ namespace Zeitgeist.Datamodel
 			metaDataList[(int)EventMetadataPosition.Id] = ev.Id.ToString();
 			metaDataList[(int)EventMetadataPosition.Timestamp] = ev.Timestamp.ToString();
 			metaDataList[(int)EventMetadataPosition.Actor] = ev.Actor;
-			metaDataList[(int)EventMetadataPosition.Interpretation] = ev.Interpretation;
-			metaDataList[(int)EventMetadataPosition.Manifestation] = ev.Manifestation;
+			metaDataList[(int)EventMetadataPosition.Interpretation] = ev.Interpretation.Value;
+			metaDataList[(int)EventMetadataPosition.Manifestation] = ev.Manifestation.Value;
 			
 			raw.metadata = metaDataList.ToArray();
 			
@@ -273,8 +279,8 @@ namespace Zeitgeist.Datamodel
 				subCont[(int)EventSubjectPosition.Mimetype] = sub.MimeType;
 				subCont[(int)EventSubjectPosition.Text] = sub.Text;
 				subCont[(int)EventSubjectPosition.Storage] = sub.Storage;
-				subCont[(int)EventSubjectPosition.Interpretation] = sub.Interpretation;
-				subCont[(int)EventSubjectPosition.Manifestation] = sub.Manifestation;
+				subCont[(int)EventSubjectPosition.Interpretation] = sub.Interpretation.Value;
+				subCont[(int)EventSubjectPosition.Manifestation] = sub.Manifestation.Value;
 				
 				subList.Add(subCont.ToArray());
 				

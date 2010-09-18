@@ -54,6 +54,8 @@ namespace Zeitgeist
 		
 		public static T GetDBusObject<T>(string objectPath)
 		{
+			BusG.Init();
+			
 			// Create the ObjectPath from the path provided
 			ObjectPath objPath = new ObjectPath(objectPath);
 			T interfaceInst = Bus.Session.GetObject<T>(ZsUtils.DBusPath, objPath);

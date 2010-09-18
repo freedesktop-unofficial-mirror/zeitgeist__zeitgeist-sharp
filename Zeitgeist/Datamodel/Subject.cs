@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Zeitgeist.Datamodel
 {
@@ -52,7 +53,7 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// Interpretation of the Subject
 		/// </summary>
-		public string Interpretation
+		public KeyValuePair<string, string> Interpretation
 		{
 			get; set;
 		}
@@ -60,7 +61,7 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// Manifestation of the Subject
 		/// </summary>
-		public string Manifestation
+		public KeyValuePair<string, string> Manifestation
 		{
 			get; set;
 		}

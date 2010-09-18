@@ -3,6 +3,7 @@ using NDesk.DBus;
 using Zeitgeist.Datamodel;
 using Zeitgeist.Client;
 using System.Collections.Generic;
+using Zeitgeist;
 
 namespace Zeitgeist.ZeitgeistSharp.Cli
 {
@@ -12,22 +13,23 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 		{
 			BusG.Init();
 			
-			NDesk.DBus.ObjectPath objPath = new NDesk.DBus.ObjectPath("/org/gnome/zeitgeist/data_source_registry");
-			IDataSource zeitgeist = Bus.Session.GetObject<IDataSource>("org.gnome.zeitgeist.Engine", objPath);
-			
 			KeyValuePair<string,string> res= Interpretation.Instance.Search("http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Software");
 			KeyValuePair<string, string> res2 = Manifestation.Instance.Search("http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity");
 			
-			RawDataSource[] src= zeitgeist.GetDataSources();
+			
 			
 			//List<DataSource> srcs = DataSourceClient.GetDataSources();
 			
 			//List<Event> blacklistEvents = BlacklistClient.GetBlacklist();
 			
+			
+			
 			List<uint> listOfEvents = new List<uint>();
 			listOfEvents.Add(23);listOfEvents.Add(24);listOfEvents.Add(25);
 			
-			//List<Event> eventInst = LogClient.GetEvents(listOfEvents);
+			
+			LogClient client = new LogClient();
+			List<Event> eventInst = client.GetEvents(listOfEvents);
 			
 			/*Event ev = new Event();
 			ev.Interpretation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent";
