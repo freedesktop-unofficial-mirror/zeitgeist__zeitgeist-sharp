@@ -26,7 +26,7 @@ namespace Zeitgeist.Datamodel
 		/// Event timestamp defined as milliseconds since the Epoch.
 		/// By default it is set to the moment of instance creation
 		/// </summary>
-		public UInt64 Timestamp
+		public DateTime Timestamp
 		{
 			get;set;
 		}
@@ -102,7 +102,7 @@ namespace Zeitgeist.Datamodel
 			
 			ulong timestamp;
 			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Timestamp], out timestamp);
-			e.Timestamp = timestamp;
+			e.Timestamp = Epoch.AddMilliseconds(timestamp);
 			
 			e.Actor = raw.metadata[(int)EventMetadataPosition.Actor];
 			
@@ -157,6 +157,14 @@ namespace Zeitgeist.Datamodel
 		{
 			return RawEvent.FromEvent(this);
 		}
+		
+		/// <summary>
+		/// The DateTime of UNIX Epoch
+		/// </summary>
+		/// <remarks>
+		/// UNIX Epoch is January 01, 1970 00:00:00 UTC
+		/// </remarks>
+		public static DateTime Epoch = new DateTime(1970, 1,1, 0,0,0, DateTimeKind.Utc);
 	}
 	
 	/// <summary>
@@ -252,7 +260,9 @@ namespace Zeitgeist.Datamodel
 				metaDataList.Add(null);
 			
 			metaDataList[(int)EventMetadataPosition.Id] = ev.Id.ToString();
-			metaDataList[(int)EventMetadataPosition.Timestamp] = ev.Timestamp.ToString();
+			
+			TimeSpan now = ev.Timestamp - Event.Epoch;
+			metaDataList[(int)EventMetadataPosition.Timestamp] = ((int)(now.Ticks / 10000)).ToString();
 			metaDataList[(int)EventMetadataPosition.Actor] = ev.Actor;
 			metaDataList[(int)EventMetadataPosition.Interpretation] = ev.Interpretation.Value;
 			metaDataList[(int)EventMetadataPosition.Manifestation] = ev.Manifestation.Value;

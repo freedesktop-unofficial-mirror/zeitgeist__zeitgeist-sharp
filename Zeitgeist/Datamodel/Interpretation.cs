@@ -14,6 +14,9 @@ namespace Zeitgeist.Datamodel
 	/// </remarks>
 	public class Interpretation
 	{
+		/// <summary>
+		/// The singleton Instance of Interpretation
+		/// </summary>
 		public static Interpretation Instance
 		{
 			get
@@ -333,6 +336,15 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
+		/// <summary>
+		/// Search for an interpretation KeyValuePair provided the interpretation string
+		/// </summary>
+		/// <param name="interpretation">
+		/// The Interpretation of type <see cref="System.String"/>
+		/// </param>
+		/// <returns>
+		/// The parsed value of Interpretation <see cref="KeyValuePair<System.String, System.String>"/>
+		/// </returns>
 		public KeyValuePair<string, string> Search(string interpretation)
 		{
 			if(string.Equals(_alarm.Value, interpretation))

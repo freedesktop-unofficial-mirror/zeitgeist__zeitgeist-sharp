@@ -30,6 +30,9 @@ namespace Zeitgeist.ZeitgeistSharp.Cli
 			
 			LogClient client = new LogClient();
 			List<Event> eventInst = client.GetEvents(listOfEvents);
+			Console.WriteLine(eventInst[0].Interpretation);
+			Console.WriteLine(eventInst[0].Manifestation);
+			Console.WriteLine(eventInst[0].Timestamp.ToLongTimeString());
 			
 			/*Event ev = new Event();
 			ev.Interpretation = "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent";
