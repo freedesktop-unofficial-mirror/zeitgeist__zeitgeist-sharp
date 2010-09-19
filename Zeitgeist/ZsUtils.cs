@@ -128,6 +128,49 @@ namespace Zeitgeist
 		
 		#endregion
 		
+		#region Print Event, RawEvent
+		
+		public static void PrintEvent(Event e)
+		{
+			Console.WriteLine("ID: "+e.Id);
+			Console.WriteLine("Interpretation: "+e.Interpretation.Key);
+			Console.WriteLine("Manifestation: "+e.Manifestation.Key);
+			Console.WriteLine("Timestamp: "+e.Timestamp.ToLongTimeString());
+			Console.WriteLine("Actor: "+e.Actor);
+			foreach(Subject sub in e.Subjects)
+			{
+				Console.WriteLine("URI: "+sub.Uri);
+				Console.WriteLine("Interpretation: "+sub.Interpretation.Key);
+				Console.WriteLine("Manifestation: "+sub.Manifestation.Key);
+				Console.WriteLine("Mimetype: "+sub.MimeType);
+				Console.WriteLine("Text: "+sub.Text);
+			}
+		}
+		
+		public static void PrintRawEvent(RawEvent e)
+		{
+			if(e.metadata == null)
+				Console.WriteLine("RawEevent metadata in null");
+			if(e.subjects == null)
+				Console.WriteLine("RawEevent subjects in null");
+			
+			Console.WriteLine("ID: "+e.metadata[0]);
+			Console.WriteLine("Interpretation: "+e.metadata[1]);
+			Console.WriteLine("Manifestation: "+e.metadata[2]);
+			Console.WriteLine("Timestamp: "+e.metadata[3]);
+			Console.WriteLine("Actor: "+e.metadata[4]);
+			foreach(string[] sub in e.subjects)
+			{
+				Console.WriteLine("URI: "+sub[0]);
+				Console.WriteLine("Interpretation: "+sub[1]);
+				Console.WriteLine("Manifestation: "+sub[2]);
+				Console.WriteLine("Mimetype: "+sub[4]);
+				Console.WriteLine("Text: "+sub[5]);
+			}
+		}
+		
+		#endregion
+		
 		/// <summary>
 		/// Get an instance of DBus object for the provided objectPath
 		/// </summary>

@@ -15,6 +15,15 @@ namespace Zeitgeist.Datamodel
 	public class Event
 	{ 
 		/// <summary>
+		/// A parameterless constructor
+		/// </summary>
+		public Event()
+		{
+			Subjects = new List<Subject>();
+			Payload =new byte[]{};
+		}
+		
+		/// <summary>
 		/// Event id if the event has one
 		/// </summary>
 		public UInt64 Id
@@ -72,11 +81,6 @@ namespace Zeitgeist.Datamodel
 		{
 			get;set;
 		}
-		
-		/// <summary>
-		/// A parameterless constructor
-		/// </summary>
-		public Event(){}
 		
 		/// <summary>
 		/// Create a Event from a RawEvent
