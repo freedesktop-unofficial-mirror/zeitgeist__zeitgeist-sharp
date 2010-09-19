@@ -251,7 +251,10 @@ namespace Zeitgeist.Datamodel
 			for(int i=0; i< metaDataList.Capacity; i++)
 				metaDataList.Add(null);
 			
-			metaDataList[(int)EventMetadataPosition.Id] = ev.Id.ToString();
+			if(ev.Id == 0)
+				metaDataList[(int)EventMetadataPosition.Id] = string.Empty;
+			else
+				metaDataList[(int)EventMetadataPosition.Id] = ev.Id.ToString();
 			
 			
 			metaDataList[(int)EventMetadataPosition.Timestamp] = ZsUtils.ToTimestamp(ev.Timestamp).ToString();
