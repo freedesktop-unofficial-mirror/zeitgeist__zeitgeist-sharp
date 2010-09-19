@@ -55,8 +55,6 @@ dnl package checks, per config
 AC_CONFIG_FILES([
 Zeitgeist/zeitgeist.pc
 Zeitgeist/Makefile
-Zeitgeist.Cli/zeitgeist.cli
-Zeitgeist.Cli/Makefile
 Makefile
 
 ])
