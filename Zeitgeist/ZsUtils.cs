@@ -47,7 +47,7 @@ namespace Zeitgeist
 			
 			foreach(RawEvent rawEvent in rawEvents)
 			{
-				Event evnt = Event.FromRaw(rawEvent);
+				Event evnt = RawEvent.FromRaw(rawEvent);
 				events.Add(evnt);
 			}
 			

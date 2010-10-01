@@ -64,7 +64,7 @@ namespace Zeitgeist
 			
 			foreach(RawDataSource src in srcs)
 			{
-				DataSource et = DataSource.FromRaw(src);
+				DataSource et = RawDataSource.FromRaw(src);
 				srcList.Add(et);
 			}
 			
