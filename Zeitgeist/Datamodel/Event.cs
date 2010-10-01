@@ -82,74 +82,7 @@ namespace Zeitgeist.Datamodel
 			get;set;
 		}
 		
-		/// <summary>
-		/// Create a Event from a RawEvent
-		/// </summary>
-		/// <param name="raw">
-		/// The instance of the RawEvent <see cref="RawEvent"/>
-		/// </param>
-		/// <returns>
-		/// The instance of an Event <see cref="Event"/>
-		/// </returns>
-		public static Event FromRaw(RawEvent raw)
-		{
-			Event e = new Event();
-			
-			if(raw.metadata.Length != Enum.GetNames(typeof(EventMetadataPosition)).Length)
-				return null;
-			
-			#region Metadata
-			
-			ulong id;
-			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Id], out id);
-			e.Id = id;
-			
-			ulong timestamp;
-			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Timestamp], out timestamp);
-			e.Timestamp = ZsUtils.ToDateTime(timestamp);
-			
-			e.Actor = raw.metadata[(int)EventMetadataPosition.Actor];
-			
-			string _interpretation = raw.metadata[(int)EventMetadataPosition.Interpretation];
-			string _manifestation = raw.metadata[(int)EventMetadataPosition.Manifestation];
-			e.Interpretation = Zeitgeist.Datamodel.Interpretation.Instance.Search(_interpretation);
-			e.Manifestation = Zeitgeist.Datamodel.Manifestation.Instance.Search(_manifestation);
-			
-			#endregion
-			
-			#region Subjects
-			
-			e.Subjects= new List<Subject>();
-			
-			for(int i = 0; i < raw.subjects.Length; i ++)
-			{
-				Subject sub = new Subject();
-				string[] subjArr = raw.subjects[i];
-				
-				sub.Uri = subjArr[(int)EventSubjectPosition.Uri];
-				sub.Origin = subjArr[(int)EventSubjectPosition.Origin];
-				sub.MimeType = subjArr[(int)EventSubjectPosition.Mimetype];
-				sub.Text = subjArr[(int)EventSubjectPosition.Text];
-				sub.Storage = subjArr[(int)EventSubjectPosition.Storage];
-				
-				string sub_interpretation = subjArr[(int)EventSubjectPosition.Interpretation];
-				string sub_manifestation = subjArr[(int)EventSubjectPosition.Manifestation];
-				sub.Interpretation = Zeitgeist.Datamodel.Interpretation.Instance.Search(sub_interpretation);
-				sub.Manifestation = Zeitgeist.Datamodel.Manifestation.Instance.Search(sub_manifestation);
-				
-				e.Subjects.Add(sub);
-			}
-			
-			#endregion
-			
-			#region Payload
-			
-			e.Payload = raw.payload;
-			
-			#endregion
-			
-			return e;
-		}
+		
 		
 		/// <summary>
 		/// Get the RawEvent for this Event
@@ -157,7 +90,7 @@ namespace Zeitgeist.Datamodel
 		/// <returns>
 		/// The RawEvent instance generated from the current Event <see cref="RawEvent"/>
 		/// </returns>
-		public RawEvent GetRawEvent()
+		internal RawEvent GetRawEvent()
 		{
 			return RawEvent.FromEvent(this);
 		}
@@ -166,7 +99,7 @@ namespace Zeitgeist.Datamodel
 	/// <summary>
 	/// The Raw form of Event. Get Event.FromRaw to create an Event from a RawEvent
 	/// </summary>
-	public struct RawEvent 
+	internal struct RawEvent 
 	{
 		/// <summary>
 		/// The event Metadata
@@ -307,6 +240,75 @@ namespace Zeitgeist.Datamodel
 			#endregion
 			
 			return raw;
+		}
+		
+		/// <summary>
+		/// Create a Event from a RawEvent
+		/// </summary>
+		/// <param name="raw">
+		/// The instance of the RawEvent <see cref="RawEvent"/>
+		/// </param>
+		/// <returns>
+		/// The instance of an Event <see cref="Event"/>
+		/// </returns>
+		public static Event FromRaw(RawEvent raw)
+		{
+			Event e = new Event();
+			
+			if(raw.metadata.Length != Enum.GetNames(typeof(EventMetadataPosition)).Length)
+				return null;
+			
+			#region Metadata
+			
+			ulong id;
+			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Id], out id);
+			e.Id = id;
+			
+			ulong timestamp;
+			UInt64.TryParse(raw.metadata[(int)EventMetadataPosition.Timestamp], out timestamp);
+			e.Timestamp = ZsUtils.ToDateTime(timestamp);
+			
+			e.Actor = raw.metadata[(int)EventMetadataPosition.Actor];
+			
+			string _interpretation = raw.metadata[(int)EventMetadataPosition.Interpretation];
+			string _manifestation = raw.metadata[(int)EventMetadataPosition.Manifestation];
+			e.Interpretation = Zeitgeist.Datamodel.Interpretation.Instance.Search(_interpretation);
+			e.Manifestation = Zeitgeist.Datamodel.Manifestation.Instance.Search(_manifestation);
+			
+			#endregion
+			
+			#region Subjects
+			
+			e.Subjects= new List<Subject>();
+			
+			for(int i = 0; i < raw.subjects.Length; i ++)
+			{
+				Subject sub = new Subject();
+				string[] subjArr = raw.subjects[i];
+				
+				sub.Uri = subjArr[(int)EventSubjectPosition.Uri];
+				sub.Origin = subjArr[(int)EventSubjectPosition.Origin];
+				sub.MimeType = subjArr[(int)EventSubjectPosition.Mimetype];
+				sub.Text = subjArr[(int)EventSubjectPosition.Text];
+				sub.Storage = subjArr[(int)EventSubjectPosition.Storage];
+				
+				string sub_interpretation = subjArr[(int)EventSubjectPosition.Interpretation];
+				string sub_manifestation = subjArr[(int)EventSubjectPosition.Manifestation];
+				sub.Interpretation = Zeitgeist.Datamodel.Interpretation.Instance.Search(sub_interpretation);
+				sub.Manifestation = Zeitgeist.Datamodel.Manifestation.Instance.Search(sub_manifestation);
+				
+				e.Subjects.Add(sub);
+			}
+			
+			#endregion
+			
+			#region Payload
+			
+			e.Payload = raw.payload;
+			
+			#endregion
+			
+			return e;
 		}
 		
 		#region RawEvent Private Fields

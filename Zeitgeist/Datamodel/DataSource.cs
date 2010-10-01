@@ -66,77 +66,13 @@ namespace Zeitgeist.Datamodel
 			get;set;
 		}
 		
-		/// <summary>
-		/// Convert an object of type RawDataSource to DataSource
-		/// </summary>
-		/// <param name="raw">
-		/// An instance of RawDataSource <see cref="RawDataSource"/>
-		/// </param>
-		/// <returns>
-		/// An instance of DataSource <see cref="DataSource"/>
-		/// </returns>
-		public static DataSource FromRaw(RawDataSource  raw)
-		{
-			DataSource src = new DataSource();
-			
-			src.UniqueId = raw.UniqueId;
-			src.Name = raw.Name;
-			src.Description = raw.Description;
-			src.Running = raw.Running;
-			src.LastSeen = long.Parse(raw.LastSeen.ToString());
-			src.Enabled = raw.Enabled;
-			
-			if(raw.RawEvents != null)
-			{
-				src.Events = new List<Event>();
-				foreach(RawEvent evn in raw.RawEvents)
-				{
-					Event ev = Event.FromRaw(evn);
-					src.Events.Add(ev);
-				}
-			}
-			
-			return src;
-		}
 		
-		/// <summary>
-		/// Convert an object of type DataSource to RawDataSource
-		/// </summary>
-		/// <param name="src">
-		/// An instance of DataSource <see cref="Zeitgeist.Datamodel.DataSource"/>
-		/// </param>
-		/// <returns>
-		/// An instance of RawDataSource <see cref="Zeitgeist.Datamodel.RawDataSource"/>
-		/// </returns>
-		public static RawDataSource ToRaw(DataSource src)
-		{
-			RawDataSource raw = new RawDataSource();
-			
-			raw.UniqueId = src.UniqueId;
-			raw.Name = src.Name;
-			raw.Description = src.Description;
-			raw.Running = src.Running;
-			raw.LastSeen = UInt64.Parse(src.LastSeen.ToString());
-			raw.Enabled = src.Enabled;
-			
-			if(raw.RawEvents != null)
-			{
-				List<RawEvent> events = new List<RawEvent>();
-				foreach(Event evn in src.Events)
-				{
-					RawEvent ev = evn.GetRawEvent();
-					events.Add(ev);
-				}
-			}
-			
-			return raw;
-		}
 	}
 	
 	/// <summary>
 	/// A raw DBus  based representation of Event
 	/// </summary>
-	public struct RawDataSource 
+	internal struct RawDataSource 
 	{
 		/// <summary>
 		/// The Id of the RawDataSource
@@ -277,6 +213,72 @@ namespace Zeitgeist.Datamodel
 			Running = running;
 			LastSeen = Lastseen;
 			Enabled = enabled;
+		}
+		
+		/// <summary>
+		/// Convert an object of type RawDataSource to DataSource
+		/// </summary>
+		/// <param name="raw">
+		/// An instance of RawDataSource <see cref="RawDataSource"/>
+		/// </param>
+		/// <returns>
+		/// An instance of DataSource <see cref="DataSource"/>
+		/// </returns>
+		public static DataSource FromRaw(RawDataSource  raw)
+		{
+			DataSource src = new DataSource();
+			
+			src.UniqueId = raw.UniqueId;
+			src.Name = raw.Name;
+			src.Description = raw.Description;
+			src.Running = raw.Running;
+			src.LastSeen = long.Parse(raw.LastSeen.ToString());
+			src.Enabled = raw.Enabled;
+			
+			if(raw.RawEvents != null)
+			{
+				src.Events = new List<Event>();
+				foreach(RawEvent evn in raw.RawEvents)
+				{
+					Event ev = RawEvent.FromRaw(evn);
+					src.Events.Add(ev);
+				}
+			}
+			
+			return src;
+		}
+		
+		/// <summary>
+		/// Convert an object of type DataSource to RawDataSource
+		/// </summary>
+		/// <param name="src">
+		/// An instance of DataSource <see cref="Zeitgeist.Datamodel.DataSource"/>
+		/// </param>
+		/// <returns>
+		/// An instance of RawDataSource <see cref="Zeitgeist.Datamodel.RawDataSource"/>
+		/// </returns>
+		public static RawDataSource ToRaw(DataSource src)
+		{
+			RawDataSource raw = new RawDataSource();
+			
+			raw.UniqueId = src.UniqueId;
+			raw.Name = src.Name;
+			raw.Description = src.Description;
+			raw.Running = src.Running;
+			raw.LastSeen = UInt64.Parse(src.LastSeen.ToString());
+			raw.Enabled = src.Enabled;
+			
+			if(raw.RawEvents != null)
+			{
+				List<RawEvent> events = new List<RawEvent>();
+				foreach(Event evn in src.Events)
+				{
+					RawEvent ev = evn.GetRawEvent();
+					events.Add(ev);
+				}
+			}
+			
+			return raw;
 		}
 		
 		#region Private Fields
