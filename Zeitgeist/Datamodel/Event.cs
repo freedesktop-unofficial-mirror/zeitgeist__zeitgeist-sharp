@@ -166,7 +166,7 @@ namespace Zeitgeist.Datamodel
 	/// <summary>
 	/// The Raw form of Event. Get Event.FromRaw to create an Event from a RawEvent
 	/// </summary>
-	public struct RawEvent 
+	internal struct RawEvent 
 	{
 		/// <summary>
 		/// The event Metadata

@@ -10,7 +10,7 @@ namespace Zeitgeist.Client
 	/// and if they match they will not be inserted in the log, and any matching monitors will not be signalled.
 	/// </summary>
 	[NDesk.DBus.Interface ("org.gnome.zeitgeist.Blacklist")]
-	public interface IBlacklist
+	internal interface IBlacklist
 	{
 		/// <summary>
 		/// Get the current blacklist templates.

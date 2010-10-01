@@ -6,7 +6,7 @@ using NDesk.DBus;
 
 namespace Zeitgeist
 {
-	public  class ZsUtils
+	internal class ZsUtils
 	{
 		#region Event <--> RawEvent Conversions
 		

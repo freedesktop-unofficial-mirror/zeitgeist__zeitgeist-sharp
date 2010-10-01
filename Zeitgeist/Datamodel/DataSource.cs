@@ -136,7 +136,7 @@ namespace Zeitgeist.Datamodel
 	/// <summary>
 	/// A raw DBus  based representation of Event
 	/// </summary>
-	public struct RawDataSource 
+	internal struct RawDataSource 
 	{
 		/// <summary>
 		/// The Id of the RawDataSource

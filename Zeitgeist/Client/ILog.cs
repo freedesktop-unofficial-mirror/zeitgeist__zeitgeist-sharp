@@ -12,7 +12,7 @@ namespace Zeitgeist.Client
 	/// All querying is heavily based around an “event template”-concept.
 	/// </summary>
 	[NDesk.DBus.Interface ("org.gnome.zeitgeist.Log")]
-	public interface ILog
+	internal interface ILog
 	{
 		/// <summary>
 		/// Get full event data for a set of event IDs
