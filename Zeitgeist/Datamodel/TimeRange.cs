@@ -9,8 +9,8 @@ namespace Zeitgeist.Datamodel
 	{
 		public TimeRange(DateTime startTime, DateTime endTime)
 		{
-			_begin = (Int64)ZsUtils.ToTimestamp(startTime);
-			_end = (Int64)ZsUtils.ToTimestamp(endTime);
+			_begin = startTime;
+			_end = endTime;
 		}
 		/// <summary>
 		/// The begin Timestamp of the event. Seconds elapsed since Epoch
@@ -19,11 +19,11 @@ namespace Zeitgeist.Datamodel
 		{
 			get
 			{
-				return _begin;
+				return (Int64)ZsUtils.ToTimestamp(_begin);
 			}
 			set
 			{
-				_begin = value;
+				_begin = ZsUtils.ToDateTime((ulong)value);
 			}
 		}
 		
@@ -34,19 +34,19 @@ namespace Zeitgeist.Datamodel
 		{
 			get
 			{
-				return _end;
+				return (Int64)ZsUtils.ToTimestamp(_end);
 			}
 			set
 			{
-				_end = value;
+				_end = ZsUtils.ToDateTime((ulong)value);
 			}
 		}
 		
 		#region Private Fields
 		
-		private Int64 _begin;
+		private DateTime _begin;
 		
-		private Int64 _end;
+		private DateTime _end;
 		
 		#endregion
 	}
