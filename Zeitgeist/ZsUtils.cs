@@ -133,15 +133,15 @@ namespace Zeitgeist
 		public static void PrintEvent(Event e)
 		{
 			Console.WriteLine("ID: "+e.Id);
-			Console.WriteLine("Interpretation: "+e.Interpretation.Key);
-			Console.WriteLine("Manifestation: "+e.Manifestation.Key);
+			Console.WriteLine("Interpretation: "+e.Interpretation.Name);
+			Console.WriteLine("Manifestation: "+e.Manifestation.Name);
 			Console.WriteLine("Timestamp: "+e.Timestamp.ToLongTimeString());
 			Console.WriteLine("Actor: "+e.Actor);
 			foreach(Subject sub in e.Subjects)
 			{
 				Console.WriteLine("URI: "+sub.Uri);
-				Console.WriteLine("Interpretation: "+sub.Interpretation.Key);
-				Console.WriteLine("Manifestation: "+sub.Manifestation.Key);
+				Console.WriteLine("Interpretation: "+sub.Interpretation.Name);
+				Console.WriteLine("Manifestation: "+sub.Manifestation.Name);
 				Console.WriteLine("Mimetype: "+sub.MimeType);
 				Console.WriteLine("Text: "+sub.Text);
 			}

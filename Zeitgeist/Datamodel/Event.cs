@@ -53,7 +53,7 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// The Interpretation of the event
 		/// </summary>
-		public KeyValuePair<string, string> Interpretation
+		public NameUri Interpretation
 		{
 			get;set;
 		}
@@ -61,7 +61,7 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// The Manifestation of the event
 		/// </summary>
-		public KeyValuePair<string, string> Manifestation
+		public NameUri Manifestation
 		{
 			get;set;
 		}
@@ -81,9 +81,7 @@ namespace Zeitgeist.Datamodel
 		{
 			get;set;
 		}
-		
-		
-		
+				
 		/// <summary>
 		/// Get the RawEvent for this Event
 		/// </summary>
@@ -196,8 +194,8 @@ namespace Zeitgeist.Datamodel
 			
 			metaDataList[(int)EventMetadataPosition.Timestamp] = ZsUtils.ToTimestamp(ev.Timestamp).ToString();
 			metaDataList[(int)EventMetadataPosition.Actor] = ev.Actor;
-			metaDataList[(int)EventMetadataPosition.Interpretation] = ev.Interpretation.Value;
-			metaDataList[(int)EventMetadataPosition.Manifestation] = ev.Manifestation.Value;
+			metaDataList[(int)EventMetadataPosition.Interpretation] = ev.Interpretation.Uri;
+			metaDataList[(int)EventMetadataPosition.Manifestation] = ev.Manifestation.Uri;
 			
 			raw.metadata = metaDataList.ToArray();
 			
@@ -221,8 +219,8 @@ namespace Zeitgeist.Datamodel
 				subCont[(int)EventSubjectPosition.Mimetype] = sub.MimeType;
 				subCont[(int)EventSubjectPosition.Text] = sub.Text;
 				subCont[(int)EventSubjectPosition.Storage] = sub.Storage;
-				subCont[(int)EventSubjectPosition.Interpretation] = sub.Interpretation.Value;
-				subCont[(int)EventSubjectPosition.Manifestation] = sub.Manifestation.Value;
+				subCont[(int)EventSubjectPosition.Interpretation] = sub.Interpretation.Uri;
+				subCont[(int)EventSubjectPosition.Manifestation] = sub.Manifestation.Uri;
 				
 				subList.Add(subCont.ToArray());
 				

@@ -53,7 +53,7 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// Interpretation of the Subject
 		/// </summary>
-		public KeyValuePair<string, string> Interpretation
+		public NameUri Interpretation
 		{
 			get; set;
 		}
@@ -61,7 +61,7 @@ namespace Zeitgeist.Datamodel
 		/// <summary>
 		/// Manifestation of the Subject
 		/// </summary>
-		public KeyValuePair<string, string> Manifestation
+		public NameUri Manifestation
 		{
 			get; set;
 		}

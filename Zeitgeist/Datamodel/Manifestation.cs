@@ -31,7 +31,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#CalendarDataObject
 		/// </remarks>
-		public KeyValuePair<string, string> CalendarDataObject
+		public NameUri CalendarDataObject
 		{
 			get
 			{
@@ -73,7 +73,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HardDiskPartition
 		/// </remarks>
-		public KeyValuePair<string, string> HardDiskPartition
+		public NameUri HardDiskPartition
 		{
 			get
 			{
@@ -87,7 +87,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject
 		/// </remarks>
-		public KeyValuePair<string, string> MailboxDataObject
+		public NameUri MailboxDataObject
 		{
 			get
 			{
@@ -101,7 +101,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaStream
 		/// </remarks>
-		public KeyValuePair<string, string> MediaStream
+		public NameUri MediaStream
 		{
 			get
 			{
@@ -115,7 +115,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemotePortAddress
 		/// </remarks>
-		public KeyValuePair<string, string> RemotePortAddress
+		public NameUri RemotePortAddress
 		{
 			get
 			{
@@ -129,7 +129,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SoftwareItem
 		/// </remarks>
-		public KeyValuePair<string, string> SoftwareItem
+		public NameUri SoftwareItem
 		{
 			get
 			{
@@ -143,7 +143,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SoftwareService
 		/// </remarks>
-		public KeyValuePair<string, string> SoftwareService
+		public NameUri SoftwareService
 		{
 			get
 			{
@@ -151,61 +151,61 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string manifestation)
+		public NameUri Search(string manifestation)
 		{
-			if(string.Equals(_cal_data_obj.Value, manifestation))
+			if(string.Equals(_cal_data_obj.Uri, manifestation))
 			   return _cal_data_obj;
 			
-			KeyValuePair<string, string> event_manifestation = _event_manifestation.Search(manifestation);
-			if(event_manifestation.Key != null)
+			NameUri event_manifestation = _event_manifestation.Search(manifestation);
+			if(event_manifestation.Name != null)
 				return event_manifestation;
 			
-			KeyValuePair<string, string> file_data_obj = _file_data_obj.Search(manifestation);
-			if(file_data_obj.Key != null)
+			NameUri file_data_obj = _file_data_obj.Search(manifestation);
+			if(file_data_obj.Name != null)
 				return file_data_obj;
 			
-			if(string.Equals(_hd_partition.Value, manifestation))
+			if(string.Equals(_hd_partition.Uri, manifestation))
 			   return _hd_partition;
 			
-			if(string.Equals(_mailbox_data_obj.Value, manifestation))
+			if(string.Equals(_mailbox_data_obj.Uri, manifestation))
 			   return _mailbox_data_obj;
 			
-			if(string.Equals(_media_stream.Value, manifestation))
+			if(string.Equals(_media_stream.Uri, manifestation))
 			   return _media_stream;
 			
-			if(string.Equals(_remote_port_addr.Value, manifestation))
+			if(string.Equals(_remote_port_addr.Uri, manifestation))
 			   return _remote_port_addr;
 			
-			if(string.Equals(_sw_item.Value, manifestation))
+			if(string.Equals(_sw_item.Uri, manifestation))
 			   return _sw_item;
 			
-			if(string.Equals(_sw_service.Value, manifestation))
+			if(string.Equals(_sw_service.Uri, manifestation))
 			   return _sw_service;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
 		private static Manifestation _singleton_obj = new Manifestation();
 		
-		private KeyValuePair<string, string> _cal_data_obj = new KeyValuePair<string, string>("CalendarDataObject", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#CalendarDataObject");
+		private NameUri _cal_data_obj = new NameUri("CalendarDataObject", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#CalendarDataObject");
 		
 		private EventManifestationType _event_manifestation = new EventManifestationType();
 		
 		private FileDataObjectType _file_data_obj = new FileDataObjectType();
 		
-		private KeyValuePair<string, string> _hd_partition = new KeyValuePair<string, string>("HardDiskPartition", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HardDiskPartition");
+		private NameUri _hd_partition = new NameUri("HardDiskPartition", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HardDiskPartition");
 		
-		private KeyValuePair<string, string> _mailbox_data_obj = new KeyValuePair<string, string>("MailboxDataObject", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject");
+		private NameUri _mailbox_data_obj = new NameUri("MailboxDataObject", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MailboxDataObject");
 		
-		private KeyValuePair<string, string> _media_stream = new KeyValuePair<string, string>("MediaStream", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaStream");
+		private NameUri _media_stream = new NameUri("MediaStream", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaStream");
 		
-		private KeyValuePair<string, string> _remote_port_addr = new KeyValuePair<string, string>("RemotePortAddress", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemotePortAddress");
+		private NameUri _remote_port_addr = new NameUri("RemotePortAddress", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemotePortAddress");
 		
-		private KeyValuePair<string, string> _sw_item = new KeyValuePair<string, string>("SoftwareItem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SoftwareItem");
+		private NameUri _sw_item = new NameUri("SoftwareItem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SoftwareItem");
 		
-		private KeyValuePair<string, string> _sw_service = new KeyValuePair<string, string>("SoftwareService", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SoftwareService");
+		private NameUri _sw_service = new NameUri("SoftwareService", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SoftwareService");
 		
 		#endregion
 	}
@@ -218,7 +218,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventManifestation
 		/// </remarks>
-		public KeyValuePair<string, string> EventManifestation
+		public NameUri EventManifestation
 		{
 			get
 			{
@@ -232,7 +232,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#HeuristicActivity
 		/// </remarks>
-		public KeyValuePair<string, string> HeuristicActivity
+		public NameUri HeuristicActivity
 		{
 			get
 			{
@@ -246,7 +246,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ScheduledActivity
 		/// </remarks>
-		public KeyValuePair<string, string> ScheduledActivity
+		public NameUri ScheduledActivity
 		{
 			get
 			{
@@ -260,7 +260,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SystemNotification
 		/// </remarks>
-		public KeyValuePair<string, string> SystemNotification
+		public NameUri SystemNotification
 		{
 			get
 			{
@@ -274,7 +274,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity
 		/// </remarks>
-		public KeyValuePair<string, string> UserActivity
+		public NameUri UserActivity
 		{
 			get
 			{
@@ -288,7 +288,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#WorldActivity
 		/// </remarks>
-		public KeyValuePair<string, string> WorldActivity
+		public NameUri WorldActivity
 		{
 			get
 			{
@@ -296,42 +296,42 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string manifestation)
+		public NameUri Search(string manifestation)
 		{
-			if(string.Equals(_evnt_manifest.Value, manifestation))
+			if(string.Equals(_evnt_manifest.Uri, manifestation))
 			   return _evnt_manifest;
 			
-			if(string.Equals(_heur_activity.Value, manifestation))
+			if(string.Equals(_heur_activity.Uri, manifestation))
 			   return _heur_activity;
 			
-			if(string.Equals(_schld_activity.Value, manifestation))
+			if(string.Equals(_schld_activity.Uri, manifestation))
 			   return _schld_activity;
 			
-			if(string.Equals(_sys_notification.Value, manifestation))
+			if(string.Equals(_sys_notification.Uri, manifestation))
 			   return _sys_notification;
 			
-			if(string.Equals(_user_activity.Value, manifestation))
+			if(string.Equals(_user_activity.Uri, manifestation))
 			   return _user_activity;
 			
-			if(string.Equals(_world_activity.Value, manifestation))
+			if(string.Equals(_world_activity.Uri, manifestation))
 			   return _world_activity;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _evnt_manifest = new KeyValuePair<string, string>("EventManifestation", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventManifestation");
+		private NameUri _evnt_manifest = new NameUri("EventManifestation", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventManifestation");
 		
-		private KeyValuePair<string, string> _heur_activity = new KeyValuePair<string, string>("HeuristicActivity", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#HeuristicActivity");
+		private NameUri _heur_activity = new NameUri("HeuristicActivity", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#HeuristicActivity");
 		
-		private KeyValuePair<string, string> _schld_activity = new KeyValuePair<string, string>("ScheduledActivity", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ScheduledActivity");
+		private NameUri _schld_activity = new NameUri("ScheduledActivity", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ScheduledActivity");
 		
-		private KeyValuePair<string, string> _sys_notification = new KeyValuePair<string, string>("SystemNotification", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SystemNotification");
+		private NameUri _sys_notification = new NameUri("SystemNotification", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SystemNotification");
 		
-		private KeyValuePair<string, string> _user_activity = new KeyValuePair<string, string>("UserActivity", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity");
+		private NameUri _user_activity = new NameUri("UserActivity", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity");
 		
-		private KeyValuePair<string, string> _world_activity = new KeyValuePair<string, string>("WorldActivity", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#WorldActivity");
+		private NameUri _world_activity = new NameUri("WorldActivity", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#WorldActivity");
 		
 		#endregion
 	}
@@ -344,7 +344,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject
 		/// </remarks>
-		public KeyValuePair<string, string> FileDataObject
+		public NameUri FileDataObject
 		{
 			get
 			{
@@ -358,7 +358,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DeletedResource
 		/// </remarks>
-		public KeyValuePair<string, string> DeletedResource
+		public NameUri DeletedResource
 		{
 			get
 			{
@@ -386,7 +386,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject
 		/// </remarks>
-		public KeyValuePair<string, string> RemoteDataObject
+		public NameUri RemoteDataObject
 		{
 			get
 			{
@@ -394,33 +394,33 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string manifestation)
+		public NameUri Search(string manifestation)
 		{
-			if(string.Equals(_file_data_obj.Value, manifestation))
+			if(string.Equals(_file_data_obj.Uri, manifestation))
 			   return _file_data_obj;
 			
-			if(string.Equals(_deleted_resc.Value, manifestation))
+			if(string.Equals(_deleted_resc.Uri, manifestation))
 			   return _deleted_resc;
 			
-			KeyValuePair<string, string> embedded_file_data_obj = _embedded_file_data_obj.Search(manifestation);
-			if(embedded_file_data_obj.Key != null)
+			NameUri embedded_file_data_obj = _embedded_file_data_obj.Search(manifestation);
+			if(embedded_file_data_obj.Name != null)
 				return embedded_file_data_obj;
 			
-			if(string.Equals(_remote_data_obj.Value, manifestation))
+			if(string.Equals(_remote_data_obj.Uri, manifestation))
 			   return _remote_data_obj;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _file_data_obj = new KeyValuePair<string, string>("FileDataObject", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject");
+		private NameUri _file_data_obj = new NameUri("FileDataObject", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FileDataObject");
 		
-		private KeyValuePair<string, string> _deleted_resc = new KeyValuePair<string, string>("DeletedResource", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DeletedResource");
+		private NameUri _deleted_resc = new NameUri("DeletedResource", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DeletedResource");
 		
 		private EmbeddedFileDataObjectType _embedded_file_data_obj = new EmbeddedFileDataObjectType();
 		
-		private KeyValuePair<string, string> _remote_data_obj = new KeyValuePair<string, string>("RemoteDataObject", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject");
+		private NameUri _remote_data_obj = new NameUri("RemoteDataObject", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RemoteDataObject");
 		
 		#endregion
 	}
@@ -433,7 +433,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#EmbeddedFileDataObject
 		/// </remarks>
-		public KeyValuePair<string, string> EmbeddedFileDataObject
+		public NameUri EmbeddedFileDataObject
 		{
 			get
 			{
@@ -447,7 +447,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#ArchiveItem
 		/// </remarks>
-		public KeyValuePair<string, string> ArchiveItem
+		public NameUri ArchiveItem
 		{
 			get
 			{
@@ -461,7 +461,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Attachment
 		/// </remarks>
-		public KeyValuePair<string, string> Attachment
+		public NameUri Attachment
 		{
 			get
 			{
@@ -469,27 +469,27 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string manifestation)
+		public NameUri Search(string manifestation)
 		{
-			if(string.Equals(_embedded_file_data_obj.Value, manifestation))
+			if(string.Equals(_embedded_file_data_obj.Uri, manifestation))
 			   return _embedded_file_data_obj;
 			
-			if(string.Equals(_archive_item.Value, manifestation))
+			if(string.Equals(_archive_item.Uri, manifestation))
 			   return _archive_item;
 			
-			if(string.Equals(_attachment.Value, manifestation))
+			if(string.Equals(_attachment.Uri, manifestation))
 			   return _attachment;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _embedded_file_data_obj = new KeyValuePair<string, string>("EmbeddedFileDataObject", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#EmbeddedFileDataObject");
+		private NameUri _embedded_file_data_obj = new NameUri("EmbeddedFileDataObject", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#EmbeddedFileDataObject");
 		
-		private KeyValuePair<string, string> _archive_item = new KeyValuePair<string, string>("ArchiveItem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#ArchiveItem");
+		private NameUri _archive_item = new NameUri("ArchiveItem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#ArchiveItem");
 		
-		private KeyValuePair<string, string> _attachment = new KeyValuePair<string, string>("Attachment", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Attachment");
+		private NameUri _attachment = new NameUri("Attachment", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Attachment");
 		
 		#endregion
 	}

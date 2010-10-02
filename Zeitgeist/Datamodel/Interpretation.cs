@@ -34,7 +34,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Alarm
 		/// </remarks>
-		public KeyValuePair<string, string> Alarm
+		public NameUri Alarm
 		{
 			get
 			{
@@ -48,7 +48,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Bookmark
 		/// </remarks>
-		public KeyValuePair<string, string> Bookmark
+		public NameUri Bookmark
 		{
 			get
 			{
@@ -62,7 +62,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#BookmarkFolder
 		/// </remarks>
-		public KeyValuePair<string, string> BookmarkFolder
+		public NameUri BookmarkFolder
 		{
 			get
 			{
@@ -76,7 +76,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Calendar
 		/// </remarks>
-		public KeyValuePair<string, string> Calendar
+		public NameUri Calendar
 		{
 			get
 			{
@@ -118,7 +118,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Event
 		/// </remarks>
-		public KeyValuePair<string, string> Event
+		public NameUri Event
 		{
 			get
 			{
@@ -146,7 +146,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Executable
 		/// </remarks>
-		public KeyValuePair<string, string> Executable
+		public NameUri Executable
 		{
 			get
 			{
@@ -160,7 +160,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Font
 		/// </remarks>
-		public KeyValuePair<string, string> Font
+		public NameUri Font
 		{
 			get
 			{
@@ -174,7 +174,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Freebusy
 		/// </remarks>
-		public KeyValuePair<string, string> Freebusy
+		public NameUri Freebusy
 		{
 			get
 			{
@@ -188,7 +188,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Journal
 		/// </remarks>
-		public KeyValuePair<string, string> Journal
+		public NameUri Journal
 		{
 			get
 			{
@@ -202,7 +202,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox
 		/// </remarks>
-		public KeyValuePair<string, string> Mailbox
+		public NameUri Mailbox
 		{
 			get
 			{
@@ -258,7 +258,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity
 		/// </remarks>
-		public KeyValuePair<string, string> MimeEntity
+		public NameUri MimeEntity
 		{
 			get
 			{
@@ -286,7 +286,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Timezone
 		/// </remarks>
-		public KeyValuePair<string, string> Timezone
+		public NameUri Timezone
 		{
 			get
 			{
@@ -300,7 +300,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Todo
 		/// </remarks>
-		public KeyValuePair<string, string> Todo
+		public NameUri Todo
 		{
 			get
 			{
@@ -314,7 +314,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVSeries
 		/// </remarks>
-		public KeyValuePair<string, string> TVSeries
+		public NameUri TVSeries
 		{
 			get
 			{
@@ -328,7 +328,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Website
 		/// </remarks>
-		public KeyValuePair<string, string> Website
+		public NameUri Website
 		{
 			get
 			{
@@ -345,117 +345,117 @@ namespace Zeitgeist.Datamodel
 		/// <returns>
 		/// The parsed value of Interpretation <see cref="KeyValuePair<System.String, System.String>"/>
 		/// </returns>
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_alarm.Value, interpretation))
+			if(string.Equals(_alarm.Uri, interpretation))
 			   return _alarm;
 			
-			if(string.Equals(_bookmark.Value, interpretation))
+			if(string.Equals(_bookmark.Uri, interpretation))
 			   return _bookmark;
 			
-			if(string.Equals(_bookmark_folder.Value, interpretation))
+			if(string.Equals(_bookmark_folder.Uri, interpretation))
 			   return _bookmark_folder;
 			
-			if(string.Equals(_calendar.Value, interpretation))
+			if(string.Equals(_calendar.Uri, interpretation))
 			   return _calendar;
 			
-			if(string.Equals(_event.Value, interpretation))
+			if(string.Equals(_event.Uri, interpretation))
 			   return _event;
 			
-			if(string.Equals(_executable.Value, interpretation))
+			if(string.Equals(_executable.Uri, interpretation))
 			   return _executable;
 			
-			if(string.Equals(_font.Value, interpretation))
+			if(string.Equals(_font.Uri, interpretation))
 			   return _font;
 			
-			if(string.Equals(_free_busy.Value, interpretation))
+			if(string.Equals(_free_busy.Uri, interpretation))
 			   return _free_busy;
 			
-			if(string.Equals(_journal.Value, interpretation))
+			if(string.Equals(_journal.Uri, interpretation))
 			   return _journal;
 			
-			if(string.Equals(_mail_box.Value, interpretation))
+			if(string.Equals(_mail_box.Uri, interpretation))
 			   return _mail_box;
 			
-			if(string.Equals(_mime_entity.Value, interpretation))
+			if(string.Equals(_mime_entity.Uri, interpretation))
 			   return _mime_entity;
 			
-			if(string.Equals(_timezone.Value, interpretation))
+			if(string.Equals(_timezone.Uri, interpretation))
 			   return _timezone;
 			
-			if(string.Equals(_todo.Value, interpretation))
+			if(string.Equals(_todo.Uri, interpretation))
 			   return _todo;
 			
-			if(string.Equals(_tvseries.Value, interpretation))
+			if(string.Equals(_tvseries.Uri, interpretation))
 			   return _tvseries;
 			
-			if(string.Equals(_website.Value, interpretation))
+			if(string.Equals(_website.Uri, interpretation))
 			   return _website;
 			   
-			KeyValuePair<string, string> datacont = _data_container.Search(interpretation);
-			if(datacont.Key != null)
+			NameUri datacont = _data_container.Search(interpretation);
+			if(datacont.Name != null)
 				return datacont;
 			
-			KeyValuePair<string, string> doc = _document.Search(interpretation);
-			if(doc.Key != null)
+			NameUri doc = _document.Search(interpretation);
+			if(doc.Name != null)
 				return doc;
 			
-			KeyValuePair<string, string> evnt_int = _event_interpretation.Search(interpretation);
-			if(evnt_int.Key != null)
+			NameUri evnt_int = _event_interpretation.Search(interpretation);
+			if(evnt_int.Name != null)
 				return evnt_int;
 			
-			KeyValuePair<string, string> media = _media.Search(interpretation);
-			if(media.Key != null)
+			NameUri media = _media.Search(interpretation);
+			if(media.Name != null)
 				return media;
 			
-			KeyValuePair<string, string> media_lst = _media_list.Search(interpretation);
-			if(media_lst.Key != null)
+			NameUri media_lst = _media_list.Search(interpretation);
+			if(media_lst.Name != null)
 				return media_lst;
 			
-			KeyValuePair<string, string> msg = _message.Search(interpretation);
-			if(msg.Key != null)
+			NameUri msg = _message.Search(interpretation);
+			if(msg.Name != null)
 				return msg;
 			
-			KeyValuePair<string, string> sw = _software.Search(interpretation);
-			if(sw.Key != null)
+			NameUri sw = _software.Search(interpretation);
+			if(sw.Name != null)
 				return sw;
 			   
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
 		private static Interpretation _singleton_obj = new Interpretation();
 		
-		private KeyValuePair<string, string> _alarm = new KeyValuePair<string, string>("Alarm", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Alarm");
+		private NameUri _alarm = new NameUri("Alarm", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Alarm");
 		
-		private KeyValuePair<string, string> _bookmark = new KeyValuePair<string, string>("Bookmark", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Bookmark");
+		private NameUri _bookmark = new NameUri("Bookmark", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Bookmark");
 		
-		private KeyValuePair<string, string> _bookmark_folder = new KeyValuePair<string, string>("BookmarkFolder", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#BookmarkFolder");
+		private NameUri _bookmark_folder = new NameUri("BookmarkFolder", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#BookmarkFolder");
 		
-		private KeyValuePair<string, string> _calendar = new KeyValuePair<string, string>("Calendar", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Calendar");
+		private NameUri _calendar = new NameUri("Calendar", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Calendar");
 		
-		private KeyValuePair<string, string> _event = new KeyValuePair<string, string>("Event", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Event");
+		private NameUri _event = new NameUri("Event", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Event");
 		
-		private KeyValuePair<string, string> _executable = new KeyValuePair<string, string>("Executable", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Executable");
+		private NameUri _executable = new NameUri("Executable", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Executable");
 		
-		private KeyValuePair<string, string> _font = new KeyValuePair<string, string>("Font", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Font");
+		private NameUri _font = new NameUri("Font", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Font");
 		
-		private KeyValuePair<string, string> _free_busy = new KeyValuePair<string, string>("Freebusy", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Freebusy");
+		private NameUri _free_busy = new NameUri("Freebusy", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Freebusy");
 		
-		private KeyValuePair<string, string> _journal = new KeyValuePair<string, string>("Journal", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Journal");
+		private NameUri _journal = new NameUri("Journal", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Journal");
 		
-		private KeyValuePair<string, string> _mail_box = new KeyValuePair<string, string>("Mailbox", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox");
+		private NameUri _mail_box = new NameUri("Mailbox", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox");
 		
-		private KeyValuePair<string, string> _mime_entity = new KeyValuePair<string, string>("MimeEntity", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity");
+		private NameUri _mime_entity = new NameUri("MimeEntity", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity");
 		
-		private KeyValuePair<string, string> _timezone = new KeyValuePair<string, string>("Timezone", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Timezone");
+		private NameUri _timezone = new NameUri("Timezone", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Timezone");
 		
-		private KeyValuePair<string, string> _todo = new KeyValuePair<string, string>("Todo", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Todo");
+		private NameUri _todo = new NameUri("Todo", "http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Todo");
 		
-		private KeyValuePair<string, string> _tvseries = new KeyValuePair<string, string>("TVSeries", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVSeries");
+		private NameUri _tvseries = new NameUri("TVSeries", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVSeries");
 		
-		private KeyValuePair<string, string> _website = new KeyValuePair<string, string>("Website", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Website");
+		private NameUri _website = new NameUri("Website", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Website");
 		
 		private DataContainerType _data_container = new DataContainerType();
 		
@@ -484,7 +484,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer
 		/// </remarks>
-		public KeyValuePair<string, string> DataContainer
+		public NameUri DataContainer
 		{
 			get
 			{
@@ -498,7 +498,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Archive
 		/// </remarks>
-		public KeyValuePair<string, string> Archive
+		public NameUri Archive
 		{
 			get
 			{
@@ -526,7 +526,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder
 		/// </remarks>
-		public KeyValuePair<string, string> Folder
+		public NameUri Folder
 		{
 			get
 			{
@@ -540,7 +540,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Trash
 		/// </remarks>
-		public KeyValuePair<string, string> Trash
+		public NameUri Trash
 		{
 			get
 			{
@@ -548,36 +548,36 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_datacontainer.Value, interpretation))
+			if(string.Equals(_datacontainer.Uri, interpretation))
 			   return _datacontainer;
 			
-			if(string.Equals(_archive.Value, interpretation))
+			if(string.Equals(_archive.Uri, interpretation))
 			   return _archive;
 			
-			if(string.Equals(_folder.Value, interpretation))
+			if(string.Equals(_folder.Uri, interpretation))
 			   return _folder;
 			
-			if(string.Equals(_trash.Value, interpretation))
+			if(string.Equals(_trash.Uri, interpretation))
 			   return _trash;
 			
-			KeyValuePair<string, string> fs = _filesystem.Search(interpretation);
-			if(fs.Key != null)
+			NameUri fs = _filesystem.Search(interpretation);
+			if(fs.Name != null)
 				return fs;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _datacontainer = new KeyValuePair<string, string>("DataContainer", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer");
+		private NameUri _datacontainer = new NameUri("DataContainer", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer");
 		
-		private KeyValuePair<string, string> _archive = new KeyValuePair<string, string>("Archive", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Archive");
+		private NameUri _archive = new NameUri("Archive", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Archive");
 		
-		private KeyValuePair<string, string> _folder = new KeyValuePair<string, string>("Folder", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder");
+		private NameUri _folder = new NameUri("Folder", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder");
 		
-		private KeyValuePair<string, string> _trash = new KeyValuePair<string, string>("Trash", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Trash");
+		private NameUri _trash = new NameUri("Trash", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Trash");
 		
 		private FileSystemType _filesystem = new FileSystemType();
 
@@ -592,7 +592,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem
 		/// </remarks>
-		public KeyValuePair<string, string> Filesystem
+		public NameUri Filesystem
 		{
 			get
 			{
@@ -606,7 +606,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Trash
 		/// </remarks>
-		public KeyValuePair<string, string> FilesystemImage
+		public NameUri FilesystemImage
 		{
 			get
 			{
@@ -614,22 +614,22 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_file_system_image.Value, interpretation))
+			if(string.Equals(_file_system_image.Uri, interpretation))
 			   return _file_system_image;
 			
-			if(string.Equals(_file_system.Value, interpretation))
+			if(string.Equals(_file_system.Uri, interpretation))
 			   return _file_system;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private static KeyValuePair<string, string> _file_system_image = new KeyValuePair<string, string>("FilesystemImage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FilesystemImage");
+		private static NameUri _file_system_image = new NameUri("FilesystemImage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#FilesystemImage");
 		
-		private static KeyValuePair<string, string> _file_system = new KeyValuePair<string, string>("Filesystem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem");
+		private static NameUri _file_system = new NameUri("Filesystem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem");
 		
 		#endregion
 	}
@@ -646,7 +646,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Document
 		/// </remarks>
-		public KeyValuePair<string, string> Document
+		public NameUri Document
 		{
 			get
 			{
@@ -660,7 +660,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MindMap
 		/// </remarks>
-		public KeyValuePair<string, string> MindMap
+		public NameUri MindMap
 		{
 			get
 			{
@@ -674,7 +674,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Presentation
 		/// </remarks>
-		public KeyValuePair<string, string> Presentation
+		public NameUri Presentation
 		{
 			get
 			{
@@ -688,7 +688,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Spreadsheet
 		/// </remarks>
-		public KeyValuePair<string, string> Spreadsheet
+		public NameUri Spreadsheet
 		{
 			get
 			{
@@ -710,36 +710,36 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_document.Value, interpretation))
+			if(string.Equals(_document.Uri, interpretation))
 			   return _document;
 			
-			if(string.Equals(_mind_map.Value, interpretation))
+			if(string.Equals(_mind_map.Uri, interpretation))
 			   return _mind_map;
 			
-			if(string.Equals(_presentation.Value, interpretation))
+			if(string.Equals(_presentation.Uri, interpretation))
 			   return _presentation;
 			
-			if(string.Equals(_spreadsheet.Value, interpretation))
+			if(string.Equals(_spreadsheet.Uri, interpretation))
 			   return _spreadsheet;
 			
-			KeyValuePair<string, string> textdoc = _text_document.Search(interpretation);
-			if(textdoc.Key != null)
+			NameUri textdoc = _text_document.Search(interpretation);
+			if(textdoc.Name != null)
 				return textdoc;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 	
-		private KeyValuePair<string, string> _document = new KeyValuePair<string, string>("Document", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Document");
+		private NameUri _document = new NameUri("Document", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Document");
 		
-		private KeyValuePair<string, string> _mind_map = new KeyValuePair<string, string>("MindMap", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MindMap");
+		private NameUri _mind_map = new NameUri("MindMap", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MindMap");
 		
-		private KeyValuePair<string, string> _presentation = new KeyValuePair<string, string>("Presentation", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Presentation");
+		private NameUri _presentation = new NameUri("Presentation", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Presentation");
 		
-		private KeyValuePair<string, string> _spreadsheet = new KeyValuePair<string, string>("Spreadsheet", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Spreadsheet");
+		private NameUri _spreadsheet = new NameUri("Spreadsheet", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Spreadsheet");
 		
 		private TextDocumentType _text_document = new TextDocumentType();
 		
@@ -754,7 +754,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PaginatedTextDocument
 		/// </remarks>
-		public KeyValuePair<string, string> PaginatedTextDocument
+		public NameUri PaginatedTextDocument
 		{
 			get
 			{
@@ -777,21 +777,21 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_paginated_text_document.Value, interpretation))
+			if(string.Equals(_paginated_text_document.Uri, interpretation))
 			   return _paginated_text_document;
 			
-			KeyValuePair<string, string> plaintext = _plain_text_document.Search(interpretation);
-			if(plaintext.Key != null)
+			NameUri plaintext = _plain_text_document.Search(interpretation);
+			if(plaintext.Name != null)
 				return plaintext;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _paginated_text_document = new KeyValuePair<string, string>("Spreadsheet", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Spreadsheet");
+		private NameUri _paginated_text_document = new NameUri("Spreadsheet", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Spreadsheet");
 		
 		private PlainTextDocumentType _plain_text_document = new PlainTextDocumentType();
 		
@@ -806,7 +806,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PlainTextDocument
 		/// </remarks>
-		public KeyValuePair<string, string> PlainTextDocument
+		public NameUri PlainTextDocument
 		{
 			get
 			{
@@ -820,7 +820,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HtmlDocument
 		/// </remarks>
-		public KeyValuePair<string, string> HtmlDocument
+		public NameUri HtmlDocument
 		{
 			get
 			{
@@ -834,7 +834,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SourceCode
 		/// </remarks>
-		public KeyValuePair<string, string> SourceCode
+		public NameUri SourceCode
 		{
 			get
 			{
@@ -842,27 +842,27 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_plain_text_document.Value, interpretation))
+			if(string.Equals(_plain_text_document.Uri, interpretation))
 			   return _plain_text_document;
 			
-			if(string.Equals(_html_document.Value, interpretation))
+			if(string.Equals(_html_document.Uri, interpretation))
 			   return _html_document;
 			
-			if(string.Equals(_source_code.Value, interpretation))
+			if(string.Equals(_source_code.Uri, interpretation))
 			   return _source_code;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _plain_text_document = new KeyValuePair<string, string>("PlainTextDocument", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PlainTextDocument");
+		private NameUri _plain_text_document = new NameUri("PlainTextDocument", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PlainTextDocument");
 		
-		private KeyValuePair<string, string> _html_document = new KeyValuePair<string, string>("HtmlDocument", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HtmlDocument");
+		private NameUri _html_document = new NameUri("HtmlDocument", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HtmlDocument");
 		
-		private KeyValuePair<string, string> _source_code = new KeyValuePair<string, string>("SourceCode", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SourceCode");
+		private NameUri _source_code = new NameUri("SourceCode", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#SourceCode");
 		
 		#endregion
 	}
@@ -879,7 +879,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventInterpretation
 		/// </remarks>
-		public KeyValuePair<string, string> EventInterpretation
+		public NameUri EventInterpretation
 		{
 			get
 			{
@@ -893,7 +893,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent
 		/// </remarks>
-		public KeyValuePair<string, string> AccessEvent
+		public NameUri AccessEvent
 		{
 			get
 			{
@@ -907,7 +907,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#CreateEvent
 		/// </remarks>
-		public KeyValuePair<string, string> CreateEvent
+		public NameUri CreateEvent
 		{
 			get
 			{
@@ -921,7 +921,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#DeleteEvent
 		/// </remarks>
-		public KeyValuePair<string, string> DeleteEvent
+		public NameUri DeleteEvent
 		{
 			get
 			{
@@ -935,7 +935,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#LeaveEvent 
 		/// </remarks>
-		public KeyValuePair<string, string> LeaveEvent
+		public NameUri LeaveEvent
 		{
 			get
 			{
@@ -949,7 +949,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ModifyEvent
 		/// </remarks>
-		public KeyValuePair<string, string> ModifyEvent
+		public NameUri ModifyEvent
 		{
 			get
 			{
@@ -963,7 +963,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ReceiveEvent
 		/// </remarks>
-		public KeyValuePair<string, string> ReceiveEvent
+		public NameUri ReceiveEvent
 		{
 			get
 			{
@@ -977,7 +977,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SendEvent
 		/// </remarks>
-		public KeyValuePair<string, string> SendEvent
+		public NameUri SendEvent
 		{
 			get
 			{
@@ -985,53 +985,53 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_event_interpretation.Value, interpretation))
+			if(string.Equals(_event_interpretation.Uri, interpretation))
 			   return _event_interpretation;
 			
-			if(string.Equals(_access_event.Value, interpretation))
+			if(string.Equals(_access_event.Uri, interpretation))
 			   return _access_event;
 			
-			if(string.Equals(_create_event.Value, interpretation))
+			if(string.Equals(_create_event.Uri, interpretation))
 			   return _create_event;
 			
-			if(string.Equals(_delete_event.Value, interpretation))
+			if(string.Equals(_delete_event.Uri, interpretation))
 			   return _delete_event;
 			
-			if(string.Equals(_leave_event.Value, interpretation))
+			if(string.Equals(_leave_event.Uri, interpretation))
 			   return _leave_event;
 			
-			if(string.Equals(_modify_event.Value, interpretation))
+			if(string.Equals(_modify_event.Uri, interpretation))
 			   return _modify_event;
 			
-			if(string.Equals(_receive_event.Value, interpretation))
+			if(string.Equals(_receive_event.Uri, interpretation))
 			   return _receive_event;
 			
-			if(string.Equals(_send_event.Value, interpretation))
+			if(string.Equals(_send_event.Uri, interpretation))
 			   return _send_event;
 			
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _event_interpretation = new KeyValuePair<string, string>("EventInterpretation", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventInterpretation");
+		private NameUri _event_interpretation = new NameUri("EventInterpretation", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventInterpretation");
 		
-		private KeyValuePair<string, string> _access_event = new KeyValuePair<string, string>("AccessEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent");
+		private NameUri _access_event = new NameUri("AccessEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent");
 		
-		private KeyValuePair<string, string> _create_event = new KeyValuePair<string, string>("CreateEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#CreateEvent");
+		private NameUri _create_event = new NameUri("CreateEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#CreateEvent");
 		
-		private KeyValuePair<string, string> _delete_event = new KeyValuePair<string, string>("DeleteEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#DeleteEvent");
+		private NameUri _delete_event = new NameUri("DeleteEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#DeleteEvent");
 		
-		private KeyValuePair<string, string> _leave_event = new KeyValuePair<string, string>("LeaveEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#LeaveEvent");
+		private NameUri _leave_event = new NameUri("LeaveEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#LeaveEvent");
 		
-		private KeyValuePair<string, string> _modify_event = new KeyValuePair<string, string>("ModifyEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ModifyEvent");
+		private NameUri _modify_event = new NameUri("ModifyEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ModifyEvent");
 		
-		private KeyValuePair<string, string> _receive_event = new KeyValuePair<string, string>("ReceiveEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ReceiveEvent");
+		private NameUri _receive_event = new NameUri("ReceiveEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ReceiveEvent");
 		
-		private KeyValuePair<string, string> _send_event = new KeyValuePair<string, string>("SendEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SendEvent");
+		private NameUri _send_event = new NameUri("SendEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SendEvent");
 		
 		#endregion
 	}
@@ -1048,7 +1048,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Media
 		/// </remarks>
-		public KeyValuePair<string, string> Media
+		public NameUri Media
 		{
 			get
 			{
@@ -1062,7 +1062,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Audio
 		/// </remarks>
-		public KeyValuePair<string, string> Audio
+		public NameUri Audio
 		{
 			get
 			{
@@ -1076,7 +1076,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#MusicPiece
 		/// </remarks>
-		public KeyValuePair<string, string> MusicPiece
+		public NameUri MusicPiece
 		{
 			get
 			{
@@ -1098,31 +1098,31 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_media.Value, interpretation))
+			if(string.Equals(_media.Uri, interpretation))
 			   return _media;
 			
-			if(string.Equals(_audio.Value, interpretation))
+			if(string.Equals(_audio.Uri, interpretation))
 			   return _audio;
 			
-			if(string.Equals(_music_piece.Value, interpretation))
+			if(string.Equals(_music_piece.Uri, interpretation))
 			   return _music_piece;
 			
-			KeyValuePair<string, string> visual = _visual_type.Search(interpretation);
-			if(visual.Key != null)
+			NameUri visual = _visual_type.Search(interpretation);
+			if(visual.Name != null)
 				return visual;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _media = new KeyValuePair<string, string>("Media", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Media");
+		private NameUri _media = new NameUri("Media", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Media");
 		
-		private KeyValuePair<string, string> _audio = new KeyValuePair<string, string>("Audio", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Audio");
+		private NameUri _audio = new NameUri("Audio", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Audio");
 		
-		private KeyValuePair<string, string> _music_piece = new KeyValuePair<string, string>("MusicPiece", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#MusicPiece");
+		private NameUri _music_piece = new NameUri("MusicPiece", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#MusicPiece");
 		
 		private VisualType _visual_type = new VisualType();
 		
@@ -1137,7 +1137,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Visual
 		/// </remarks>
-		public KeyValuePair<string, string> Visual
+		public NameUri Visual
 		{
 			get
 			{
@@ -1173,25 +1173,25 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_visual.Value, interpretation))
+			if(string.Equals(_visual.Uri, interpretation))
 			   return _visual;
 			
-			KeyValuePair<string, string> image = _image.Search(interpretation);
-			if(image.Key != null)
+			NameUri image = _image.Search(interpretation);
+			if(image.Name != null)
 				return image;
 			
-			KeyValuePair<string, string> video = _video.Search(interpretation);
-			if(video.Key != null)
+			NameUri video = _video.Search(interpretation);
+			if(video.Name != null)
 				return video;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _visual = new KeyValuePair<string, string>("Visual", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Visual");
+		private NameUri _visual = new NameUri("Visual", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Visual");
 		
 		private ImageType _image = new ImageType();
 		
@@ -1208,7 +1208,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Image
 		/// </remarks>
-		public KeyValuePair<string, string> Image
+		public NameUri Image
 		{
 			get
 			{
@@ -1222,7 +1222,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Icon
 		/// </remarks>
-		public KeyValuePair<string, string> Icon
+		public NameUri Icon
 		{
 			get
 			{
@@ -1250,7 +1250,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#VectorImage
 		/// </remarks>
-		public KeyValuePair<string, string> VectorImage
+		public NameUri VectorImage
 		{
 			get
 			{
@@ -1258,33 +1258,33 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_image.Value, interpretation))
+			if(string.Equals(_image.Uri, interpretation))
 			   return _image;
 			
-			if(string.Equals(_icon.Value, interpretation))
+			if(string.Equals(_icon.Uri, interpretation))
 			   return _icon;
 			
-			KeyValuePair<string, string> rast = _raster_image.Search(interpretation);
-			if(rast.Key != null)
+			NameUri rast = _raster_image.Search(interpretation);
+			if(rast.Name != null)
 				return rast;
 			
-			if(string.Equals(_vector_image.Value, interpretation))
+			if(string.Equals(_vector_image.Uri, interpretation))
 			   return _vector_image;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _image = new KeyValuePair<string, string>("Image", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Image");
+		private NameUri _image = new NameUri("Image", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Image");
 		
-		private KeyValuePair<string, string> _icon = new KeyValuePair<string, string>("Icon", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Icon");
+		private NameUri _icon = new NameUri("Icon", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Icon");
 		
 		private RasterImageType _raster_image = new RasterImageType();
 		
-		private KeyValuePair<string, string> _vector_image = new KeyValuePair<string, string>("VectorImage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#VectorImage");
+		private NameUri _vector_image = new NameUri("VectorImage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#VectorImage");
 		
 		
 		#endregion
@@ -1298,7 +1298,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RasterImage
 		/// </remarks>
-		public KeyValuePair<string, string> RasterImage
+		public NameUri RasterImage
 		{
 			get
 			{
@@ -1312,7 +1312,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Cursor
 		/// </remarks>
-		public KeyValuePair<string, string> Cursor
+		public NameUri Cursor
 		{
 			get
 			{
@@ -1320,22 +1320,22 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_raster_image.Value, interpretation))
+			if(string.Equals(_raster_image.Uri, interpretation))
 			   return _raster_image;
 			
-			if(string.Equals(_cursor.Value, interpretation))
+			if(string.Equals(_cursor.Uri, interpretation))
 			   return _cursor;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _raster_image = new KeyValuePair<string, string>("RasterImage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RasterImage");
+		private NameUri _raster_image = new NameUri("RasterImage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#RasterImage");
 		
-		private KeyValuePair<string, string> _cursor = new KeyValuePair<string, string>("Cursor", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Cursor");
+		private NameUri _cursor = new NameUri("Cursor", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Cursor");
 		
 		#endregion
 	}
@@ -1348,7 +1348,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Video
 		/// </remarks>
-		public KeyValuePair<string, string> Video
+		public NameUri Video
 		{
 			get
 			{
@@ -1362,7 +1362,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#Movie
 		/// </remarks>
-		public KeyValuePair<string, string> Movie
+		public NameUri Movie
 		{
 			get
 			{
@@ -1376,7 +1376,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVShow
 		/// </remarks>
-		public KeyValuePair<string, string> TVShow
+		public NameUri TVShow
 		{
 			get
 			{
@@ -1384,27 +1384,27 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_video.Value, interpretation))
+			if(string.Equals(_video.Uri, interpretation))
 			   return _video;
 			
-			if(string.Equals(_movie.Value, interpretation))
+			if(string.Equals(_movie.Uri, interpretation))
 			   return _movie;
 			
-			if(string.Equals(_tv_show.Value, interpretation))
+			if(string.Equals(_tv_show.Uri, interpretation))
 			   return _tv_show;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 		
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _video = new KeyValuePair<string, string>("Video", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Video");
+		private NameUri _video = new NameUri("Video", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Video");
 		
-		private KeyValuePair<string, string> _movie = new KeyValuePair<string, string>("Movie", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#Movie");
+		private NameUri _movie = new NameUri("Movie", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#Movie");
 		
-		private KeyValuePair<string, string> _tv_show = new KeyValuePair<string, string>("TVShow", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVShow");
+		private NameUri _tv_show = new NameUri("TVShow", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVShow");
 		
 		#endregion
 	}
@@ -1421,7 +1421,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaList
 		/// </remarks>
-		public KeyValuePair<string, string> MediaList
+		public NameUri MediaList
 		{
 			get
 			{
@@ -1435,7 +1435,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#MusicAlbum
 		/// </remarks>
-		public KeyValuePair<string, string> MusicAlbum
+		public NameUri MusicAlbum
 		{
 			get
 			{
@@ -1443,22 +1443,22 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_media_list.Value, interpretation))
+			if(string.Equals(_media_list.Uri, interpretation))
 			   return _media_list;
 			
-			if(string.Equals(_music_album.Value, interpretation))
+			if(string.Equals(_music_album.Uri, interpretation))
 			   return _music_album;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 				
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _media_list = new KeyValuePair<string, string>("MediaList", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaList");
+		private NameUri _media_list = new NameUri("MediaList", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaList");
 		
-		private KeyValuePair<string, string> _music_album = new KeyValuePair<string, string>("MusicAlbum", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#MusicAlbum");
+		private NameUri _music_album = new NameUri("MusicAlbum", "http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#MusicAlbum");
 		
 		#endregion
 	}
@@ -1475,7 +1475,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message
 		/// </remarks>
-		public KeyValuePair<string, string> Message
+		public NameUri Message
 		{
 			get
 			{
@@ -1489,7 +1489,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email
 		/// </remarks>
-		public KeyValuePair<string, string> Email
+		public NameUri Email
 		{
 			get
 			{
@@ -1503,7 +1503,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#IMMessage
 		/// </remarks>
-		public KeyValuePair<string, string> IMMessage
+		public NameUri IMMessage
 		{
 			get
 			{
@@ -1511,27 +1511,27 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_message.Value, interpretation))
+			if(string.Equals(_message.Uri, interpretation))
 			   return _message;
 			
-			if(string.Equals(_email.Value, interpretation))
+			if(string.Equals(_email.Uri, interpretation))
 			   return _email;
 			
-			if(string.Equals(_im_message.Value, interpretation))
+			if(string.Equals(_im_message.Uri, interpretation))
 			   return _im_message;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 				
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _message = new KeyValuePair<string, string>("Message", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message");
+		private NameUri _message = new NameUri("Message", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message");
 		
-		private KeyValuePair<string, string> _email = new KeyValuePair<string, string>("Email", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email");
+		private NameUri _email = new NameUri("Email", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Email");
 		
-		private KeyValuePair<string, string> _im_message = new KeyValuePair<string, string>("IMMessage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#IMMessage");
+		private NameUri _im_message = new NameUri("IMMessage", "http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#IMMessage");
 		
 		#endregion
 	}
@@ -1548,7 +1548,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Software
 		/// </remarks>
-		public KeyValuePair<string, string> Software
+		public NameUri Software
 		{
 			get
 			{
@@ -1562,7 +1562,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Application
 		/// </remarks>
-		public KeyValuePair<string, string> Application
+		public NameUri Application
 		{
 			get
 			{
@@ -1576,7 +1576,7 @@ namespace Zeitgeist.Datamodel
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#OperatingSystem
 		/// </remarks>
-		public KeyValuePair<string, string> OperatingSystem
+		public NameUri OperatingSystem
 		{
 			get
 			{
@@ -1584,27 +1584,27 @@ namespace Zeitgeist.Datamodel
 			}
 		}
 		
-		public KeyValuePair<string, string> Search(string interpretation)
+		public NameUri Search(string interpretation)
 		{
-			if(string.Equals(_software.Value, interpretation))
+			if(string.Equals(_software.Uri, interpretation))
 			   return _software;
 			
-			if(string.Equals(_application.Value, interpretation))
+			if(string.Equals(_application.Uri, interpretation))
 			   return _application;
 			
-			if(string.Equals(_os.Value, interpretation))
+			if(string.Equals(_os.Uri, interpretation))
 			   return _os;
 			
-			return new KeyValuePair<string, string>();
+			return new NameUri();
 		}
 				
 		#region Private Fields
 		
-		private KeyValuePair<string, string> _software = new KeyValuePair<string, string>("Software", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Software");
+		private NameUri _software = new NameUri("Software", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Software");
 		
-		private KeyValuePair<string, string> _application = new KeyValuePair<string, string>("Application", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Application");
+		private NameUri _application = new NameUri("Application", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Application");
 		
-		private KeyValuePair<string, string> _os = new KeyValuePair<string, string>("OperatingSystem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#OperatingSystem");
+		private NameUri _os = new NameUri("OperatingSystem", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#OperatingSystem");
 		
 		#endregion
 	}
