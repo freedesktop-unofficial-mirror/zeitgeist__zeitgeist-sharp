@@ -749,6 +749,20 @@ namespace Zeitgeist.Datamodel
 	public class TextDocumentType
 	{
 		/// <summary>
+		/// A text document. (Display name: 'TextDocument')
+		/// </summary>
+		/// <remarks>
+		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#TextDocument
+		/// </remarks>
+		public NameUri TextDocument
+		{
+			get
+			{
+				return _text_document;
+			}
+		}
+		
+		/// <summary>
 		/// A file containing a text document, that is unambiguously divided into pages. Examples might include PDF, DOC, PS, DVI etc. (Display name: 'PaginatedTextDocument')
 		/// </summary>
 		/// <remarks>
@@ -791,7 +805,9 @@ namespace Zeitgeist.Datamodel
 		
 		#region Private Fields
 		
-		private NameUri _paginated_text_document = new NameUri("Spreadsheet", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Spreadsheet");
+		private NameUri _text_document = new NameUri("TextDocument", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#TextDocument");
+		
+		private NameUri _paginated_text_document = new NameUri("PaginatedTextDocument", "http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PaginatedTextDocument");
 		
 		private PlainTextDocumentType _plain_text_document = new PlainTextDocumentType();
 		
