@@ -12,6 +12,8 @@ namespace Zeitgeist.Datamodel
 	{
 		public NameUri()
 		{
+			Name = string.Empty;
+			Uri = string.Empty;
 		}
 			
 		public NameUri(string name, string uri)

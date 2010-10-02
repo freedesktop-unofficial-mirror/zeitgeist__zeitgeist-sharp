@@ -21,6 +21,10 @@ namespace Zeitgeist.Datamodel
 		{
 			Subjects = new List<Subject>();
 			Payload =new byte[]{};
+			Timestamp = DateTime.Now;
+			Actor = string.Empty;
+			Interpretation = new NameUri();
+			Manifestation = new NameUri();
 		}
 		
 		/// <summary>
@@ -311,9 +315,9 @@ namespace Zeitgeist.Datamodel
 		
 		#region RawEvent Private Fields
 		
-		private string[] _metadata;
-		private string[][] _subjects;
-		private byte[] _payload;
+		public string[] _metadata;
+		public string[][] _subjects;
+		public byte[] _payload;
 		
 		#endregion
 	}

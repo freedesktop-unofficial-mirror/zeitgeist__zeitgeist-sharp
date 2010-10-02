@@ -393,34 +393,34 @@ namespace Zeitgeist.Datamodel
 			   return _website;
 			   
 			NameUri datacont = _data_container.Search(interpretation);
-			if(datacont.Name != null)
+			if(datacont != null)
 				return datacont;
 			
 			NameUri doc = _document.Search(interpretation);
-			if(doc.Name != null)
+			if(doc != null)
 				return doc;
 			
 			NameUri evnt_int = _event_interpretation.Search(interpretation);
-			if(evnt_int.Name != null)
+			if(evnt_int != null)
 				return evnt_int;
 			
 			NameUri media = _media.Search(interpretation);
-			if(media.Name != null)
+			if(media != null)
 				return media;
 			
 			NameUri media_lst = _media_list.Search(interpretation);
-			if(media_lst.Name != null)
+			if(media_lst != null)
 				return media_lst;
 			
 			NameUri msg = _message.Search(interpretation);
-			if(msg.Name != null)
+			if(msg != null)
 				return msg;
 			
 			NameUri sw = _software.Search(interpretation);
-			if(sw.Name != null)
+			if(sw != null)
 				return sw;
 			   
-			return new NameUri();
+			return null;;
 		}
 		
 		#region Private Fields
@@ -563,10 +563,10 @@ namespace Zeitgeist.Datamodel
 			   return _trash;
 			
 			NameUri fs = _filesystem.Search(interpretation);
-			if(fs.Name != null)
+			if(fs != null)
 				return fs;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -622,7 +622,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_file_system.Uri, interpretation))
 			   return _file_system;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -725,10 +725,10 @@ namespace Zeitgeist.Datamodel
 			   return _spreadsheet;
 			
 			NameUri textdoc = _text_document.Search(interpretation);
-			if(textdoc.Name != null)
+			if(textdoc != null)
 				return textdoc;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -797,10 +797,10 @@ namespace Zeitgeist.Datamodel
 			   return _paginated_text_document;
 			
 			NameUri plaintext = _plain_text_document.Search(interpretation);
-			if(plaintext.Name != null)
+			if(plaintext != null)
 				return plaintext;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -869,7 +869,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_source_code.Uri, interpretation))
 			   return _source_code;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -1028,7 +1028,7 @@ namespace Zeitgeist.Datamodel
 			   return _send_event;
 			
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -1126,10 +1126,10 @@ namespace Zeitgeist.Datamodel
 			   return _music_piece;
 			
 			NameUri visual = _visual_type.Search(interpretation);
-			if(visual.Name != null)
+			if(visual != null)
 				return visual;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -1195,14 +1195,14 @@ namespace Zeitgeist.Datamodel
 			   return _visual;
 			
 			NameUri image = _image.Search(interpretation);
-			if(image.Name != null)
+			if(image != null)
 				return image;
 			
 			NameUri video = _video.Search(interpretation);
-			if(video.Name != null)
+			if(video != null)
 				return video;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -1283,13 +1283,13 @@ namespace Zeitgeist.Datamodel
 			   return _icon;
 			
 			NameUri rast = _raster_image.Search(interpretation);
-			if(rast.Name != null)
+			if(rast != null)
 				return rast;
 			
 			if(string.Equals(_vector_image.Uri, interpretation))
 			   return _vector_image;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -1344,7 +1344,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_cursor.Uri, interpretation))
 			   return _cursor;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -1411,7 +1411,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_tv_show.Uri, interpretation))
 			   return _tv_show;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -1467,7 +1467,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_music_album.Uri, interpretation))
 			   return _music_album;
 			
-			return new NameUri();
+			return null;
 		}
 				
 		#region Private Fields
@@ -1538,7 +1538,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_im_message.Uri, interpretation))
 			   return _im_message;
 			
-			return new NameUri();
+			return null;
 		}
 				
 		#region Private Fields
@@ -1611,7 +1611,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_os.Uri, interpretation))
 			   return _os;
 			
-			return new NameUri();
+			return null;
 		}
 				
 		#region Private Fields

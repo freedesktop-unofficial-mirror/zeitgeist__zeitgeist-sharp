@@ -6,8 +6,19 @@ namespace Zeitgeist.Datamodel
 	/// <summary>
 	/// Represents a subject of an Event
 	/// </summary>
-	public struct Subject
+	public class Subject
 	{
+		public Subject()
+		{
+			Uri = string.Empty;
+			Origin = string.Empty;
+			MimeType = string.Empty;
+			Text = string.Empty;
+			Storage = string.Empty;
+			Interpretation = new NameUri();
+			Manifestation = new NameUri();
+		}
+		
 		/// <summary>
 		/// URI of the subject
 		/// </summary>

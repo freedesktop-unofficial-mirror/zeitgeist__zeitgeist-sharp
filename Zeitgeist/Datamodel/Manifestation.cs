@@ -157,11 +157,11 @@ namespace Zeitgeist.Datamodel
 			   return _cal_data_obj;
 			
 			NameUri event_manifestation = _event_manifestation.Search(manifestation);
-			if(event_manifestation.Name != null)
+			if(event_manifestation != null)
 				return event_manifestation;
 			
 			NameUri file_data_obj = _file_data_obj.Search(manifestation);
-			if(file_data_obj.Name != null)
+			if(file_data_obj != null)
 				return file_data_obj;
 			
 			if(string.Equals(_hd_partition.Uri, manifestation))
@@ -182,7 +182,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_sw_service.Uri, manifestation))
 			   return _sw_service;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -316,7 +316,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_world_activity.Uri, manifestation))
 			   return _world_activity;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -403,13 +403,13 @@ namespace Zeitgeist.Datamodel
 			   return _deleted_resc;
 			
 			NameUri embedded_file_data_obj = _embedded_file_data_obj.Search(manifestation);
-			if(embedded_file_data_obj.Name != null)
+			if(embedded_file_data_obj != null)
 				return embedded_file_data_obj;
 			
 			if(string.Equals(_remote_data_obj.Uri, manifestation))
 			   return _remote_data_obj;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields
@@ -480,7 +480,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_attachment.Uri, manifestation))
 			   return _attachment;
 			
-			return new NameUri();
+			return null;
 		}
 		
 		#region Private Fields

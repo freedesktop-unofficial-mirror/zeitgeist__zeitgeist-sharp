@@ -93,7 +93,7 @@ namespace Zeitgeist.Testsuite
 		[Test()]
 		public void TestUserActivity()
 		{
-			Assert.AreEqual(Manifestation.Instance.EventManifestation.UserActivity.Name, "ScheduledActivity");
+			Assert.AreEqual(Manifestation.Instance.EventManifestation.UserActivity.Name, "UserActivity");
 			Assert.AreEqual(Manifestation.Instance.EventManifestation.UserActivity.Uri, "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#UserActivity");
 		}
 		
