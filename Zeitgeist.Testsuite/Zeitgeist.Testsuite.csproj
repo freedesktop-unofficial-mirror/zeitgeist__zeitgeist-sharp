@@ -1,1 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?><Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">  <PropertyGroup>    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>    <ProductVersion>8.0.50727</ProductVersion>    <SchemaVersion>2.0</SchemaVersion>    <ProjectGuid>{319E54B4-6715-4287-8E3C-88B7CDDA167A}</ProjectGuid>    <OutputType>Library</OutputType>    <RootNamespace>Zeitgeist.Testsuite</RootNamespace>    <AssemblyName>Zeitgeist.Testsuite</AssemblyName>  </PropertyGroup>  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">    <DebugSymbols>true</DebugSymbols>    <DebugType>full</DebugType>    <Optimize>false</Optimize>    <OutputPath>bin\Debug</OutputPath>    <DefineConstants>DEBUG</DefineConstants>    <ErrorReport>prompt</ErrorReport>    <WarningLevel>4</WarningLevel>    <ConsolePause>false</ConsolePause>  </PropertyGroup>  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">    <DebugType>none</DebugType>    <Optimize>false</Optimize>    <OutputPath>bin\Release</OutputPath>    <ErrorReport>prompt</ErrorReport>    <WarningLevel>4</WarningLevel>    <ConsolePause>false</ConsolePause>  </PropertyGroup>  <ItemGroup>    <Reference Include="System" />    <Reference Include="nunit.core, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">      <Package>mono-nunit</Package>    </Reference>    <Reference Include="nunit.framework, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">      <Package>mono-nunit</Package>    </Reference>  </ItemGroup>  <ItemGroup>    <Compile Include="Test.cs" />    <Compile Include="Datamodel\TestInterpretation.cs" />  </ItemGroup>  <ItemGroup>    <ProjectReference Include="..\Zeitgeist\Zeitgeist.csproj">      <Project>{A8352F1A-F10C-41E6-B6B0-655703358EF4}</Project>      <Name>Zeitgeist</Name>    </ProjectReference>  </ItemGroup>  <ItemGroup>    <Folder Include="Log\" />    <Folder Include="Blacklist\" />    <Folder Include="Datasource\" />    <Folder Include="Datamodel\" />  </ItemGroup>  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />  <ProjectExtensions>    <MonoDevelop>      <Properties InternalTargetFrameworkVersion="3.5" xmlns="" />    </MonoDevelop>  </ProjectExtensions></Project>
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{319E54B4-6715-4287-8E3C-88B7CDDA167A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Zeitgeist.Testsuite</RootNamespace>
+    <AssemblyName>Zeitgeist.Testsuite</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="nunit.core, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <Package>mono-nunit</Package>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.4.7.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <Package>mono-nunit</Package>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Test.cs" />
+    <Compile Include="Datamodel\TestInterpretation.cs" />
+    <Compile Include="Datamodel\TestManifestation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Zeitgeist\Zeitgeist.csproj">
+      <Project>{A8352F1A-F10C-41E6-B6B0-655703358EF4}</Project>
+      <Name>Zeitgeist</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Log\" />
+    <Folder Include="Blacklist\" />
+    <Folder Include="Datasource\" />
+    <Folder Include="Datamodel\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties InternalTargetFrameworkVersion="3.5" />
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>
