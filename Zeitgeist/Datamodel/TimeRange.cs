@@ -5,40 +5,40 @@ namespace Zeitgeist.Datamodel
 	/// <summary>
 	/// The type which deals with Start and End time for an event.
 	/// </summary>
-	public struct TimeRange
+	public class TimeRange
 	{
-		public TimeRange(DateTime startTime, DateTime endTime)
+		public TimeRange(Int64 startTime, Int64 endTime)
 		{
-			_begin = startTime;
-			_end = endTime;
+			_begin = ZsUtils.ToDateTime((ulong)startTime);
+			_end = ZsUtils.ToDateTime((ulong)endTime);
 		}
 		/// <summary>
 		/// The begin Timestamp of the event. Seconds elapsed since Epoch
 		/// </summary>
-		public Int64 Begin
+		public DateTime Begin
 		{
 			get
 			{
-				return (Int64)ZsUtils.ToTimestamp(_begin);
+				return _begin;
 			}
 			set
 			{
-				_begin = ZsUtils.ToDateTime((ulong)value);
+				_begin = value;
 			}
 		}
 		
 		/// <summary>
 		/// The end Timestamp of the event. Seconds elapsed since Epoch
 		/// </summary>
-		public Int64 End
+		public DateTime End
 		{
 			get
 			{
-				return (Int64)ZsUtils.ToTimestamp(_end);
+				return _end;
 			}
 			set
 			{
-				_end = ZsUtils.ToDateTime((ulong)value);
+				_end = value;
 			}
 		}
 		
@@ -47,6 +47,41 @@ namespace Zeitgeist.Datamodel
 		private DateTime _begin;
 		
 		private DateTime _end;
+		
+		#endregion
+	}
+	
+	internal struct RawTimeRange
+	{
+		public Int64 Begin
+		{
+			get
+			{
+				return _begin;
+			}
+			set
+			{
+				_begin = value;
+			}
+		}
+		
+		public Int64 End
+		{
+			get
+			{
+				return _end;
+			}
+			set
+			{
+				_end = value;
+			}
+		}
+		
+		#region Private Fields
+		
+		private Int64 _begin;
+		
+		private Int64 _end;
 		
 		#endregion
 	}

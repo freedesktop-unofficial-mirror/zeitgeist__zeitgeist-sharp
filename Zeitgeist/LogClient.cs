@@ -73,6 +73,7 @@ namespace Zeitgeist
 		
 		/// <summary>
 		/// Delete a set of events from the log given their IDs
+		/// If all the Event ID provided does not exist, then null is returned
 		/// </summary>
 		/// <param name="eventIds">
 		/// The eventId (of type <see cref="T:System.Collection.Generic.List{System.UInt32}"/> ) of the Events to be deleted 
@@ -82,7 +83,12 @@ namespace Zeitgeist
 		/// </returns>
 		public TimeRange DeleteEvents(List<uint> eventIds)
 		{
-			return srcInterface.DeleteEvents(eventIds.ToArray());
+			RawTimeRange rawRange = srcInterface.DeleteEvents(eventIds.ToArray());
+			
+			if(rawRange.Begin < 0 &&  rawRange.End < 0)
+				return null;
+			else
+				return new TimeRange(rawRange.Begin, rawRange.End);
 		}
 		
 		#endregion
@@ -127,7 +133,11 @@ namespace Zeitgeist
 		{
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			
-			UInt32[] eventIds = srcInterface.FindEventIds(range, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
+			RawTimeRange rawRange = new RawTimeRange();
+			rawRange.Begin = (long)ZsUtils.ToTimestamp(range.Begin);
+			rawRange.End = (long)ZsUtils.ToTimestamp(range.End);
+			
+			UInt32[] eventIds = srcInterface.FindEventIds(rawRange, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
 			
 			return new List<uint>(eventIds);
 		}
@@ -164,7 +174,11 @@ namespace Zeitgeist
 		{
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			
-			RawEvent[] events = srcInterface.FindEvents(range, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
+			RawTimeRange rawRange = new RawTimeRange();
+			rawRange.Begin = (long)ZsUtils.ToTimestamp(range.Begin);
+			rawRange.End = (long)ZsUtils.ToTimestamp(range.End);
+			
+			RawEvent[] events = srcInterface.FindEvents(rawRange, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
 			
 			return ZsUtils.FromRawEventList(events);
 		}
@@ -202,7 +216,11 @@ namespace Zeitgeist
 			RawEvent[] rawEvents = ZsUtils.ToRawEventList(eventTemplates).ToArray();
 			RawEvent[] rawEventTemplates = ZsUtils.ToRawEventList(resultEventTemplates).ToArray();
 			
-			string[] uris = srcInterface.FindRelatedUris(range, rawEvents, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
+			RawTimeRange rawRange = new RawTimeRange();
+			rawRange.Begin = (long)ZsUtils.ToTimestamp(range.Begin);
+			rawRange.End = (long)ZsUtils.ToTimestamp(range.End);
+			
+			string[] uris = srcInterface.FindRelatedUris(rawRange, rawEvents, rawEventTemplates, (uint)state, maxEvents, (uint) resType);
 			
 			return new List<string>(uris);
 		}
@@ -224,11 +242,16 @@ namespace Zeitgeist
 		/// Event templates <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.Event}"/> that events must match in order to trigger the monitor 
 		/// </param>
 		public void InstallMonitor(string monitorPath, TimeRange range, List<Event> eventTemplates)
-		{ srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
+		{
+			srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
+			
+			RawTimeRange rawRange = new RawTimeRange();
+			rawRange.Begin = (long)ZsUtils.ToTimestamp(range.Begin);
+			rawRange.End = (long)ZsUtils.ToTimestamp(range.End);
 			
 			ObjectPath path = new ObjectPath(monitorPath);
 			List<RawEvent> rawEvents = ZsUtils.ToRawEventList(eventTemplates);
-			srcInterface.InstallMonitor(path, range, rawEvents.ToArray());
+			srcInterface.InstallMonitor(path, rawRange, rawEvents.ToArray());
 		}
 		
 		/// <summary>

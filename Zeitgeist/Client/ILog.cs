@@ -59,7 +59,7 @@ namespace Zeitgeist.Client
 		/// An array containing the IDs of all matching events, up to a maximum of num_events events. 
 		/// Sorted and grouped as defined by the result_type parameter. <see cref="T:System.UInt32[]"/>
 		/// </returns>
-		UInt32[] FindEventIds(TimeRange range, RawEvent[] eventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
+		UInt32[] FindEventIds(RawTimeRange range, RawEvent[] eventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
 		
 		/// <summary>
 		/// Get events matching a given set of templates.
@@ -87,7 +87,7 @@ namespace Zeitgeist.Client
 		/// <returns>
 		/// Full event data for all the requested IDs, up to a maximum of num_events events, sorted and grouped as defined by the result_type parameter. <see cref="T:Zeitgeist.Datamodel.RawEvent[]"/>
 		/// </returns>
-		RawEvent[] FindEvents(TimeRange range, RawEvent[] eventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
+		RawEvent[] FindEvents(RawTimeRange range, RawEvent[] eventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
 		
 		/// <summary>
 		/// Warning: This API is EXPERIMENTAL and is not fully supported yet.
@@ -115,7 +115,7 @@ namespace Zeitgeist.Client
 		/// <returns>
 		/// A list of URIs matching the described criteria <see cref="T:System.String[]"/>
 		/// </returns>
-		string[] FindRelatedUris(TimeRange range, RawEvent[] eventTemplates, RawEvent[] resultEventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
+		string[] FindRelatedUris(RawTimeRange range, RawEvent[] eventTemplates, RawEvent[] resultEventTemplates, UInt32 state, UInt32 maxEvents, UInt32 resType);
 		
 		/// <summary>
 		/// Inserts events into the log. Returns an array containing the IDs of the inserted events
@@ -144,7 +144,7 @@ namespace Zeitgeist.Client
 		/// <param name="eventTemplates">
 		/// RawEvent templates that events must match in order to trigger the monitor <see cref="T:Zeitgeist.Datamodel.RawEvent[]"/>
 		/// </param>
-		void InstallMonitor(ObjectPath monitorPath, TimeRange range, RawEvent[] eventTemplates);
+		void InstallMonitor(ObjectPath monitorPath, RawTimeRange range, RawEvent[] eventTemplates);
 		
 		/// <summary>
 		/// Remove a monitor installed with InstallMonitor()
@@ -161,9 +161,9 @@ namespace Zeitgeist.Client
 		/// The eventId of the Events to be deleted <see cref="T:System.UInt32[]"/>
 		/// </param>
 		/// <returns>
-		/// The TimeRange <see cref="T:Zeitgeist.Datamodel.TimeRange"/>
+		/// The TimeRange <see cref="T:Zeitgeist.Datamodel.RawTimeRange"/>
 		/// </returns>
-		TimeRange DeleteEvents(UInt32[] eventIds);
+		RawTimeRange DeleteEvents(UInt32[] eventIds);
 		
 		/// <summary>
 		/// Delete the log file and all its content

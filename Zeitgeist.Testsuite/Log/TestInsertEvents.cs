@@ -33,22 +33,6 @@ namespace Zeitgeist.Testsuite
 			Assert.IsNotNull(eventIds);
 			CollectionAssert.IsNotEmpty(eventIds);
 		}
-		
-		[Test()]
-		public void TestInsertEventsFail()
-		{
-			Event ev = new Event();
-			
-			Subject sub11 = new Subject();
-			
-			ev.Subjects.Add(sub11);
-			
-			LogClient client = new LogClient();
-			List<uint> eventIds = client.InsertEvents(new List<Event>() { ev });
-			
-			Assert.IsNotNull(eventIds);
-			CollectionAssert.IsNotEmpty(eventIds);
-		}
 	}
 }
 
