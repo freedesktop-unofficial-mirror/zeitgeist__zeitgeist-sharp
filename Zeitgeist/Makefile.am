@@ -47,6 +47,7 @@ all: $(ASSEMBLY) $(PROGRAMFILES) $(LINUX_PKGCONFIG)
 FILES = \
 	AssemblyInfo.cs \
 	Datamodel/Event.cs \
+	Datamodel/NameUri.cs \
 	Datamodel/Subject.cs \
 	Datamodel/ResultType.cs \
 	Datamodel/TimeRange.cs \

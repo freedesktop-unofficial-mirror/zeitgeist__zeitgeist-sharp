@@ -45,6 +45,7 @@
     <Compile Include="Log\TestInsertEvents.cs" />
     <Compile Include="Log\TestDeleteEvents.cs" />
     <Compile Include="Log\TestFindEventIds.cs" />
+    <Compile Include="Log\TestFindEvents.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zeitgeist\Zeitgeist.csproj">
