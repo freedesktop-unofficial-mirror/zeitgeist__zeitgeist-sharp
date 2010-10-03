@@ -7,6 +7,10 @@ namespace Zeitgeist.Datamodel
 	/// </summary>
 	public class TimeRange
 	{
+		public TimeRange()
+		{
+		}
+		
 		public TimeRange(Int64 startTime, Int64 endTime)
 		{
 			_begin = ZsUtils.ToDateTime((ulong)startTime);
@@ -79,9 +83,9 @@ namespace Zeitgeist.Datamodel
 		
 		#region Private Fields
 		
-		private Int64 _begin;
+		public Int64 _begin;
 		
-		private Int64 _end;
+		public Int64 _end;
 		
 		#endregion
 	}

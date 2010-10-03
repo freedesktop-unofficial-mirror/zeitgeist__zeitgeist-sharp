@@ -21,8 +21,8 @@ namespace Zeitgeist.Datamodel
 		{
 			Subjects = new List<Subject>();
 			Payload =new byte[]{};
-			Timestamp = DateTime.Now;
 			Actor = string.Empty;
+			Timestamp = ZsUtils.Epoch;
 			Interpretation = new NameUri();
 			Manifestation = new NameUri();
 		}
@@ -190,13 +190,9 @@ namespace Zeitgeist.Datamodel
 			for(int i=0; i< metaDataList.Capacity; i++)
 				metaDataList.Add(null);
 			
-			if(ev.Id == 0)
-				metaDataList[(int)EventMetadataPosition.Id] = string.Empty;
-			else
-				metaDataList[(int)EventMetadataPosition.Id] = ev.Id.ToString();
+			metaDataList[(int)EventMetadataPosition.Id] = (ev.Id == 0)? string.Empty: ev.Id.ToString();
+			metaDataList[(int)EventMetadataPosition.Timestamp] = (ev.Id == 0)? string.Empty: ZsUtils.ToTimestamp(ev.Timestamp).ToString();
 			
-			
-			metaDataList[(int)EventMetadataPosition.Timestamp] = ZsUtils.ToTimestamp(ev.Timestamp).ToString();
 			metaDataList[(int)EventMetadataPosition.Actor] = ev.Actor;
 			metaDataList[(int)EventMetadataPosition.Interpretation] = ev.Interpretation.Uri;
 			metaDataList[(int)EventMetadataPosition.Manifestation] = ev.Manifestation.Uri;

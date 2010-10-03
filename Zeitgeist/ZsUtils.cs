@@ -191,7 +191,5 @@ namespace Zeitgeist
 			return interfaceInst;
 		}
 	}
-	
-	
 }
 
