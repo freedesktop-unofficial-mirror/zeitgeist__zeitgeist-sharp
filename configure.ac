@@ -1,7 +1,5 @@
-dnl Warning: This is an automatically generated file, do not edit!
-dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.54])
-AC_INIT([Zeitgeist], [0.1])
+AC_INIT([zeitgeist-sharp], [0.1])
 AM_INIT_AUTOMAKE([foreign])
 AM_MAINTAINER_MODE
 
@@ -17,46 +15,40 @@ SHAMROCK_EXPAND_DATADIR
 
 AC_PROG_INSTALL
 
+# DO NOT TOUCH!
+# Except you know what you do
+# This defines the library ABI version!
+ASSEMBLY_VERSION="0.1.0.0"
+AC_SUBST(ASSEMBLY_VERSION)
+
+PKG_CHECK_MODULES([MONO], [mono >= 2.4])
+
 AC_PATH_PROG(GMCS, gmcs, no)
 if test "x$GMCS" = "xno"; then
-        AC_MSG_ERROR([gmcs Not found])
+        AC_MSG_ERROR([You need to install gmcs])
 fi
 
-
-AC_ARG_ENABLE(debug_x86,
-	AC_HELP_STRING([--enable-debug_x86],
-		[Use 'DEBUG_X86' Configuration [default=NO]]),
-		enable_debug_x86=yes, enable_debug_x86=no)
-AM_CONDITIONAL(ENABLE_DEBUG_X86, test x$enable_debug_x86 = xyes)
-if test "x$enable_debug_x86" = "xyes" ; then
-	CONFIG_REQUESTED="yes"
-fi
-AC_ARG_ENABLE(release_x86,
-	AC_HELP_STRING([--enable-release_x86],
-		[Use 'RELEASE_X86' Configuration [default=YES]]),
-		enable_release_x86=yes, enable_release_x86=no)
-AM_CONDITIONAL(ENABLE_RELEASE_X86, test x$enable_release_x86 = xyes)
-if test "x$enable_release_x86" = "xyes" ; then
-	CONFIG_REQUESTED="yes"
-fi
-if test -z "$CONFIG_REQUESTED" ; then
-	AM_CONDITIONAL(ENABLE_RELEASE_X86, true)
-	enable_release_x86=yes
+AC_PATH_PROG(XBUILD, xbuild, no)
+if test "x$XBUILD" = "xno"; then
+        AC_MSG_ERROR([You need to install xbuild])
 fi
 
+AC_PATH_PROG(GACUTIL, gacutil)
+if test x$GACUTIL = x; then
+	AC_MSG_ERROR([You need to install gacutil])
+fi
+GACUTIL_FLAGS='-root $(DESTDIR)$(libdir)'
+AC_SUBST(GACUTIL_FLAGS)
 
 dnl package checks, common for all configs
 PKG_CHECK_MODULES([NDESK_DBUS_10], [ndesk-dbus-1.0])
 PKG_CHECK_MODULES([NDESK_DBUS_GLIB_10], [ndesk-dbus-glib-1.0])
 
-dnl package checks, per config
-
-
 AC_CONFIG_FILES([
-Zeitgeist/zeitgeist.pc
+Zeitgeist/zeitgeist-sharp.pc
+Zeitgeist/AssemblyInfo.cs
 Zeitgeist/Makefile
 Makefile
-
 ])
 
 AC_OUTPUT

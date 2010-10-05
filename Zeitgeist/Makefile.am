@@ -1,99 +1,39 @@
+OUTPUT_DIR = $(top_builddir)/bin
+OBJECT_DIR = $(OUTPUT_DIR)/obj
+SOURCE_PATTERNS = *.cs */*.cs */*/*.cs */*/*/*.cs
+XBUILD_FLAGS = /p:Configuration=Debug /p:WarningLevel=0 /p:OutputPath=$(abspath $(OUTPUT_DIR)) /p:BaseIntermediateOutputPath=$(abspath $(OBJECT_DIR))/ /p:DocumentationFile=
 
-EXTRA_DIST =  
+ZS_SOURCE_FILES = $(foreach pattern, $(SOURCE_PATTERNS), $(wildcard $(pattern)))
+ZS_ASSEMBLY_NAME = zeitgeist-sharp
+ZS_ASSEMBLY_TARGET = $(OUTPUT_DIR)/$(ZS_ASSEMBLY_NAME).dll
+ZS_ASSEMBLY_PC = $(srcdir)/$(PACKAGE_NAME).pc
+ZS_BUILD_FILE = $(srcdir)/Zeitgeist.csproj
+ZS_XBUILD_FLAGS = $(XBUILD_FLAGS)
+ZS_GACUTIL_INSTALL = $(GACUTIL) -i $(ZS_ASSEMBLY_TARGET) -f $(GACUTIL_FLAGS)
+ZS_GACUTIL_UNINSTALL = $(GACUTIL) -u $(ZS_ASSEMBLY_NAME) $(GACUTIL_FLAGS)
 
-# Warning: This is an automatically generated file, do not edit!
+# magic automake variables
+pkglib_DATA = \
+	$(ZS_ASSEMBLY_TARGET) $(ZS_ASSEMBLY_TARGET).mdb
 
-if ENABLE_DEBUG_X86
-ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize+ -debug "-define:DEBUG"
-ASSEMBLY = bin/Debug/Zeitgeist.dll
-ASSEMBLY_MDB = $(ASSEMBLY).mdb
-COMPILE_TARGET = library
-PROJECT_REFERENCES = 
-BUILD_DIR = bin/Debug
+EXTRA_DIST = \
+	 $(ZS_SOURCE_FILES) $(ZS_BUILD_FILE) zeitgeist-sharp.snk
 
-ZEITGEIST_DLL_MDB_SOURCE=bin/Debug/Zeitgeist.dll.mdb
-ZEITGEIST_DLL_MDB=$(BUILD_DIR)/Zeitgeist.dll.mdb
+pkgconfigdir = $(libdir)/pkgconfig
+pkgconfig_DATA = $(ZS_ASSEMBLY_PC)
+# end of magic
 
-endif
+$(ZS_ASSEMBLY_TARGET) $(ZS_ASSEMBLY_TARGET).mdb: $(ZS_BUILD_FILE) $(ZS_SOURCE_FILES)
+	$(XBUILD) $(ZS_XBUILD_FLAGS) $(ZS_BUILD_FILE)
 
-if ENABLE_RELEASE_X86
-ASSEMBLY_COMPILER_COMMAND = gmcs
-ASSEMBLY_COMPILER_FLAGS =  -noconfig -codepage:utf8 -warn:4 -optimize-
-ASSEMBLY = bin/Release/Zeitgeist.dll
-ASSEMBLY_MDB = 
-COMPILE_TARGET = library
-PROJECT_REFERENCES = 
-BUILD_DIR = bin/Release
+clean-local:
+	$(XBUILD) $(ZS_XBUILD_FLAGS) /t:Clean $(ZS_BUILD_FILE)
 
-ZEITGEIST_DLL_MDB=
+install-data-local: $(ZS_ASSEMBLY_TARGET) $(ZS_ASSEMBLY_TARGET).mdb
+	echo "$(ZS_GACUTIL_INSTALL)";  \
+	  $(ZS_GACUTIL_INSTALL)  || exit 1;
 
-endif
+uninstall-local: 
+	echo "$(ZS_GACUTIL_UNINSTALL)";  \
+	  $(ZS_GACUTIL_UNINSTALL)  || exit 1;
 
-AL=al2
-SATELLITE_ASSEMBLY_NAME=$(notdir $(basename $(ASSEMBLY))).resources.dll
-
-PROGRAMFILES = \
-	$(ZEITGEIST_DLL_MDB)  
-
-LINUX_PKGCONFIG = \
-	$(ZEITGEIST_PC)  
-
-
-RESGEN=resgen2
-	
-all: $(ASSEMBLY) $(PROGRAMFILES) $(LINUX_PKGCONFIG) 
-
-FILES = \
-	AssemblyInfo.cs \
-	Datamodel/Event.cs \
-	Datamodel/Subject.cs \
-	Datamodel/ResultType.cs \
-	Datamodel/TimeRange.cs \
-	Datamodel/StorageState.cs \
-	Datamodel/DataSource.cs \
-	Delegates.cs \
-	Client/IDataSource.cs \
-	Client/IBlacklist.cs \
-	Client/ILog.cs \
-	DataSourceClient.cs \
-	BlacklistClient.cs \
-	LogClient.cs \
-	ZsUtils.cs \
-	Datamodel/Interpretation.cs \
-	Datamodel/Manifestation.cs 
-
-DATA_FILES = 
-
-RESOURCES = 
-
-EXTRAS = \
-	Datamodel \
-	Client \
-	zeitgeist.pc.in 
-
-REFERENCES =  \
-	System \
-	$(NDESK_DBUS_10_LIBS) \
-	$(NDESK_DBUS_GLIB_10_LIBS)
-
-DLL_REFERENCES = 
-
-CLEANFILES = $(PROGRAMFILES) $(LINUX_PKGCONFIG) 
-
-include $(top_srcdir)/Makefile.include
-
-ZEITGEIST_PC = $(BUILD_DIR)/zeitgeist.pc
-
-$(eval $(call emit-deploy-wrapper,ZEITGEIST_PC,zeitgeist.pc))
-
-
-$(eval $(call emit_resgen_targets))
-$(build_xamlg_list): %.xaml.g.cs: %.xaml
-	xamlg '$<'
-
-$(ASSEMBLY_MDB): $(ASSEMBLY)
-
-$(ASSEMBLY): $(build_sources) $(build_resources) $(build_datafiles) $(DLL_REFERENCES) $(PROJECT_REFERENCES) $(build_xamlg_list) $(build_satellite_assembly_list)
-	mkdir -p $(shell dirname $(ASSEMBLY))
-	$(ASSEMBLY_COMPILER_COMMAND) $(ASSEMBLY_COMPILER_FLAGS) -out:$(ASSEMBLY) -target:$(COMPILE_TARGET) $(build_sources_embed) $(build_resources_embed) $(build_references_ref)
