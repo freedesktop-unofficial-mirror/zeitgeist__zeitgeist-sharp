@@ -101,7 +101,7 @@ namespace Zeitgeist.Datamodel
 	/// <summary>
 	/// The Raw form of Event. Get Event.FromRaw to create an Event from a RawEvent
 	/// </summary>
-	internal struct RawEvent 
+	internal class RawEvent 
 	{
 		/// <summary>
 		/// The event Metadata
@@ -147,6 +147,11 @@ namespace Zeitgeist.Datamodel
 				_payload = value;
 			}
 		}
+		/// <summary>
+		/// The default constructor of RawEvent
+		/// </summary>
+		public RawEvent()
+		{}
 		
 		/// <summary>
 		/// A parameterized constructor for creating a RawEvent

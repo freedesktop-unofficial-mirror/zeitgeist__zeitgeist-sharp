@@ -55,7 +55,7 @@ namespace Zeitgeist.Datamodel
 		#endregion
 	}
 	
-	internal struct RawTimeRange
+	internal class RawTimeRange
 	{
 		public Int64 Begin
 		{
