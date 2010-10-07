@@ -420,7 +420,7 @@ namespace Zeitgeist.Datamodel
 			if(sw != null)
 				return sw;
 			   
-			return null;;
+			return new NameUri(ZsUtils.GetStringAnchor(interpretation), interpretation);
 		}
 		
 		#region Private Fields

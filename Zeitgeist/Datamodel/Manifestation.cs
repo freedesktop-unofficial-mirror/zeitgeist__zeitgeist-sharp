@@ -182,7 +182,7 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_sw_service.Uri, manifestation))
 			   return _sw_service;
 			
-			return null;
+			return new NameUri(ZsUtils.GetStringAnchor(manifestation), manifestation);
 		}
 		
 		#region Private Fields

@@ -13,16 +13,21 @@ namespace Zeitgeist.Testsuite
 		public void TestFindEventIdsPass()
 		{
 			TimeRange range = new TimeRange();
-			range.Begin = DateTime.Now.AddDays(-1);
+			range.Begin = DateTime.Now.AddDays(-30);
 			range.End = DateTime.Now;
 			
 			Event e = new Event();
-			e.Actor = "application://gedit.desktop";
+			e.Actor = "application:///usr/share/applications/eog.desktop";
 			Subject sub = new Subject();
 			e.Subjects.Add(sub);
 			
+			Event e2 = new Event();
+			e2.Actor = "application://eog.desktop";
+			Subject sub2 = new Subject();
+			e2.Subjects.Add(sub2);
+			
 			LogClient client = new LogClient();
-			List<uint> eventIds = client.FindEventIds(range, new List<Event>(){e}, StorageState.Any, 20, ResultType.MostRecentEvents);
+			List<uint> eventIds = client.FindEventIds(range, new List<Event>(){e,e2}, StorageState.Any, 20, ResultType.MostRecentEvents);
 			
 			CollectionAssert.IsNotEmpty(eventIds);
 		}

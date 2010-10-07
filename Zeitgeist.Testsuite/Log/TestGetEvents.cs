@@ -17,8 +17,11 @@ namespace Zeitgeist.Testsuite
 			List<uint> eventIdList = new List<uint>(){ 1, 2, 3 };
 			List<Event> events = client.GetEvents(eventIdList);
 			
+			Assert.IsNotNull(events);
+			
 			foreach(Event ev in events)
 			{
+				Assert.IsNotNull(ev);
 				Assert.IsNotNull(ev.Interpretation);
 				Assert.IsNotNull(ev.Manifestation);
 				Assert.IsNotEmpty(ev.Interpretation.Uri);

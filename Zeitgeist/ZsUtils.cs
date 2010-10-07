@@ -190,6 +190,17 @@ namespace Zeitgeist
 			
 			return interfaceInst;
 		}
+		
+		public static string GetStringAnchor(string str)
+		{
+			if(str != null)
+			{
+				int pos = str.IndexOf('#');
+				return str.Substring(pos+1);
+			}
+			else
+				return null;
+		}
 	}
 }
 

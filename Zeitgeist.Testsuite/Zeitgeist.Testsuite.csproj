@@ -38,7 +38,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
     <Compile Include="Datamodel\TestInterpretation.cs" />
     <Compile Include="Datamodel\TestManifestation.cs" />
     <Compile Include="Log\TestGetEvents.cs" />
