@@ -43,6 +43,7 @@ AC_SUBST(GACUTIL_FLAGS)
 dnl package checks, common for all configs
 PKG_CHECK_MODULES([NDESK_DBUS_10], [ndesk-dbus-1.0])
 PKG_CHECK_MODULES([NDESK_DBUS_GLIB_10], [ndesk-dbus-glib-1.0])
+PKG_CHECK_MODULES([GLIB_SHARP_20], [glib-sharp-2.0])
 
 AC_CONFIG_FILES([
 Zeitgeist/zeitgeist-sharp.pc
