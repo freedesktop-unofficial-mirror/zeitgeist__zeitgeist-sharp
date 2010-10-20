@@ -10,9 +10,9 @@ namespace Zeitgeist.Datamodel
 	[Interface("org.gnome.zeitgeist.Monitor")]
 	internal interface IMonitor
 	{
-		void NotifyInsert(TimeRange range, RawEvent[] events);
+		void NotifyInsert(long[] range, RawEvent[] events);
 		
-		void NotifyDelete(TimeRange range, UInt32[] evendIds);
+		void NotifyDelete(long[] range, UInt32[] evendIds);
 	}
 	
 	internal class RawMonitor : IMonitor
@@ -20,9 +20,7 @@ namespace Zeitgeist.Datamodel
 		public RawMonitor(string monitorPath)
 		{
 			ObjectPath objPath = new ObjectPath (monitorPath);
-			Console.WriteLine("Registering the session bus");
 			Bus.Session.Register (objPath, this);
-			Console.WriteLine("Registeredthe session bus");
 			
 			loop = new MainLoop();
 			worker = new BackgroundWorker();
@@ -31,24 +29,23 @@ namespace Zeitgeist.Datamodel
 				loop.Run();
 			};
 			
-			Console.WriteLine("About to start the mainloop");
 			worker.RunWorkerAsync();
 		}
 		
-		public void NotifyInsert(TimeRange range, RawEvent[] events)
+		public void NotifyInsert(long[] range, RawEvent[] events)
 		{
 			List<Event> eventList = ZsUtils.FromRawEventList(events);
 			
 			if(Inserted != null)
-				Inserted(range, eventList);
+				Inserted(new TimeRange(range[0], range[1]), eventList);
 		}
 		
-		public void NotifyDelete(TimeRange range, UInt32[] evendIds)
+		public void NotifyDelete(long[] range, UInt32[] evendIds)
 		{
 			List<UInt32> eventIdList = new List<UInt32>(evendIds);
 			
 			if(Deleted != null)
-				Deleted(range, eventIdList);
+				Deleted(new TimeRange(range[0], range[1]), eventIdList);
 		}
 		
 		public event NotifyInsertHandler Inserted;
@@ -104,4 +101,3 @@ namespace Zeitgeist.Datamodel
 		private RawMonitor _monitor;
 	}
 }
-

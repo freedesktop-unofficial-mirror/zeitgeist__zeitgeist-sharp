@@ -12,7 +12,6 @@ namespace Zeitgeist.Testsuite
 		[Test()]
 		public void TestMonitorPass ()
 		{
-			Console.WriteLine("Event 1");
 			Event ev1 = new Event();
 			ev1.Interpretation = Interpretation.Instance.EventInterpretation.ModifyEvent;
 			ev1.Manifestation = Manifestation.Instance.HardDiskPartition;
@@ -25,7 +24,6 @@ namespace Zeitgeist.Testsuite
 			ev1.Subjects.Add(sub11);
 			ev1.Subjects.Add(sub12);
 			
-			Console.WriteLine("Event 2");
 			Event ev2 = new Event();
 			ev2.Interpretation = Interpretation.Instance.EventInterpretation.ModifyEvent;
 			ev2.Manifestation = Manifestation.Instance.SoftwareItem;
@@ -35,7 +33,6 @@ namespace Zeitgeist.Testsuite
 			ev2.Subjects.Add(sub21);
 			ev2.Subjects.Add(sub22);
 			
-			Console.WriteLine("Monitor to be created");
 			Monitor mn = new Monitor("/org/gnome/zeitgeist/unittest");
 			mn.Inserted += delegate(TimeRange range, List<Event> events) {
 				Console.WriteLine("Inserted");
@@ -45,7 +42,6 @@ namespace Zeitgeist.Testsuite
 				};	
 			
 			LogClient cl = new LogClient();
-			Console.WriteLine("Created LogClient");
 			TimeRange rng = new TimeRange();
 			rng.Begin = DateTime.Now.AddDays(-1);
 			rng.End = DateTime.Now.AddDays(1);
@@ -57,10 +53,12 @@ namespace Zeitgeist.Testsuite
 			ev.Subjects.Add(sub1);
 			ev.Subjects.Add(sub2);
 			
-			Console.WriteLine("About to install monitor");
 			cl.InstallMonitor("/org/gnome/zeitgeist/unittest", rng, new List<Event>() {ev});
 			
 			List<uint> eventidList = cl.InsertEvents(new List<Event>() { ev1, ev2 });
+			cl.DeleteEvents(new List<uint>(){eventidList[0]});
+			
+			cl.RemoveMonitor("/org/gnome/zeitgeist/unittest");
 		}
 	}
 }
