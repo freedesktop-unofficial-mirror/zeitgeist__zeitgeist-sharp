@@ -20,7 +20,9 @@ namespace Zeitgeist.Datamodel
 		public RawMonitor(string monitorPath)
 		{
 			ObjectPath objPath = new ObjectPath (monitorPath);
+			Console.WriteLine("Registering the session bus");
 			Bus.Session.Register (objPath, this);
+			Console.WriteLine("Registeredthe session bus");
 			
 			loop = new MainLoop();
 			worker = new BackgroundWorker();
@@ -29,6 +31,7 @@ namespace Zeitgeist.Datamodel
 				loop.Run();
 			};
 			
+			Console.WriteLine("About to start the mainloop");
 			worker.RunWorkerAsync();
 		}
 		
