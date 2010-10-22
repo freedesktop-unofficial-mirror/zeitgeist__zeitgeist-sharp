@@ -17,12 +17,12 @@ namespace Zeitgeist.Testsuite
 			range.End = DateTime.Now;
 			
 			Event e = new Event();
-			e.Actor = "application:///usr/share/applications/eog.desktop";
+			e.Actor = "application:///usr/share/applications/gedit.desktop";
 			Subject sub = new Subject();
 			e.Subjects.Add(sub);
 			
 			Event e2 = new Event();
-			e2.Actor = "application://eog.desktop";
+			e2.Actor = "application://gedit.desktop";
 			Subject sub2 = new Subject();
 			e2.Subjects.Add(sub2);
 			

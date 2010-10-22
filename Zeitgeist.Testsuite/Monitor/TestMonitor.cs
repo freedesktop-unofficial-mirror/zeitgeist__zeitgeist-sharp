@@ -56,7 +56,8 @@ namespace Zeitgeist.Testsuite
 			cl.InstallMonitor("/org/gnome/zeitgeist/unittest", rng, new List<Event>() {ev});
 			
 			List<uint> eventidList = cl.InsertEvents(new List<Event>() { ev1, ev2 });
-			cl.DeleteEvents(new List<uint>(){eventidList[0]});
+			Assert.AreEqual(eventidList.Count, 2);
+			cl.DeleteEvents(new List<uint>(){eventidList[0], eventidList[1]});
 			
 			cl.RemoveMonitor("/org/gnome/zeitgeist/unittest");
 		}

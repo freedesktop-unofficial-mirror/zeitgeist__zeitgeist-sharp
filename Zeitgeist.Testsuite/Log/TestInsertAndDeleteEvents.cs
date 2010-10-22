@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace Zeitgeist.Testsuite
 {
 	[TestFixture()]
-	public class TestDeleteEvents
+	public class TestInsertAndDeleteEvents
 	{
 		[Test()]
 		public void TestDeleteEventsPass()
@@ -41,7 +41,7 @@ namespace Zeitgeist.Testsuite
 		{
 			LogClient client = new LogClient();
 			
-			TimeRange range = client.DeleteEvents(new List<uint>(){ 3000 });
+			TimeRange range = client.DeleteEvents(new List<uint>(){ 30000 });
 			
 			Assert.IsNull(range);
 		}

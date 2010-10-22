@@ -41,11 +41,10 @@
     <Compile Include="Datamodel\TestInterpretation.cs" />
     <Compile Include="Datamodel\TestManifestation.cs" />
     <Compile Include="Log\TestGetEvents.cs" />
-    <Compile Include="Log\TestInsertEvents.cs" />
-    <Compile Include="Log\TestDeleteEvents.cs" />
     <Compile Include="Log\TestFindEventIds.cs" />
     <Compile Include="Log\TestFindEvents.cs" />
-    <Compile Include="Blacklist\TestMonitor.cs" />
+    <Compile Include="Log\TestInsertAndDeleteEvents.cs" />
+    <Compile Include="Monitor\TestMonitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zeitgeist\Zeitgeist.csproj">
@@ -55,9 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Log\" />
-    <Folder Include="Blacklist\" />
     <Folder Include="Datasource\" />
     <Folder Include="Datamodel\" />
+    <Folder Include="Monitor\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
