@@ -18,7 +18,7 @@ AC_PROG_INSTALL
 # DO NOT TOUCH!
 # Except you know what you do
 # This defines the library ABI version!
-ASSEMBLY_VERSION="0.1.0.0"
+ASSEMBLY_VERSION="0.1.0.1"
 AC_SUBST(ASSEMBLY_VERSION)
 
 PKG_CHECK_MODULES([MONO], [mono >= 2.4])

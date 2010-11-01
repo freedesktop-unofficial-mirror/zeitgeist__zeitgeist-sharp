@@ -63,6 +63,7 @@
     <Compile Include="Datamodel\NameUri.cs" />
     <Compile Include="Datamodel\Monitor.cs" />
     <Compile Include="Datamodel\Delegates.cs" />
+    <Compile Include="AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />

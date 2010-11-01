@@ -9,9 +9,11 @@ namespace Zeitgeist.Datamodel
 	/// Core data structure in the Zeitgeist framework. It is an optimized and convenient representation of an event.
 	/// This class is designed so that you can pass it directly over DBus using the Python DBus bindings. 
 	/// It will automagically be marshalled with the signature a(asaasay). 
+	/// </summary>
+	/// <remarks>
 	/// This class does integer based lookups everywhere and can wrap any conformant data structure without the need for marshalling back and forth between DBus wire format. 
 	/// These two properties makes it highly efficient and is recommended for use everywhere.
-	/// </summary>
+	/// </remarks>
 	public class Event
 	{ 
 		/// <summary>
