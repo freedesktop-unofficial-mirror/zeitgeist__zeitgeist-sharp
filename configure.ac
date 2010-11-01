@@ -1,5 +1,5 @@
 AC_PREREQ([2.54])
-AC_INIT([zeitgeist-sharp], [0.1])
+AC_INIT([zeitgeist-sharp], [0.1.0.1])
 AM_INIT_AUTOMAKE([foreign])
 AM_MAINTAINER_MODE
 
