@@ -36,4 +36,3 @@ install-data-local: $(ZS_ASSEMBLY_TARGET) $(ZS_ASSEMBLY_TARGET).mdb
 uninstall-local: 
 	echo "$(ZS_GACUTIL_UNINSTALL)";  \
 	  $(ZS_GACUTIL_UNINSTALL)  || exit 1;
-

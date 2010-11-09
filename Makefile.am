@@ -1,2 +1,3 @@
 EXTRA_DIST =  expansions.m4
 SUBDIRS = Zeitgeist
+EXTRA_DIST = LICENSE MAINTAINERS

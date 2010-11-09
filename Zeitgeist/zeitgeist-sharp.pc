@@ -1,5 +1,5 @@
 Name: zeitgeist-sharp
 Description: Zeitgeist C# binding
-Version: 0.1.0.1
+Version: 0.1.0.2
 
-Libs: -r:/usr/lib/zeitgeist-sharp/zeitgeist-sharp.dll
+Libs: -r:/usr/local/lib/zeitgeist-sharp/zeitgeist-sharp.dll
