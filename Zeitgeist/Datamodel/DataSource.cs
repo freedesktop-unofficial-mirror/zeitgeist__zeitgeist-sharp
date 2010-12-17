@@ -229,13 +229,13 @@ namespace Zeitgeist.Datamodel
 		/// </param>
 		public RawDataSource(string uid, string name, string desc, RawEvent[] events, bool running, UInt64 Lastseen, bool enabled)
 		{
-			UniqueId = uid;
-			Name = name;
-			Description = desc;
-			RawEvents = events;
-			Running = running;
-			LastSeen = Lastseen;
-			Enabled = enabled;
+			this.UniqueId = uid;
+			this.Name = name;
+			this.Description = desc;
+			this.RawEvents = events;
+			this.Running = running;
+			this.LastSeen = Lastseen;
+			this.Enabled = enabled;
 		}
 		
 		/// <summary>
