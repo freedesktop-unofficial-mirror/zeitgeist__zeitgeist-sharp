@@ -122,7 +122,7 @@ namespace Zeitgeist
 				rawEventList.Add(evnt);
 			}
 			
-			return srcInterface.RegisterDataSources(uniqueId, name, description, rawEventList.ToArray());
+			return srcInterface.RegisterDataSource(uniqueId, name, description, rawEventList.ToArray());
 		}
 		
 		/// <summary>
@@ -156,7 +156,7 @@ namespace Zeitgeist
 		
 		private IDataSource srcInterface;
 		
-		private static string objectPath = "/org/gnome/zeitgeist/log/activity";
+		private static string objectPath = "/org/gnome/zeitgeist/data_source_registry";
 	}
 }
 

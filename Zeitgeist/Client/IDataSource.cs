@@ -61,7 +61,7 @@ namespace Zeitgeist.Client
 		/// <returns>
 		/// true is successful, false otherwise <see cref="System.Boolean"/>
 		/// </returns>
-		bool RegisterDataSources(string unique_id, string name, string description, RawEvent[] events);
+		bool RegisterDataSource(string unique_id, string name, string description, RawEvent[] events);
 		
 		/// <summary>
 		/// Enables/Disables the DataSource identified by a uniqueId
