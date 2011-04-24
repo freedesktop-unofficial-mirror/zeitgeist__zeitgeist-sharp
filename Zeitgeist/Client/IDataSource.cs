@@ -31,7 +31,7 @@ namespace Zeitgeist.Client
 	/// The Zeitgeist engine maintains a publicly available list of recognized data-sources 
 	/// (components inserting information into Zeitgeist). An option to disable such data-providers is also provided.
 	/// </summary>
-	[NDesk.DBus.Interface ("org.gnome.zeitgeist.DataSourceRegistry")]
+	[DBus.Interface ("org.gnome.zeitgeist.DataSourceRegistry")]
 	internal interface IDataSource
 	{
 		/// <summary>

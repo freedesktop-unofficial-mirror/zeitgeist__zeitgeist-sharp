@@ -1,5 +1,5 @@
 AC_PREREQ([2.54])
-AC_INIT([zeitgeist-sharp], [0.1.1.0])
+AC_INIT([zeitgeist-sharp], [0.8.0.0])
 AM_INIT_AUTOMAKE([foreign])
 AM_MAINTAINER_MODE
 
@@ -18,7 +18,7 @@ AC_PROG_INSTALL
 # DO NOT TOUCH!
 # Except you know what you do
 # This defines the library ABI version!
-ASSEMBLY_VERSION="0.1.0.1"
+ASSEMBLY_VERSION="0.8.0.0"
 AC_SUBST(ASSEMBLY_VERSION)
 
 PKG_CHECK_MODULES([MONO], [mono >= 2.4])
@@ -41,9 +41,11 @@ GACUTIL_FLAGS='-root $(DESTDIR)$(libdir)'
 AC_SUBST(GACUTIL_FLAGS)
 
 dnl package checks, common for all configs
-PKG_CHECK_MODULES([NDESK_DBUS_10], [ndesk-dbus-1.0])
-PKG_CHECK_MODULES([NDESK_DBUS_GLIB_10], [ndesk-dbus-glib-1.0])
+PKG_CHECK_MODULES([DBUS_SHARP_10], [dbus-sharp-1.0])
+PKG_CHECK_MODULES([DBUS_SHARP_GLIB_10], [dbus-sharp-glib-1.0])
 PKG_CHECK_MODULES([GLIB_SHARP_20], [glib-sharp-2.0])
+
+PKG_CHECK_MODULES([ZEITGEIST_DAEMON], [zeitgeist-daemon >= 0.7.1])
 
 AC_CONFIG_FILES([
 Zeitgeist/zeitgeist-sharp.pc

@@ -24,7 +24,7 @@
 using System;
 using Zeitgeist.Datamodel;
 using Zeitgeist;
-using NDesk.DBus;
+using DBus;
 
 namespace Zeitgeist.Client
 {
@@ -34,7 +34,7 @@ namespace Zeitgeist.Client
 	/// It also provides means to listen for events matching certain criteria. 
 	/// All querying is heavily based around an “event template”-concept.
 	/// </summary>
-	[NDesk.DBus.Interface ("org.gnome.zeitgeist.Log")]
+	[DBus.Interface ("org.gnome.zeitgeist.Log")]
 	internal interface ILog
 	{
 		/// <summary>

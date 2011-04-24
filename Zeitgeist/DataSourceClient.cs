@@ -24,7 +24,7 @@
 using System;
 using System.Collections.Generic;
 using Zeitgeist.Client;
-using NDesk.DBus;
+using DBus;
 using Zeitgeist.Datamodel;
 
 namespace Zeitgeist

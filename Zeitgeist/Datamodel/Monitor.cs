@@ -23,7 +23,7 @@
 
 using System;
 using System.Collections.Generic;
-using NDesk.DBus;
+using DBus;
 using GLib;
 using System.Threading;
 using System.ComponentModel;

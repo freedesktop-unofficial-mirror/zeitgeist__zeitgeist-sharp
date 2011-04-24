@@ -32,7 +32,7 @@ namespace Zeitgeist.Client
 	/// When inserting events via LogClient.InsertEvents they will be checked against the blacklist templates 
 	/// and if they match they will not be inserted in the log, and any matching monitors will not be signalled.
 	/// </summary>
-	[NDesk.DBus.Interface ("org.gnome.zeitgeist.Blacklist")]
+	[DBus.Interface ("org.gnome.zeitgeist.Blacklist")]
 	internal interface IBlacklist
 	{
 		/// <summary>
