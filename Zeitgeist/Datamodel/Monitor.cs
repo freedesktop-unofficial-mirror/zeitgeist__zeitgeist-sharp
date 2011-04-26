@@ -80,6 +80,24 @@ namespace Zeitgeist.Datamodel
 		private MainLoop loop;
 	}
 	
+	internal class MonitorData
+	{
+		public ObjectPath Path
+		{
+			get;set;
+		}
+		
+		public RawTimeRange Range
+		{
+			get;set;
+		}
+		
+		public List<RawEvent> Events
+		{
+			get;set;
+		}
+	}
+	
 	/// <summary>
 	/// DBus interface for monitoring the Zeitgeist log for certain types of events.
 	/// When using the Python bindings monitors are normally instantiated indirectly by calling ZeitgeistClient.install_monitor

@@ -51,6 +51,8 @@ namespace Zeitgeist
 		{
 			this.setUpClient();
 			
+			listOfMonitors = new List<MonitorData>();
+			
 			// When bus name changes
 			ZsUtils.SignalBus.NameOwnerChanged += NameOwnerChanged;
 		}
@@ -60,6 +62,13 @@ namespace Zeitgeist
 			// If Engine is restarted, re-connect in case it does not get re-connected
 			if(string.Equals(name, "org.gnome.zeitgeist.Engine", StringComparison.OrdinalIgnoreCase))
 			   setUpClient();
+			
+			// Install the monitors which were lost after the Daemon was restarted
+			foreach(MonitorData monData in listOfMonitors)
+			{
+				Console.Out.WriteLine("Restoring monitor for: "+ monData.Path.ToString());
+				srcInterface.InstallMonitor(monData.Path, monData.Range, monData.Events.ToArray());
+			}
 		}
 		
 		private void setUpClient()
@@ -282,14 +291,15 @@ namespace Zeitgeist
 		/// </param>
 		public void InstallMonitor(string monitorPath, TimeRange range, List<Event> eventTemplates)
 		{
-			srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
-			
 			RawTimeRange rawRange = new RawTimeRange();
 			rawRange.Begin = (long)ZsUtils.ToTimestamp(range.Begin);
 			rawRange.End = (long)ZsUtils.ToTimestamp(range.End);
-			
 			ObjectPath path = new ObjectPath(monitorPath);
 			List<RawEvent> rawEvents = ZsUtils.ToRawEventList(eventTemplates);
+			
+			// Store all the monitors
+			listOfMonitors.Add(new MonitorData(){Path=path, Range=rawRange, Events=rawEvents});
+			
 			srcInterface.InstallMonitor(path, rawRange, rawEvents.ToArray());
 		}
 		
@@ -303,6 +313,10 @@ namespace Zeitgeist
 		{
 			ObjectPath path = new ObjectPath(monitorPath);
 			srcInterface.RemoveMonitor(path);
+			
+			// Find and remove the deleted Monitor
+			MonitorData removedMonitor = listOfMonitors.Find(monitor => ObjectPath.Equals(monitor.Path,path));
+			listOfMonitors.Remove(removedMonitor);
 		}
 		
 		#endregion
@@ -334,6 +348,8 @@ namespace Zeitgeist
 		private ILog srcInterface;
 		
 		private static string objectPath = "/org/gnome/zeitgeist/log/activity";
+		
+		private List<MonitorData> listOfMonitors;
 	}
 }
 
