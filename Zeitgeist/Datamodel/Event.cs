@@ -47,6 +47,7 @@ namespace Zeitgeist.Datamodel
 			Subjects = new List<Subject>();
 			Payload =new byte[]{};
 			Actor = string.Empty;
+			Origin = string.Empty;
 			Timestamp = ZsUtils.Epoch;
 			Interpretation = new NameUri();
 			Manifestation = new NameUri();
@@ -75,6 +76,14 @@ namespace Zeitgeist.Datamodel
 		/// For example /usr/share/applications/firefox.desktop is encoded as app://firefox.desktop
 		/// </summary>
 		public string Actor
+		{
+			get;set;
+		}
+		
+		/// <summary>
+		/// Origin of the Event
+		/// </summary>
+		public string Origin
 		{
 			get;set;
 		}
@@ -219,6 +228,7 @@ namespace Zeitgeist.Datamodel
 			metaDataList[(int)EventMetadataPosition.Timestamp] = (ev.Id == 0)? string.Empty: ZsUtils.ToTimestamp(ev.Timestamp).ToString();
 			
 			metaDataList[(int)EventMetadataPosition.Actor] = ev.Actor;
+			metaDataList[(int)EventMetadataPosition.Origin] = ev.Origin;
 			metaDataList[(int)EventMetadataPosition.Interpretation] = ev.Interpretation.Uri;
 			metaDataList[(int)EventMetadataPosition.Manifestation] = ev.Manifestation.Uri;
 			
@@ -240,6 +250,7 @@ namespace Zeitgeist.Datamodel
 					subCont.Add(null);
 				
 				subCont[(int)EventSubjectPosition.Uri] = sub.Uri;
+				subCont[(int)EventSubjectPosition.CurrentUri] = sub.CurrentUri;
 				subCont[(int)EventSubjectPosition.Origin] = sub.Origin;
 				subCont[(int)EventSubjectPosition.Mimetype] = sub.MimeType;
 				subCont[(int)EventSubjectPosition.Text] = sub.Text;
@@ -292,6 +303,7 @@ namespace Zeitgeist.Datamodel
 			e.Timestamp = ZsUtils.ToDateTime(timestamp);
 			
 			e.Actor = raw.metadata[(int)EventMetadataPosition.Actor];
+			e.Origin = raw.metadata[(int)EventMetadataPosition.Origin];
 			
 			string _interpretation = raw.metadata[(int)EventMetadataPosition.Interpretation];
 			string _manifestation = raw.metadata[(int)EventMetadataPosition.Manifestation];
@@ -314,6 +326,7 @@ namespace Zeitgeist.Datamodel
 				sub.MimeType = subjArr[(int)EventSubjectPosition.Mimetype];
 				sub.Text = subjArr[(int)EventSubjectPosition.Text];
 				sub.Storage = subjArr[(int)EventSubjectPosition.Storage];
+				sub.CurrentUri = subjArr[(int)EventSubjectPosition.CurrentUri];
 				
 				string sub_interpretation = subjArr[(int)EventSubjectPosition.Interpretation];
 				string sub_manifestation = subjArr[(int)EventSubjectPosition.Manifestation];
@@ -349,7 +362,8 @@ namespace Zeitgeist.Datamodel
 		Timestamp = 1,
 		Interpretation = 2,
 		Manifestation = 3,
-		Actor = 4
+		Actor = 4,
+		Origin = 5
 	}
 	
 	enum EventSubjectPosition
@@ -360,7 +374,8 @@ namespace Zeitgeist.Datamodel
 		Origin = 3, 
 		Mimetype = 4,
 		Text = 5,
-		Storage = 6
+		Storage = 6,
+		CurrentUri = 7
 	}
 		                            
 }

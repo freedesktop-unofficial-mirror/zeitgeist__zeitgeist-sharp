@@ -41,7 +41,7 @@ namespace Zeitgeist.Testsuite
 			range.End = DateTime.Now;
 			
 			Event e = new Event();
-			e.Actor = "application:///usr/share/applications/gedit.desktop";
+			e.Actor = "application://tomboy.desktop";
 			Subject sub = new Subject();
 			e.Subjects.Add(sub);
 			
@@ -51,7 +51,8 @@ namespace Zeitgeist.Testsuite
 			e2.Subjects.Add(sub2);
 			
 			LogClient client = new LogClient();
-			List<uint> eventIds = client.FindEventIds(range, new List<Event>(){e,e2}, StorageState.Any, 20, ResultType.MostRecentEvents);
+			List<Event> listOfTemplates = new List<Event>(){e,e2};
+			List<uint> eventIds = client.FindEventIds(range, listOfTemplates, StorageState.Any, 20, ResultType.MostRecentEvents);
 			
 			CollectionAssert.IsNotEmpty(eventIds);
 		}

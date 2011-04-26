@@ -34,6 +34,7 @@ namespace Zeitgeist.Datamodel
 		public Subject()
 		{
 			Uri = string.Empty;
+			CurrentUri = string.Empty;
 			Origin = string.Empty;
 			MimeType = string.Empty;
 			Text = string.Empty;
@@ -98,6 +99,14 @@ namespace Zeitgeist.Datamodel
 		public NameUri Manifestation
 		{
 			get; set;
+		}
+		
+		/// <summary>
+		/// The current URI of the event
+		/// </summary>
+		public string CurrentUri
+		{
+			get;set;
 		}
 	}
 }
