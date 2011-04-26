@@ -26,6 +26,7 @@ using Zeitgeist.Datamodel;
 using Zeitgeist.Client;
 using System.Collections.Generic;
 using DBus;
+using org.freedesktop.DBus;
 
 namespace Zeitgeist
 {
@@ -130,7 +131,18 @@ namespace Zeitgeist
 			}
 		}
 		
+		public static IBus SignalBus
+		{
+			get
+			{
+				return _signalBus;
+			}
+		}
+		
 		private static DateTime _epoch = new DateTime(1970, 1,1, 0,0,0, DateTimeKind.Utc);
+		
+		private static IBus _signalBus = Bus.Session.GetObject<IBus> ("org.freedesktop.DBus", 
+		                                                 new ObjectPath ("/org/freedesktop/DBus"));
 		
 		#endregion
 		
@@ -209,7 +221,9 @@ namespace Zeitgeist
 			
 			// Create the ObjectPath from the path provided
 			ObjectPath objPath = new ObjectPath(objectPath);
-			T interfaceInst = Bus.Session.GetObject<T>(ZsUtils.DBusPath, objPath);
+			Bus sessionBus = Bus.Session;
+			
+			T interfaceInst = sessionBus.GetObject<T>(ZsUtils.DBusPath, objPath);
 			
 			return interfaceInst;
 		}

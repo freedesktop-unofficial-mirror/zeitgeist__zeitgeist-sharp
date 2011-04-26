@@ -27,6 +27,7 @@ using Zeitgeist.Datamodel;
 using Zeitgeist.Client;
 using DBus;
 using System.Linq;
+using org.freedesktop.DBus;
 
 namespace Zeitgeist
 {
@@ -47,6 +48,21 @@ namespace Zeitgeist
 		/// This constructor gets the DBus object for LogClient which the object's methods use
 		/// </remarks>
 		public LogClient()
+		{
+			this.setUpClient();
+			
+			// When bus name changes
+			ZsUtils.SignalBus.NameOwnerChanged += NameOwnerChanged;
+		}
+		
+		private void NameOwnerChanged(string name, string old_owner, string new_owner)
+		{
+			// If Engine is restarted, re-connect in case it does not get re-connected
+			if(string.Equals(name, "org.gnome.zeitgeist.Engine", StringComparison.OrdinalIgnoreCase))
+			   setUpClient();
+		}
+		
+		private void setUpClient()
 		{
 			srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
 		}
