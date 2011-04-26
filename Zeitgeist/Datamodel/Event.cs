@@ -196,7 +196,7 @@ namespace Zeitgeist.Datamodel
 		/// <param name="payload">
 		/// The payload associated with the RawEvent <see cref="T:System.Byte[]"/>
 		/// </param>
-		public RawEvent(string[] metadata, string[][] subjects, byte[] payload)
+		public RawEvent(string[] metadata, string[][] subjects, byte[] payload) : this()
 		{
 			this.metadata = metadata;
 			this.subjects = subjects;

@@ -95,7 +95,7 @@ namespace Zeitgeist.Datamodel
 	/// <summary>
 	/// A raw DBus  based representation of Event
 	/// </summary>
-	internal struct RawDataSource 
+	internal struct RawDataSource
 	{
 		/// <summary>
 		/// The Id of the RawDataSource
@@ -227,7 +227,7 @@ namespace Zeitgeist.Datamodel
 		/// <param name="enabled">
 		/// Is the RawDataSource enabled <see cref="System.Boolean"/>
 		/// </param>
-		public RawDataSource(string uid, string name, string desc, RawEvent[] events, bool running, UInt64 Lastseen, bool enabled)
+		public RawDataSource(string uid, string name, string desc, RawEvent[] events, bool running, UInt64 Lastseen, bool enabled) : this()
 		{
 			this.UniqueId = uid;
 			this.Name = name;
