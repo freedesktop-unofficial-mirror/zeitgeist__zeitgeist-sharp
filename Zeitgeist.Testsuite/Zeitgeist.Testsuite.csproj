@@ -45,6 +45,7 @@
     <Compile Include="Log\TestFindEvents.cs" />
     <Compile Include="Log\TestInsertAndDeleteEvents.cs" />
     <Compile Include="Monitor\TestMonitor.cs" />
+    <Compile Include="Blacklist\TestInsertEventsWithBlacklist.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zeitgeist\Zeitgeist.csproj">
@@ -57,6 +58,7 @@
     <Folder Include="Datasource\" />
     <Folder Include="Datamodel\" />
     <Folder Include="Monitor\" />
+    <Folder Include="Blacklist\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

@@ -124,7 +124,7 @@ namespace Zeitgeist
 		/// 'blacklistId' of type <see cref="string"/> and 
 		/// 'addedTemplate' of type <see cref="Zeitgeist.Datamodel.Event"/>
 		/// </summary>
-		event BlacklistTemplateAddedHandler TemplateAdded;
+		public event BlacklistTemplateAddedHandler TemplateAdded;
 		
 		/// <summary>
 		/// Raised when a blacklist template is removed
@@ -136,7 +136,7 @@ namespace Zeitgeist
 		/// 'blacklistId' of type <see cref="string"/> and 
 		/// 'removedTemplate' of type <see cref="Zeitgeist.Datamodel.Event"/>
 		/// </summary>
-		event BlacklistTemplateRemovedHandler TemplateRemoved;
+		public event BlacklistTemplateRemovedHandler TemplateRemoved;
 		
 		#region Private Fields
 		
