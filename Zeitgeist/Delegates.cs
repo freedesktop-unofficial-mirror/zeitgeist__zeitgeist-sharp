@@ -52,5 +52,27 @@ namespace Zeitgeist
 	/// The registered data-source of type <see cref="Zeitgeist.Datamodel.DataSource"/>
 	/// </param>
 	public delegate void DataSourceRegisteredHandler(DataSource datasource);
+	
+	/// <summary>
+	/// This delegate handler for the event related to Blacklist Template addition
+	/// </summary>
+	/// <param name="blacklistId">
+	/// The blacklist ID of type <see cref="string"/>
+	/// </param>
+	/// <param name="addedTemplate">
+	/// The blacklist template added
+	/// </param>
+	public delegate void BlacklistTemplateAddedHandler(string blacklistId, Event addedTemplate);
+	
+	/// <summary>
+	/// This delegate handler for the event related to Blacklist Template deletion
+	/// </summary>
+	/// <param name="blacklistId">
+	/// The blacklist ID of type <see cref="string"/>
+	/// </param>
+	/// <param name="removedTemplate">
+	/// The blacklist template removed
+	/// </param>
+	public delegate void BlacklistTemplateRemovedHandler(string blacklistId, Event removedTemplate);
 }
 

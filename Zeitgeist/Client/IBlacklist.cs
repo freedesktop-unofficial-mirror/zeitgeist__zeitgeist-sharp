@@ -24,6 +24,7 @@
 using System;
 using Zeitgeist.Datamodel;
 using Zeitgeist;
+using System.Collections.Generic;
 
 namespace Zeitgeist.Client
 {
@@ -39,9 +40,10 @@ namespace Zeitgeist.Client
 		/// Get the current blacklist templates.
 		/// </summary>
 		/// <returns>
-		/// A list of Blacklist RawEvent <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.RawEvent>"/> templates 
+		/// A dictionary of Blacklist Id as <see cref="string"/> and 
+		/// Blacklist RawEvent <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.RawEvent>"/> templates 
 		/// </returns>
-		RawEvent[] GetBlacklist();
+		Dictionary<string, RawEvent> GetTemplates();
 		
 		/// <summary>
 		/// Set the blacklist to event_templates. 
@@ -50,10 +52,40 @@ namespace Zeitgeist.Client
 		/// Events matching any these templates will be blocked from insertion into the log. 
 		/// It is still possible to find and look up events matching the blacklist which was inserted before the blacklist banned them.
 		/// </remarks>
-		/// <param name="event_templates">
-		/// A List of RawEvent <see cref="T:System.Collection.Generic.List{Zeitgeist.Datamodel.RawEvent>"/> templates 
+		/// <param name="event_template">
+		/// The <see cref="Zeitgeist.Datamodel.RawEvent"/> representing the template
 		/// </param>
-		void SetBlacklist(RawEvent[] event_templates);
+		void AddTemplate(string blacklist_id, RawEvent event_template);
+		
+		/// <summary>
+		/// Remove a blacklist
+		/// </summary>
+		/// <param name="blacklist_id">
+		/// A <see cref="System.String"/> which represents the blacklist id of the blacklist template
+		/// </param>
+		void RemoveTemplate(string blacklist_id);
+		
+		/// <summary>
+		/// Raised when a blacklist template is added
+		/// </summary>
+		/// <summary>
+		/// When a new blacklist template is added to the engine, then this event is raised. 
+		/// The delegate <see cref="Zeitgeist.Client.RawBlacklistTemplateAddedHandler"/> is used for handle the events.
+		/// </summary>
+		event RawBlacklistTemplateAddedHandler TemplateAdded;
+		
+		/// <summary>
+		/// Raised when a blacklist template is removed
+		/// </summary>
+		/// <summary>
+		/// When a new blacklist template is removed to the engine, then this event is raised. 
+		/// The delegate <see cref="Zeitgeist.Client.RawBlacklistTemplateRemovedHandler"/> is used for handle the events.
+		/// </summary>
+		event RawBlacklistTemplateRemovedHandler TemplateRemoved;
 	}
+	
+	internal delegate void RawBlacklistTemplateAddedHandler(string blacklistId, RawEvent addedTemplate);
+	
+	internal delegate void RawBlacklistTemplateRemovedHandler(string blacklistId, RawEvent removedTemplate);
 }
 
