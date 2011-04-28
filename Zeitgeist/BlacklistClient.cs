@@ -50,14 +50,16 @@ namespace Zeitgeist
 			
 			// Connect the Template Added event
 			srcInterface.TemplateAdded += delegate(string blacklistId, RawEvent addedTemplate) {
-				if(TemplateAdded != null)
-					TemplateAdded(blacklistId, RawEvent.FromRaw(addedTemplate));
+				Console.Out.WriteLine("Blacklist added for: "+blacklistId);
+				if(this.TemplateAdded != null)
+					this.TemplateAdded(blacklistId, RawEvent.FromRaw(addedTemplate));
 			};
 			
 			// Connect the Template Removed event
 			srcInterface.TemplateRemoved += delegate(string blacklistId, RawEvent removedTemplate) {
-				if(TemplateRemoved != null)
-					TemplateRemoved(blacklistId, RawEvent.FromRaw(removedTemplate));
+				Console.Out.WriteLine("Blacklist removed for: "+blacklistId);
+				if(this.TemplateRemoved != null)
+					this.TemplateRemoved(blacklistId, RawEvent.FromRaw(removedTemplate));
 			};
 		}
 		

@@ -39,6 +39,15 @@ namespace Zeitgeist.Testsuite
 		{
 			LogClient client = new LogClient();
 			BlacklistClient bClient = new BlacklistClient();
+			// Handle the Template Added event
+			bClient.TemplateAdded += delegate(string blacklistId, Event addedTemplate) {
+				Console.Out.WriteLine("Blacklist added for: ", blacklistId);
+			};
+			// Handle the Template Removed event
+			bClient.TemplateRemoved += delegate(string blacklistId, Event removedTemplate) {
+				Console.Out.WriteLine("Blacklist removed for: ", blacklistId);
+			};
+			
 			string fooBlacklistId = "block-foo";
 			
 			// Create the first event
@@ -72,14 +81,7 @@ namespace Zeitgeist.Testsuite
 			// If inserted, clean the database by deleting random events
 			client.DeleteEvents(res);
 			
-			// Handle the Template Added event
-			bClient.TemplateAdded += delegate(string blacklistId, Event addedTemplate) {
-				Console.Out.WriteLine("Blacklist added for: ", blacklistId);
-			};
-			// Handle the Template Removed event
-			bClient.TemplateRemoved += delegate(string blacklistId, Event removedTemplate) {
-				Console.Out.WriteLine("Blacklist removed for: ", blacklistId);
-			};
+			
 			
 			// Add the blacklist template
 			bClient.AddTemplate(fooBlacklistId, evTemplate);
