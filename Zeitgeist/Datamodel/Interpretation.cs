@@ -27,13 +27,23 @@ using System.Collections.Generic;
 namespace Zeitgeist.Datamodel
 {
 	/// <summary>
-	/// In general terms the interpretation of an event or subject is an abstract description of “what happened” or “what is this”.
-	/// Each interpretation type is uniquely identified by a URI. This class provides a list of hard coded URI constants for programming convenience. In addition; each interpretation instance in this class has a display_name property, which is an internationalized string meant for end user display.
+	/// In general terms the interpretation of an event or subject is 
+	/// an abstract description of “what happened” or “what is this”.
+	/// Each interpretation type is uniquely identified by a URI. 
+	/// This class provides a list of hard coded URI constants for programming convenience. 
+	/// In addition; each interpretation instance in this class has a display_name property, 
+	/// which is an internationalized string meant for end user display.
 	/// </summary>
 	/// <remarks>
-	/// The interpretation types listed here are all subclasses of str and may be used anywhere a string would be used.
-	/// Interpretations form a hierarchical type tree. So that fx. Audio, Video, and Image all are sub types of Media. These types again have their own sub types, like fx. Image has children Icon, Photo, and VectorImage (among others).
-	/// Templates match on all sub types, so that a query on subjects with interpretation Media also match subjects with interpretations Audio, Photo, and all other sub types of Media. . (Display name: '')
+	/// The interpretation types listed here are all subclasses of str 
+	/// and may be used anywhere a string would be used.
+	/// Interpretations form a hierarchical type tree. So that fx. 
+	/// Audio, Video, and Image all are sub types of Media. These types 
+	/// again have their own sub types, like fx. Image has children Icon, 
+	/// Photo, and VectorImage (among others).
+	/// Templates match on all sub types, so that a query on subjects with 
+	/// interpretation Media also match subjects with interpretations Audio, Photo, 
+	/// and all other sub types of Media. . (Display name: '')
 	/// </remarks>
 	public class Interpretation
 	{
@@ -52,7 +62,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Provide a grouping of component properties that define an alarm. (Display name: 'Alarm')
+		/// Provide a grouping of component properties that define an alarm. 
+		/// (Display name: 'Alarm')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Alarm
@@ -66,7 +77,10 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A bookmark of a webbrowser. Use nie:title for the name/label, nie:contentCreated to represent the date when the user added the bookmark, and nie:contentLastModified for modifications. nfo:bookmarks to store the link. (Display name: 'Bookmark')
+		/// A bookmark of a webbrowser. Use nie:title for the name/label, 
+		/// nie:contentCreated to represent the date when the user added the 
+		/// bookmark, and nie:contentLastModified for modifications. nfo:bookmarks 
+		/// to store the link. (Display name: 'Bookmark')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Bookmark
@@ -80,7 +94,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A folder with bookmarks of a webbrowser. Use nfo:containsBookmark to relate Bookmarks. Folders can contain subfolders, use containsBookmarkFolder to relate them. (Display name: 'Bookmark Folder')
+		/// A folder with bookmarks of a webbrowser. Use nfo:containsBookmark 
+		/// to relate Bookmarks. Folders can contain subfolders, use 
+		/// containsBookmarkFolder to relate them. (Display name: 'Bookmark Folder')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#BookmarkFolder
@@ -94,7 +110,10 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A calendar. Inspirations for this class can be traced to the VCALENDAR component defined in RFC 2445 sec. 4.4, but it may just as well be used to represent any kind of Calendar. (Display name: 'Calendar')
+		/// A calendar. Inspirations for this class can be traced to the 
+		/// VCALENDAR component defined in RFC 2445 sec. 4.4, but it may 
+		/// just as well be used to represent any kind of Calendar. 
+		/// (Display name: 'Calendar')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Calendar
@@ -108,7 +127,10 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A superclass for all entities, whose primary purpose is to serve as containers for other data object. They usually don’t have any “meaning” by themselves. Examples include folders, archives and optical disc images. (Display name: 'DataContainer')
+		/// A superclass for all entities, whose primary purpose is to 
+		/// serve as containers for other data object. They usually don’t 
+		/// have any “meaning” by themselves. Examples include folders, 
+		/// archives and optical disc images. (Display name: 'DataContainer')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer
@@ -122,7 +144,8 @@ namespace Zeitgeist.Datamodel
 		}
 			
 		/// <summary>
-		/// A generic document. A common superclass for all documents on the desktop. (Display name: 'Document')
+		/// A generic document. A common superclass for all 
+		/// documents on the desktop. (Display name: 'Document')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Document
@@ -136,7 +159,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Provide a grouping of component properties that describe an event. (Display name: 'Event')
+		/// Provide a grouping of component properties that describe 
+		/// an event. (Display name: 'Event')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Event
@@ -192,7 +216,10 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Provide a grouping of component properties that describe either a request for free/busy time, describe a response to a request for free/busy time or describe a published set of busy time. (Display name: 'Freebusy')
+		/// Provide a grouping of component properties that describe either 
+		/// a request for free/busy time, describe a response to a request 
+		/// for free/busy time or describe a published set of busy time. 
+		/// (Display name: 'Freebusy')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Freebusy
@@ -206,7 +233,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Provide a grouping of component properties that describe a journal entry. (Display name: 'Journal')
+		/// Provide a grouping of component properties that 
+		/// describe a journal entry. (Display name: 'Journal')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Journal
@@ -220,7 +248,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A mailbox - container for MailboxDataObjects. (Display name: 'Mailbox')
+		/// A mailbox - container for MailboxDataObjects. 
+		/// (Display name: 'Mailbox')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Mailbox
@@ -234,7 +263,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A piece of media content. This class may be used to express complex media containers with many streams of various media content (both aural and visual). (Display name: 'Media')
+		/// A piece of media content. This class may be used to express complex 
+		/// media containers with many streams of various media content 
+		/// (both aural and visual). (Display name: 'Media')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Media
@@ -248,7 +279,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A file containing a list of media files.e.g. a playlist. (Display name: 'MediaList')
+		/// A file containing a list of media files.e.g. a playlist. 
+		/// (Display name: 'MediaList')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MediaList
@@ -262,7 +294,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A message. Could be an email, instant messanging message, SMS message etc. (Display name: 'Message')
+		/// A message. Could be an email, instant messanging message, 
+		/// SMS message etc. (Display name: 'Message')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#Message
@@ -276,7 +309,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A MIME entity, as defined in RFC2045, Section 2.4. (Display name: 'MimeEntity')
+		/// A MIME entity, as defined in RFC2045, Section 2.4. 
+		/// (Display name: 'MimeEntity')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nmo#MimeEntity
@@ -290,7 +324,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A piece of software. Examples may include applications and the operating system. This interpretation most commonly applies to SoftwareItems. (Display name: 'Software')
+		/// A piece of software. Examples may include applications 
+		/// and the operating system. This interpretation most commonly applies 
+		/// to SoftwareItems. (Display name: 'Software')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Software
@@ -304,7 +340,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Provide a grouping of component properties that defines a time zone. (Display name: 'Timezone')
+		/// Provide a grouping of component properties that defines a time zone. 
+		/// (Display name: 'Timezone')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Timezone
@@ -318,7 +355,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Provide a grouping of calendar properties that describe a to-do. (Display name: 'Todo')
+		/// Provide a grouping of calendar properties that 
+		/// describe a to-do. (Display name: 'Todo')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/04/02/ncal#Todo
@@ -332,7 +370,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A TV Series has multiple seasons and episodes. (Display name: 'tv series')
+		/// A TV Series has multiple seasons and episodes. 
+		/// (Display name: 'tv series')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2009/02/19/nmm#TVSeries
@@ -346,7 +385,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A website, usually a container for remote resources, that may be interpreted as HTMLDocuments, images or other types of content. (Display name: 'Website')
+		/// A website, usually a container for remote resources, 
+		/// that may be interpreted as HTMLDocuments, images or other 
+		/// types of content. (Display name: 'Website')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Website
@@ -360,7 +401,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Search for an interpretation KeyValuePair provided the interpretation string
+		/// Search for an interpretation KeyValuePair provided the 
+		/// interpretation string
 		/// </summary>
 		/// <param name="interpretation">
 		/// The Interpretation of type <see cref="System.String"/>
@@ -502,7 +544,11 @@ namespace Zeitgeist.Datamodel
 	public class DataContainerType
 	{
 		/// <summary>
-		/// A superclass for all entities, whose primary purpose is to serve as containers for other data object. They usually don’t have any “meaning” by themselves. Examples include folders, archives and optical disc images. (Display name: 'DataContainer')
+		/// A superclass for all entities, whose primary purpose 
+		/// is to serve as containers for other data object. They 
+		/// usually don’t have any “meaning” by themselves. 
+		/// Examples include folders, archives and optical disc images. 
+		/// (Display name: 'DataContainer')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#DataContainer
@@ -516,7 +562,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A compressed file. May contain other files or folder inside. (Display name: 'Archive')
+		/// A compressed file. May contain other files or folder 
+		/// inside. (Display name: 'Archive')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Archive
@@ -530,7 +577,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A filesystem. Examples of filesystems include hard disk partitions, removable media, but also images thereof stored in files. (Display name: 'Filesystem')
+		/// A filesystem. Examples of filesystems include hard disk 
+		/// partitions, removable media, but also images thereof 
+		/// stored in files. (Display name: 'Filesystem')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem
@@ -544,7 +593,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A folder/directory. Examples of folders include folders on a filesystem and message folders in a mailbox. (Display name: 'Folder')
+		/// A folder/directory. Examples of folders include folders 
+		/// on a filesystem and message folders in a mailbox. 
+		/// (Display name: 'Folder')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Folder
@@ -558,7 +609,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Represents a container for deleted files, a feature common in modern operating systems. (Display name: 'Trash')
+		/// Represents a container for deleted files, a feature common 
+		/// in modern operating systems. (Display name: 'Trash')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Trash
@@ -610,7 +662,9 @@ namespace Zeitgeist.Datamodel
 	public class FileSystemType
 	{
 		/// <summary>
-		/// A filesystem. Examples of filesystems include hard disk partitions, removable media, but also images thereof stored in files. (Display name: 'Filesystem')
+		/// A filesystem. Examples of filesystems include hard disk partitions, 
+		/// removable media, but also images thereof stored in files. 
+		/// (Display name: 'Filesystem')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Filesystem
@@ -624,7 +678,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Represents a container for deleted files, a feature common in modern operating systems. (Display name: 'Trash')
+		/// Represents a container for deleted files, a feature common 
+		/// in modern operating systems. (Display name: 'Trash')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Trash
@@ -664,7 +719,8 @@ namespace Zeitgeist.Datamodel
 	public class DocumentType
 	{
 		/// <summary>
-		/// A generic document. A common superclass for all documents on the desktop. (Display name: 'Document')
+		/// A generic document. A common superclass for all documents 
+		/// on the desktop. (Display name: 'Document')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Document
@@ -678,7 +734,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A MindMap, created by a mind-mapping utility. Examples might include FreeMind or mind mapper. (Display name: 'MindMap')
+		/// A MindMap, created by a mind-mapping utility. 
+		/// Examples might include FreeMind or mind mapper. 
+		/// (Display name: 'MindMap')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#MindMap
@@ -692,7 +750,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A Presentation made by some presentation software (Corel Presentations, OpenOffice Impress, MS Powerpoint etc.). (Display name: 'Presentation')
+		/// A Presentation made by some presentation software 
+		/// (Corel Presentations, OpenOffice Impress, MS Powerpoint etc.). 
+		/// (Display name: 'Presentation')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Presentation
@@ -706,7 +766,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A spreadsheet, created by a spreadsheet application. Examples might include Gnumeric, OpenOffice Calc or MS Excel. (Display name: 'Spreadsheet')
+		/// A spreadsheet, created by a spreadsheet application. 
+		/// Examples might include Gnumeric, OpenOffice Calc or MS Excel. 
+		/// (Display name: 'Spreadsheet')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#Spreadsheet
@@ -786,7 +848,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A file containing a text document, that is unambiguously divided into pages. Examples might include PDF, DOC, PS, DVI etc. (Display name: 'PaginatedTextDocument')
+		/// A file containing a text document, that is unambiguously divided into pages. 
+		/// Examples might include PDF, DOC, PS, DVI etc. (Display name: 'PaginatedTextDocument')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PaginatedTextDocument
@@ -801,7 +864,8 @@ namespace Zeitgeist.Datamodel
 		
 		
 		/// <summary>
-		/// A file containing a text document, that is unambiguously divided into pages. Examples might include PDF, DOC, PS, DVI etc. (Display name: 'PaginatedTextDocument')
+		/// A file containing a text document, that is unambiguously divided into pages. 
+		/// Examples might include PDF, DOC, PS, DVI etc. (Display name: 'PaginatedTextDocument')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PaginatedTextDocument
@@ -840,7 +904,9 @@ namespace Zeitgeist.Datamodel
 	public class PlainTextDocumentType
 	{
 		/// <summary>
-		/// A file containing plain text (ASCII, Unicode or other encodings). Examples may include TXT, HTML, XML, program source code etc. (Display name: 'PlainTextDocument')
+		/// A file containing plain text (ASCII, Unicode or other encodings). 
+		/// Examples may include TXT, HTML, XML, program source code etc. 
+		/// (Display name: 'PlainTextDocument')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#PlainTextDocument
@@ -854,7 +920,8 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// A HTML document, may contain links to other files. (Display name: 'HtmlDocument')
+		/// A HTML document, may contain links to other files. 
+		/// (Display name: 'HtmlDocument')
 		/// </summary>
 		/// <remarks>
 		/// http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#HtmlDocument
@@ -910,10 +977,16 @@ namespace Zeitgeist.Datamodel
 	
 	#region EventInterpretation Classes
 	
+	/// <summary>
+	/// The type which contains the heirarchy of EventInterpretation
+	/// </summary>
 	public class EventInterpretationType
 	{
 		/// <summary>
-		/// Base class for event interpretations. Please do no instantiate directly, but use one of the sub classes. The interpretation of an event describes ‘what happened’ - fx. ‘something was created’ or ‘something was accessed’. (Display name: 'EVENT_INTERPRETATION')
+		/// Base class for event interpretations. Please do no instantiate 
+		/// directly, but use one of the sub classes. The interpretation of 
+		/// an event describes ‘what happened’ - fx. ‘something was created’ 
+		/// or ‘something was accessed’. (Display name: 'EVENT_INTERPRETATION')
 		/// </summary>
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#EventInterpretation
@@ -927,7 +1000,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Event triggered by opening, accessing, or starting a resource. Most zg:AccessEvents will have an accompanying zg:LeaveEvent, but this need not always be the case. (Display name: 'ACCESS_EVENT')
+		/// Event triggered by opening, accessing, or starting a resource. 
+		/// Most zg:AccessEvents will have an accompanying zg:LeaveEvent, 
+		/// but this need not always be the case. (Display name: 'ACCESS_EVENT')
 		/// </summary>
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AccessEvent
@@ -955,7 +1030,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Event triggered because a resource has been deleted or otherwise made permanently unavailable. Fx. when deleting a file. FIXME: How about when moving to trash?. (Display name: 'DELETE_EVE
+		/// Event triggered because a resource has been deleted or otherwise 
+		/// made permanently unavailable. Fx. when deleting a file. 
+		/// FIXME: How about when moving to trash?. (Display name: 'DELETE_EVENT')
 		/// </summary>
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#DeleteEvent
@@ -969,7 +1046,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Event triggered by closing, leaving, or stopping a resource. Most zg:LeaveEvents will be following a zg:Access event, but this need not always be the case. (Display name: 'LEAVE_EVENT')
+		/// Event triggered by closing, leaving, or stopping a resource. 
+		/// Most zg:LeaveEvents will be following a zg:Access event, but this 
+		/// need not always be the case. (Display name: 'LEAVE_EVENT')
 		/// </summary>
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#LeaveEvent 
@@ -983,7 +1062,9 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Event triggered by modifying an existing resources. Fx. when editing and saving a file on disk or correcting a typo in the name of a contact. (Display name: 'MODIFY_EVENT')
+		/// Event triggered by modifying an existing resources. Fx. when editing 
+		/// and saving a file on disk or correcting a typo in the name of a 
+		/// contact. (Display name: 'MODIFY_EVENT')
 		/// </summary>
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ModifyEvent
@@ -997,7 +1078,11 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Event triggered when something is received from an external party. The event manifestation must be set according to the world view of the receiving party. Most often the item that is being received will be some sort of message - an email, instant message, or broadcasted media such as micro blogging. (Display name: 'RECEIVE_EVENT')
+		/// Event triggered when something is received from an external party. 
+		/// The event manifestation must be set according to the world view of the 
+		/// receiving party. Most often the item that is being received will be some 
+		/// sort of message - an email, instant message, or broadcasted media such 
+		/// as micro blogging. (Display name: 'RECEIVE_EVENT')
 		/// </summary>
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ReceiveEvent
@@ -1011,7 +1096,25 @@ namespace Zeitgeist.Datamodel
 		}
 		
 		/// <summary>
-		/// Event triggered when something is send to an external party. The event manifestation must be set according to the world view of the sending party. Most often the item that is being send will be some sort of message - an email, instant message, or broadcasted media such as micro blogging. (Display name: 'SEND_EVENT')
+		/// Event triggered when a resource has been moved from a location to another. 
+		/// Fx. moving a file from a folder to another.
+		/// </summary>
+		/// <remarks>
+		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#MoveEvent
+		/// </remarks>
+		public NameUri MoveEvent
+		{
+			get
+			{
+				return _move_event;
+			}
+		}
+		
+		/// <summary>
+		/// Event triggered when something is send to an external party. 
+		/// The event manifestation must be set according to the world view of the sending party. 
+		/// Most often the item that is being send will be some sort of message - an email, 
+		/// instant message, or broadcasted media such as micro blogging. (Display name: 'SEND_EVENT')
 		/// </summary>
 		/// <remarks>
 		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SendEvent
@@ -1021,6 +1124,54 @@ namespace Zeitgeist.Datamodel
 			get
 			{
 				return _send_event;
+			}
+		}
+		
+		/// <summary>
+		/// Event triggered when the user accepts a request of some sort. Examples could be 
+		/// answering a phone call, accepting a file transfer, or accepting a friendship request 
+		/// over an IM protocol. See also DenyEvent for when the user denies a similar request
+		/// </summary>
+		/// <remarks>
+		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AcceptEvent
+		/// </remarks>
+		public NameUri AcceptEvent
+		{
+			get
+			{
+				return _accept_event;
+			}
+		}
+		
+		/// <summary>
+		/// Event triggered when the user accepts a request of some sort. Examples could be 
+		/// answering a phone call, accepting a file transfer, or accepting a friendship request 
+		/// over an IM protocol. See also DenyEvent for when the user denies a similar request
+		/// </summary>
+		/// <remarks>
+		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#DenyEvent
+		/// </remarks>
+		public NameUri DenyEvent
+		{
+			get
+			{
+				return _deny_event;
+			}
+		}
+		
+		/// <summary>
+		/// Event triggered when something expires or times out. These types of events are 
+		/// normally not triggered by the user, but by the operating system or some external party. 
+		/// Examples are a recurring calendar item or task deadline that expires or a when the user fails
+		/// </summary>
+		/// <remarks>
+		/// http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ExpireEvent
+		/// </remarks>
+		public NameUri ExpireEvent
+		{
+			get
+			{
+				return _expire_event;
 			}
 		}
 		
@@ -1047,8 +1198,20 @@ namespace Zeitgeist.Datamodel
 			if(string.Equals(_receive_event.Uri, interpretation))
 			   return _receive_event;
 			
+			if(string.Equals(_move_event.Uri, interpretation))
+			   return _move_event;
+			
 			if(string.Equals(_send_event.Uri, interpretation))
 			   return _send_event;
+			
+			if(string.Equals(_accept_event.Uri, interpretation))
+			   return _accept_event;
+			
+			if(string.Equals(_deny_event.Uri, interpretation))
+			   return _deny_event;
+			
+			if(string.Equals(_expire_event.Uri, interpretation))
+			   return _expire_event;
 			
 			
 			return null;
@@ -1070,7 +1233,15 @@ namespace Zeitgeist.Datamodel
 		
 		private NameUri _receive_event = new NameUri("ReceiveEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ReceiveEvent");
 		
+		private NameUri _move_event = new NameUri("MoveEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#MoveEvent");
+		
 		private NameUri _send_event = new NameUri("SendEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#SendEvent");
+		
+		private NameUri _accept_event = new NameUri("AcceptEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#AcceptEvent");
+		
+		private NameUri _deny_event = new NameUri("DenyEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#DenyEvent");
+		
+		private NameUri _expire_event = new NameUri("ExpireEvent", "http://www.zeitgeist-project.com/ontologies/2010/01/27/zg#ExpireEvent");
 		
 		#endregion
 	}
