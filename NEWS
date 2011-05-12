@@ -1,0 +1,23 @@
+0.8.0 - All I need is some pepper
+-------------------------------------
+
+* Broken ABI since 0.1.x
+* Backward incompatible API
+ - New Blacklist interface
+ - Added a property "extensions" to LogClient
+* Updated ontology
+* Monitors are reinstalled upon startup (LP Bug #673008)
+* Clients are reconnected after SessionBus restarts
+* Dependency on ndesk-dbus removed and ported to dbus-sharp
+
+Thanks:
+Travis Glenn Hansen
+
+0.1.0.1 
+---------
+Fixing of autobuild script
+
+
+0.1.0 - Stark
+---------------
+First release
