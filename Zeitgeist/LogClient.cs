@@ -74,6 +74,7 @@ namespace Zeitgeist
 		private void setUpClient()
 		{
 			srcInterface = ZsUtils.GetDBusObject<ILog>(objectPath);
+			dbusInterface = ZsUtils.GetDBusObject<IDBus>(objectPath);
 		}
 		
 		#region Fetch, Insert and Delete Events
@@ -345,7 +346,33 @@ namespace Zeitgeist
 			srcInterface.Quit();
 		}
 		
+		#region Properties
+		
+		/// <summary>
+		/// The list of zeitgeist daemon extension loaded by the engine
+		/// </summary>
+		/// <remarks>
+		/// Examples are Blacklist, DataSourceRegistry, Full-Text-Search, StorageMonitor etc
+		/// </remarks>
+		public List<string> Extensions
+		{
+			get
+			{
+				object exten = dbusInterface.Get("org.gnome.zeitgeist.Log", "extensions");
+				if(exten != null && exten.GetType() == typeof(System.String[]))
+				{
+					return new List<string>((string[])exten);
+				}
+				else
+					return new List<string>();
+			}
+		}
+		
+		#endregion
+		
 		private ILog srcInterface;
+		
+		private IDBus dbusInterface;
 		
 		private static string objectPath = "/org/gnome/zeitgeist/log/activity";
 		

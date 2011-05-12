@@ -159,7 +159,7 @@ namespace Zeitgeist.Client
 		/// Register a client side monitor object to receive callbacks when events matching time_range and event_templates are inserted or deleted.
 		/// </summary>
 		/// <param name="monitorPath">
-		/// The path to be monitored <see cref="NDesk.DBus.ObjectPath"/>
+		/// The path to be monitored <see cref="DBus.ObjectPath"/>
 		/// </param>
 		/// <param name="range">
 		/// The time range under which Monitored events must fall within <see cref="TimeRange"/>
@@ -173,7 +173,7 @@ namespace Zeitgeist.Client
 		/// Remove a monitor installed with InstallMonitor()
 		/// </summary>
 		/// <param name="monitorPath">
-		/// The path of the monitor to be removed <see cref="NDesk.DBus.ObjectPath"/>
+		/// The path of the monitor to be removed <see cref="DBus.ObjectPath"/>
 		/// </param>
 		void RemoveMonitor(ObjectPath monitorPath);
 		

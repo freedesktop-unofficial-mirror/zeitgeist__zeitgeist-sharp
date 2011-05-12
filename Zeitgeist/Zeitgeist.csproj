@@ -64,6 +64,8 @@
     <Compile Include="Datamodel\Monitor.cs" />
     <Compile Include="Datamodel\Delegates.cs" />
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Datamodel\Version.cs" />
+    <Compile Include="Client\IDBus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Datamodel\" />

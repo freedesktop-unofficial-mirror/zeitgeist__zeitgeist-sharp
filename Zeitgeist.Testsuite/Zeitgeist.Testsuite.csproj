@@ -46,6 +46,7 @@
     <Compile Include="Log\TestInsertAndDeleteEvents.cs" />
     <Compile Include="Monitor\TestMonitor.cs" />
     <Compile Include="Blacklist\TestInsertEventsWithBlacklist.cs" />
+    <Compile Include="Log\TestProperties.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Zeitgeist\Zeitgeist.csproj">
