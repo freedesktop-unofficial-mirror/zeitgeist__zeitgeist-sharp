@@ -1,5 +1,5 @@
 AC_PREREQ([2.54])
-AC_INIT([zeitgeist-sharp], [0.8.0.0])
+AC_INIT([zeitgeist-sharp], [0.8.1.0])
 AM_INIT_AUTOMAKE([foreign])
 AM_MAINTAINER_MODE
 
@@ -21,7 +21,7 @@ AC_PROG_INSTALL
 ASSEMBLY_VERSION="0.8.0.0"
 AC_SUBST(ASSEMBLY_VERSION)
 
-PKG_CHECK_MODULES([MONO], [mono >= 2.4])
+PKG_CHECK_MODULES([MONO], [mono >= 2.8])
 
 AC_PATH_PROG(GMCS, gmcs, no)
 if test "x$GMCS" = "xno"; then
@@ -44,8 +44,6 @@ dnl package checks, common for all configs
 PKG_CHECK_MODULES([DBUS_SHARP_10], [dbus-sharp-1.0])
 PKG_CHECK_MODULES([DBUS_SHARP_GLIB_10], [dbus-sharp-glib-1.0])
 PKG_CHECK_MODULES([GLIB_SHARP_20], [glib-sharp-2.0])
-
-PKG_CHECK_MODULES([ZEITGEIST_DAEMON], [zeitgeist-daemon >= 0.7.1])
 
 AC_CONFIG_FILES([
 Zeitgeist/zeitgeist-sharp.pc

@@ -2,4 +2,4 @@ Name: zeitgeist-sharp
 Description: Zeitgeist C# binding
 Version: @VERSION@
 
-Libs: -r:@expanded_libdir@/@PACKAGE@/zeitgeist-sharp.dll
+Libs: -r:@expanded_libdir@/cli/@PACKAGE@-0.8/zeitgeist-sharp.dll
