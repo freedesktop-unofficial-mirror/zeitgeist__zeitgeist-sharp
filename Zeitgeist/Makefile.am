@@ -13,7 +13,8 @@ ZS_GACUTIL_INSTALL = $(GACUTIL) -i $(ZS_ASSEMBLY_TARGET) -f $(GACUTIL_FLAGS)
 ZS_GACUTIL_UNINSTALL = $(GACUTIL) -u $(ZS_ASSEMBLY_NAME) $(GACUTIL_FLAGS)
 
 # magic automake variables
-pkglib_DATA = \
+programfilesdir = $(pkglibdir)
+programfiles_DATA = \
 	$(ZS_ASSEMBLY_TARGET) $(ZS_ASSEMBLY_TARGET).mdb
 
 EXTRA_DIST = \
